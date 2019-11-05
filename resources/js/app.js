@@ -68,8 +68,5 @@ Vue.component('login-form', require('./components/auth/login-form').default);
 
 const app = new Vue({
   el: '#app',
-  data: {
-    messages: []
-  },
   vuetify: new Vuetify(opts),
 });
