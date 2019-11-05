@@ -1,0 +1,17 @@
+name: restaurantZSP
+recipe: laravel
+config:
+  php: '7.3'
+  webroot: public
+  via: nginx
+  database: postgres
+  xdebug: true
+services:
+  node:
+    type: node
+    build:
+      - npm install
+
+tooling:
+  npm:
+    service: node
