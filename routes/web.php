@@ -18,3 +18,15 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::resource('dishes', 'DishesController');
+Route::resource('menu', 'MenuController');
+Route::resource('reservations', 'ReservationsController');
+Route::resource('orders', 'OrdersController');
+Route::resource('tables', 'TablesController');
+Route::resource('users', 'UsersController');
+
+Route::get('/myAccount', 'UsersController@myAccount' );
+
+Route::get('/user/createReservation', 'ReservationsController@userCreate' );
+Route::get('/user/editReservation', 'ReservationsController@userEdit' );
+Route::get('/user/listReservations', 'ReservationsController@userIndex' );
