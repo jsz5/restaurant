@@ -11,7 +11,7 @@ use Spatie\Permission\Traits\HasRoles;
 use Tymon\JWTAuth\Contracts\JWTSubject;
 use Illuminate\Notifications\Notifiable;
 
-class User extends Authenticatable implements JWTSubject
+class User extends Authenticatable
 {
     use Notifiable;
     use HasRoles;
@@ -44,16 +44,6 @@ class User extends Authenticatable implements JWTSubject
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
-    /**
-     * A user can have many messages
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
-    public function messages()
-    {
-        return $this->hasMany(Message::class);
-    }
-
 
     public function orderWorker()
     {
