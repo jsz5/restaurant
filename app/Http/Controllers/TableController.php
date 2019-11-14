@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 
-class ReservationsController extends Controller
+class TableController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,7 +14,7 @@ class ReservationsController extends Controller
      */
     public function index()
     {
-        return view('reservations/index');
+        return view('tables/index');
     }
 
     /**
@@ -23,7 +24,7 @@ class ReservationsController extends Controller
      */
     public function create()
     {
-        return view('reservations/create');
+        return view('tables/create');
     }
 
     /**
@@ -38,15 +39,17 @@ class ReservationsController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * Show the form for show th table.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
-    public function show($id)
+    public function showWaiter($id)
     {
-        //
+        return view('tables/waiterShow',compact(["id"]));
     }
+
+
 
     /**
      * Show the form for editing the specified resource.
@@ -56,7 +59,7 @@ class ReservationsController extends Controller
      */
     public function edit($id)
     {
-        return view('reservations/edit');
+        return view('tables/edit');
     }
 
     /**
@@ -80,38 +83,5 @@ class ReservationsController extends Controller
     public function destroy($id)
     {
         //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function userEdit($id)
-    {
-        return view('reservations/userEdit');
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function userCreate()
-    {
-        return view('reservations/userCreate');
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function userIndex()
-    {
-        return view('reservations/userIndex');
     }
 }
