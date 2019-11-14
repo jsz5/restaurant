@@ -1,4 +1,4 @@
-name: restaurant
+name: restaurantZSP
 recipe: laravel
 config:
   php: '7.3'
@@ -7,9 +7,6 @@ config:
   database: postgres
   xdebug: true
 services:
-  database:
-    portforward: 5433
-
   node:
     type: node
     build:
