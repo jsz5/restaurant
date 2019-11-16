@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class OrdersController extends Controller
+class ReservationController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,7 +13,7 @@ class OrdersController extends Controller
      */
     public function index()
     {
-        return view('order/index');
+        return view('reservations/index');
     }
 
     /**
@@ -23,7 +23,7 @@ class OrdersController extends Controller
      */
     public function create()
     {
-        return view('order/create');
+        return view('reservations/create');
     }
 
     /**
@@ -56,7 +56,7 @@ class OrdersController extends Controller
      */
     public function edit($id)
     {
-        return view('order/edit');
+        return view('reservations/edit');
     }
 
     /**
@@ -80,5 +80,38 @@ class OrdersController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function userEdit($id)
+    {
+        return view('reservations/userEdit');
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function userCreate()
+    {
+        return view('reservations/userCreate');
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function userIndex()
+    {
+        return view('reservations/userIndex');
     }
 }

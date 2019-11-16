@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class DishesController extends Controller
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,7 +13,7 @@ class DishesController extends Controller
      */
     public function index()
     {
-        //
+        return view('users/waitersIndex');
     }
 
     /**
@@ -23,7 +23,7 @@ class DishesController extends Controller
      */
     public function create()
     {
-        return view('dishes/create');
+        //
     }
 
     /**
@@ -56,7 +56,7 @@ class DishesController extends Controller
      */
     public function edit($id)
     {
-        return view('dishes/edit');
+        return view('users/edit');
     }
 
     /**
@@ -81,4 +81,16 @@ class DishesController extends Controller
     {
         //
     }
+
+    /**
+     * Show the form for myAccount view.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function myAccount($id)
+    {
+        return view('users/myAccount');
+    }
+
 }
