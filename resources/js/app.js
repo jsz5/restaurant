@@ -4,13 +4,15 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
 
-import './bootstrap';
+import 'bootstrap';
 import Vue from 'vue'
 import Vuetify from 'vuetify';
 import vuetifyPL from 'vuetify/lib/locale/pl';
 import vuetifyEn from 'vuetify/lib/locale/en';
 import 'vuetify/dist/vuetify.min.css'
-
+import Toasted from 'vue-toasted';
+import 'material-design-icons-iconfont/dist/material-design-icons.css'
+import '@mdi/font/css/materialdesignicons.css'
 
 require('./bootstrap');
 
@@ -33,9 +35,18 @@ const opts = {
     locales: {vuetifyPL, vuetifyEn},
     current: 'vuetifyPL',
   },
+  theme: {
+    dark: true,
+  },
 };
 
-Vue.use(Vuetify);
+Vue.use(Vuetify,{
+  iconfont: 'md, mdi',
+});
+const Options = {
+  position: 'top-center',
+};
+Vue.use(Toasted, Options);
 
 
 /**
@@ -49,6 +60,7 @@ Vue.use(Vuetify);
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
+
 //PARTIALS
 Vue.component('ui-header', require('./components/partials/ui-header').default);
 Vue.component('ui-footer', require('./components/partials/ui-footer').default);
@@ -58,15 +70,42 @@ Vue.component('login-form', require('./components/auth/login-form').default);
 
 
 
+//RESERVATION
+
+Vue.component('user-create-reservation', require('./components/reservation/user-create-reservation').default);
+Vue.component('user-index-reservation', require('./components/reservation/user-index-reservation').default);
+Vue.component('waiter-create-reservation', require('./components/reservation/waiter-create-reservation').default);
+Vue.component('waiter-index-reservation', require('./components/reservation/waiter-index-reservation').default);
+
+
+//MENU
+
+Vue.component('user-menu', require('./components/menu/user-menu').default);
+Vue.component('admin-menu', require('./components/menu/admin-menu').default);
+
+
+//TABLES
+Vue.component('admin-tables-index', require('./components/tables/admin-tables-index').default);
+Vue.component('waiter-tables-index', require('./components/tables/waiter-tables-index').default);
+Vue.component('waiter-show', require('./components/tables/waiter-show').default);
+
+//USERS
+Vue.component('my-account', require('./components/users/myAccount').default);
+
+//ORDERS
+Vue.component('worker-order-index', require('./components/orders/worker-order-index').default);
+Vue.component('worker-order-create', require('./components/orders/worker-order-create').default);
+Vue.component('worker-order-edit', require('./components/orders/worker-order-edit').default);
+Vue.component('order-show', require('./components/orders/order-show').default);
+
+const app = new Vue({
+  el: '#app',
+  vuetify: new Vuetify(opts)
+});
+
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
-
-
-const app = new Vue({
-  el: '#app',
-  vuetify: new Vuetify(opts),
-});
