@@ -24,7 +24,7 @@
 <body>
 <v-app id="app" data-app="true">
     @section('header')
-        <ui-header></ui-header>
+        <ui-header :user="{{ json_encode( Auth::user()) ?? ""}}" role="{{\App\Services\UserService::getAuthRoles()}}"></ui-header>
     @show
     <v-container class="main_content">
         <main id="main_page">

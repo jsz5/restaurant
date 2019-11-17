@@ -87,7 +87,7 @@ Vue.component('workers-create', require('./components/workers/workers-create').d
 Vue.component('workers-edit', require('./components/workers/workers-edit').default);
 
 //DISH CATEGORIES
-Vue.component('dish-category-index', require('./components/dishCategories/dish-category-index').default);dishCategorydishCategory
+Vue.component('dish-category-index', require('./components/dishCategories/dish-category-index').default);
 
 //RESERVATION
 
@@ -96,17 +96,6 @@ Vue.component('user-index-reservation', require('./components/reservation/user-i
 Vue.component('waiter-create-reservation', require('./components/reservation/waiter-create-reservation').default);
 Vue.component('waiter-index-reservation', require('./components/reservation/waiter-index-reservation').default);
 
-
-//MENU
-
-Vue.component('user-menu', require('./components/menu/user-menu').default);
-Vue.component('admin-menu', require('./components/menu/admin-menu').default);
-
-
-//TABLES
-Vue.component('admin-tables-index', require('./components/tables/admin-tables-index').default);
-Vue.component('waiter-tables-index', require('./components/tables/waiter-tables-index').default);
-Vue.component('waiter-show', require('./components/tables/waiter-show').default);
 
 //USERS
 Vue.component('my-account', require('./components/users/myAccount').default);
