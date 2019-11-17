@@ -2,50 +2,45 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Dish;
+use App\Models\DishCategory;
 use Illuminate\Http\Request;
 
 class DishController extends Controller
 {
+
     /**
-     * Display a listing of the resource.
+     * Show the application dashboard.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Support\Renderable
      */
     public function index()
     {
-        //
+        dd(Dish::all()->load('category'));
+        return view('home');
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Show the restaurant menuLayouts for customer
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function create()
+    public function menu()
     {
-        return view('dishes/create');
+        $categories = DishCategory::all();
+        $dishes = Dish::all()->load('category');
+        return view('menuLayouts/menu', compact('dishes', 'categories'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
 
     /**
-     * Display the specified resource.
+     * Show the restaurant menuLayouts for admin
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function show($id)
+    public function adminMenu()
     {
-        //
+        return view('menuLayouts/adminMenu');
     }
 
     /**
@@ -56,29 +51,15 @@ class DishController extends Controller
      */
     public function edit($id)
     {
-        return view('dishes/edit');
+        $dish = Dish::find($id);
+        return view('dish/edit', compact(['dish', 'id']));
     }
 
     /**
-     * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function create()
     {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+        return view('dish.create');
     }
 }
