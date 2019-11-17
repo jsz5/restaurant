@@ -1,5 +1,5 @@
 @extends('layouts.app')
 
 @section('content')
-    <forgot-password-mail></forgot-password-mail>
+    <dish-category-index></dish-category-index>
 @endsection
