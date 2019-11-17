@@ -64,7 +64,15 @@ Vue.component('admin-menu', require('./components/menu/admin-menu').default);
 Vue.component('edit-dish', require('./components/menu/edit-dish').default);
 Vue.component('create-dish', require('./components/menu/create-dish').default);
 
+//TABLES
+Vue.component('admin-tables-index', require('./components/tables/admin-tables-index').default);
+Vue.component('waiter-tables-index', require('./components/tables/waiter-tables-index').default);
+Vue.component('waiter-show', require('./components/tables/waiter-show').default);
 
+//WORKERS
+Vue.component('workers-index', require('./components/workers/workers-index').default);
+Vue.component('workers-create', require('./components/workers/workers-create').default);
+Vue.component('workers-edit', require('./components/workers/workers-edit').default);
 
 
 /**
