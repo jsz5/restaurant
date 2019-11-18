@@ -6,8 +6,20 @@
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 
-.v-application.v-application--is-ltr.theme--light{
+.v-application.v-application--is-ltr.theme--dark{
   background: url('/background.jpg');
   background-repeat: no-repeat;
   background-size: cover;
 }
+
+.main_content, main{
+  height: 100%;
+}
+
+.theme--dark.v-navigation-drawer{
+  background-color: $background-black !important;
+}
+.theme--dark.v-card {
+  background-color: $background-black !important;
+}
+

@@ -39,9 +39,9 @@ const opts = {
     dark: true,
     themes: {
       dark: {
-        primary: '#FFB197',
+        primary: '#F2B25D',
         accent: '#FF4081',
-        secondary: '#ffe18d',
+        secondary: '#FFB197',
         success: '#4CAF50',
         info: '#2196F3',
         warning: '#FB8C00',
@@ -116,6 +116,9 @@ Vue.component('worker-order-index', require('./components/orders/worker-order-in
 Vue.component('worker-order-create', require('./components/orders/worker-order-create').default);
 Vue.component('worker-order-edit', require('./components/orders/worker-order-edit').default);
 Vue.component('order-show', require('./components/orders/order-show').default);
+
+
+Vue.component('homepage', require('./components/homepage').default);
 
 const app = new Vue({
   el: '#app',

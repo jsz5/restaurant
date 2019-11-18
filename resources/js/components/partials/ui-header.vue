@@ -160,7 +160,7 @@ export default {
   border-radius: 0;
 }
 .header {
-  max-height: 9rem;
+  max-height: 3rem;
   margin-left: 1rem;
 }
 .menu {
