@@ -40,7 +40,7 @@ class DishController extends Controller
      */
     public function adminMenu()
     {
-        return view('menuLayouts/adminMenu');
+        return view('menu/adminMenu');
     }
 
     /**

@@ -32,8 +32,8 @@
       </v-container>
     </v-card-text>
     <v-card-actions>
-      <v-btn @click="cancel">Anuluj</v-btn>
-      <v-btn @click="save">Zapisz</v-btn>
+      <v-btn @click="cancel" >Anuluj</v-btn>
+      <v-btn @click="save" color="primary">Zapisz</v-btn>
     </v-card-actions>
   </v-card>
 </template>

@@ -4,7 +4,7 @@
       <v-card-title>
         Dania
         <v-spacer></v-spacer>
-        <v-btn @click="addDish">Dodaj danie</v-btn>
+        <v-btn @click="addDish" color="primary">Dodaj danie</v-btn>
       </v-card-title>
       <v-card-text>
         <v-data-table

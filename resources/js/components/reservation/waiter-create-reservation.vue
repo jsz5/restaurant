@@ -29,7 +29,7 @@
 								<v-btn text color="primary" @click="$refs.menu.save(date)">OK</v-btn>
 							</v-date-picker>
 						</v-menu>
-						<v-btn @click="getAvailableTables(date)">
+						<v-btn @click="getAvailableTables(date)" color="primary">
 							Wyszukaj
 						</v-btn>
 					</v-card-text>
@@ -53,7 +53,7 @@
 									<td class="text-xs-left">{{ props.item.id }}</td>
 									<td class="text-xs-left">{{ props.item.size}}</td>
 									<td class="text-xs-center">
-										<v-btn @click="makeReservation(props.item.id)" >
+										<v-btn @click="makeReservation(props.item.id)" color="primary">
 											Zarezerwuj stolik
 										</v-btn>
 									</td>
@@ -142,7 +142,7 @@
 											max="23:00"
 										></v-time-picker>
 									</v-menu>
-								<v-btn @click="saveReservation">
+								<v-btn @click="saveReservation" color="primary">
 									Zarezerwuj
 								</v-btn>
 							</v-form>

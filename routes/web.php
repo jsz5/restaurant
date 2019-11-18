@@ -24,6 +24,7 @@ Route::get('/order-show/{token}', 'OrderController@show')->name('order.show');
 Auth::routes();
 Route::middleware('auth')->group(function () {
     Route::get('/', 'HomeController@index')->name('home');
+    Route::get('/home', 'HomeController@index')->name('mainPage');
     Route::get('/table-admin', 'TableController@index')->name('table.index')->middleware('permission:tableIndex');
     Route::get('/table/edit/{id}', 'TableController@edit')->name('table.edit')->middleware('permission:tableEdit');
     Route::get('/table/{id}', 'TableController@show')->name('table.show')->middleware('permission:tableShow');
@@ -48,8 +49,8 @@ Route::middleware('auth')->group(function () {
         Route::get('index', 'WorkerController@index')->name('index')->middleware('permission:userIndex');
     });
     Route::get('/orders/waiter-index', 'OrderController@index')->name('order.index');
-    Route::get('/orders/waiter-create/{tableId}', 'OrderController@createWaiterOrder')->name('order.createWaiter');
-    Route::get('/orders/waiter-edit/{token}', 'OrderController@editWaiter')->name('order.editWaiter');
+    Route::get('/orders/waiter-create/{tableId}', 'OrderController@create')->name('order.createWaiter');
+    Route::get('/orders/waiter-edit/{token}', 'OrderController@edit')->name('order.editWaiter');
 
     Route::get('/tables/waiter-index', 'TableController@waiterIndex')->name('table.waiterIndex')->middleware('permission:tableIndex');
 });

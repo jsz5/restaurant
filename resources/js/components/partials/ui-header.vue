@@ -1,14 +1,11 @@
 <template>
-  <div>
-    <v-row no-gutters class="header">
-      <v-col cols="12">
-        <v-row no-gutters class="justify-space-between">
-          <v-col cols="3">
-            <v-row>
+
+        <v-row no-gutters class="justify-space-between header">
+          <v-col cols="2">
+            <v-row class="menu-items">
               <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
               <v-toolbar-title>Menu</v-toolbar-title>
             </v-row>
-            <v-row>
               <v-navigation-drawer
                 v-model="drawer"
               >
@@ -25,10 +22,8 @@
                   </v-list-item-group>
                 </v-list>
               </v-navigation-drawer>
-            </v-row>
-
           </v-col>
-          <v-col cols="9">
+          <v-col cols="9" style="max-height: 3rem;">
             <v-row>
               <v-col v-if="notLogged" class="text-end">
                 <v-btn text @click="register">Zarejestruj</v-btn>
@@ -53,9 +48,6 @@
             </v-row>
           </v-col>
         </v-row>
-      </v-col>
-    </v-row>
-  </div>
 </template>
 
 <script>
@@ -156,15 +148,12 @@ export default {
 .v-card__text.header-text {
   color: white;
 }
-.v-card.v-card--flat.v-sheet.theme--light {
-  border-radius: 0;
-}
 .header {
   max-height: 3rem;
+
+}
+.menu-items{
   margin-left: 1rem;
 }
-.menu {
-  margin-bottom: 0;
-  margin-top: 0;
-}
+
 </style>

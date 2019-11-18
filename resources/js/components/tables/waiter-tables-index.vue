@@ -18,10 +18,10 @@
 						</v-btn>
 					</td>
 					<td class="text-xs-left">
-						<v-btn @click="openTable(props.item.table.id)" v-if="props.item.table.occupied_since===null">
+						<v-btn @click="openTable(props.item.table.id)" v-if="props.item.table.occupied_since===null" color="primary">
 							Otwórz stolik
 						</v-btn>
-						<v-btn @click="closeTable(props.item.table.id)" v-else>
+						<v-btn @click="closeTable(props.item.table.id)" v-else color="primary">
 							Zamknij stolik
 						</v-btn>
 					</td>

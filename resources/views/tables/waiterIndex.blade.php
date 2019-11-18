@@ -1,5 +1,5 @@
 @extends('layouts.app')
 
 @section('content')
-    <user-index-reservation></user-index-reservation>
+    <waiter-tables-index></waiter-tables-index>
 @endsection
