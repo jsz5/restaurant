@@ -53,7 +53,7 @@
 							v-model="form.address.postCode">
 
 						</v-text-field>
-						<v-btn @click="save">
+						<v-btn @click="save" color="primary">
 							Zapisz
 						</v-btn>
 					</v-form>
@@ -88,7 +88,7 @@
 							label="Powtórz hasło"
 							v-model="passwordForm.repeatNewPassword">
 						</v-text-field>
-						<v-btn @click="savePassword">
+						<v-btn @click="savePassword" color="primary">
 							Zapisz
 						</v-btn>
 					</v-form>

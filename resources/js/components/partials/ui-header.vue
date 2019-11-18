@@ -11,7 +11,6 @@
             <v-row>
               <v-navigation-drawer
                 v-model="drawer"
-                clipped
               >
                 <v-list>
                   <v-list-item-group v-model="menu">
@@ -134,6 +133,7 @@ export default {
       if (route === "logout") {
         this.logout();
       } else {
+        this.drawer = false
         window.location.href = route;
       }
     },

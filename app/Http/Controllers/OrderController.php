@@ -81,4 +81,9 @@ class OrderController extends Controller
     {
         //
     }
+
+    public function customerIndex()
+    {
+        return view('order.customerIndex');
+    }
 }

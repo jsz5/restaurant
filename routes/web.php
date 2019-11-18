@@ -12,7 +12,7 @@
 */
 
 
-Route::get('/menu', 'DishController@menu')->name('menu');
+Route::get('/menu', 'MenuController@menu')->name('menu');
 Route::post('api/user/store-customer', 'API\ApiUserController@storeCustomer')->name('storeCustomer');
 Route::get('/contact', 'ContactController@index')->name('contact');
 Route::get('/order/online', 'OrderController@createOrder')->name('order.create.online');
@@ -29,18 +29,18 @@ Route::middleware('auth')->group(function () {
     Route::get('/table/{id}', 'TableController@show')->name('table.show')->middleware('permission:tableShow');
     Route::get('/table-waiter/{id}', 'TableController@showWaiter')->name('table.showWaiter')->middleware('permission:tableShow');
     Route::get('/dish', 'DishController@index')->name('dish.index')->middleware('permission:dishIndex');
-    Route::get('/menu-admin', 'DishController@adminMenu')->name('menu.admin');
+    Route::get('/menu-admin', 'MenuController@adminMenu')->name('menu.admin');
     Route::get('/dish/edit/{id}', 'DishController@edit')->name('dish.edit')->middleware('permission:dishEdit');
     Route::get('/dishCategory', 'DishCategoryController@index')->name('dishCategory.index')->middleware('permission:dishCategoryIndex');
     Route::get('/reservation/create', 'ReservationController@create')->name('reservation.create');
-    Route::get('/reservation/user-index', 'ReservationController@indexUser')->name('reservation.indexUser')->middleware('permission:onlineReservationIndex');
-    Route::get('/reservation/create-user', 'ReservationController@createUser')->name('reservation.createUser')->middleware('permission:reservationCreate|onlineReservationCreate');;
+    Route::get('/reservation/user-index', 'ReservationController@userIndex')->name('reservation.indexUser')->middleware('permission:onlineReservationIndex');
+    Route::get('/reservation/create-user', 'ReservationController@userCreate')->name('reservation.createUser')->middleware('permission:reservationCreate|onlineReservationCreate');;
     Route::get('/reservation/index', 'ReservationController@index')->name('reservation.index');
     Route::get('/menu-admin', 'DishController@adminMenu')->name('menu.admin')->middleware('permission:tableIndex');
     Route::get('/dish/edit/{id}', 'DishController@edit')->name('dish.edit')->middleware('permission:dishEdit');
     Route::get('/dish/create', 'DishController@create')->name('dish.create')->middleware('permission:dishCreate');
     Route::get('/myAccount', 'UserController@myAccount')->name('user.myAccount');
-    Route::get('/order/myOrders', 'CustomerMyOrdersController@index')->name('orders.myOrders');
+    Route::get('/order/myOrders', 'OrderController@customerIndex')->name('orders.myOrders');
 
     Route::name('worker.')->prefix('worker')->group(function () {
         Route::get('/create', 'WorkerController@create')->name('create')->middleware('permission:userCreate');
