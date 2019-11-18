@@ -11100,3 +11100,22 @@ a.text-dark:focus {
   }
 }
 
+.v-application.v-application--is-ltr.theme--dark {
+  background: url("/background.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.main_content,
+main {
+  height: 100%;
+}
+
+.theme--dark.v-navigation-drawer {
+  background-color: rgba(0, 0, 0, 0.35) !important;
+}
+
+.theme--dark.v-card {
+  background-color: rgba(0, 0, 0, 0.35) !important;
+}
+
