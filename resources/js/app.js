@@ -80,6 +80,7 @@ Vue.component('ui-footer', require('./components/partials/ui-footer').default);
 Vue.component('login-form', require('./components/auth/login-form').default);
 Vue.component('reset-password-form', require('./components/auth/reset-password-form').default);
 Vue.component('forgot-password-mail', require('./components/auth/forgot-password-mail').default);
+Vue.component('register-form', require('./components/auth/register-form').default);
 
 //MENU
 Vue.component('user-menu', require('./components/menu/user-menu').default);
