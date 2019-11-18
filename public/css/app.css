@@ -11100,3 +11100,9 @@ a.text-dark:focus {
   }
 }
 
+.v-application.v-application--is-ltr.theme--light {
+  background: url("/background.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
