@@ -7,7 +7,7 @@
         class="elevation-1"
     >
       <template v-slot:top>
-        <v-toolbar color="white" flat>
+        <v-toolbar  flat>
           <v-toolbar-title>Stoliki</v-toolbar-title>
           <v-divider
               class="mx-4"

@@ -1,54 +1,53 @@
 <template>
-  <v-row no-gutters class="header">
-    <v-col cols="12">
-      <v-row no-gutters class="justify-space-between">
-        <v-col cols="3">
-          <v-card class="logo">
-            <v-card-title>W-17</v-card-title>
-          </v-card>
-        </v-col>
-        <v-col cols="9">
-          <v-row>
-            <v-col v-if="notLogged" class="text-end">
-              <v-btn text @click="register">Zarejestruj</v-btn>
-              <v-btn @click="login">Zaloguj się</v-btn>
-            </v-col>
-            <v-col v-else class="text-end">
-              <v-menu offset-y>
-                <template v-slot:activator="{ on }">
-                  <v-btn
-                    color="primary"
-                    dark
-                    v-on="on"
-                  >{{loggedUser.name + " "}}{{loggedUser.surname}}</v-btn>
-                </template>
+
+        <v-row no-gutters class="justify-space-between header">
+          <v-col cols="2">
+            <v-row class="menu-items">
+              <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
+              <v-toolbar-title>Menu</v-toolbar-title>
+            </v-row>
+              <v-navigation-drawer
+                v-model="drawer"
+              >
                 <v-list>
-                  <v-list-item v-for="(item, id) in userMenu" :key="id" @click="goTo(item.link)">
-                    <v-list-item-title>{{ item.text }}</v-list-item-title>
-                  </v-list-item>
+                  <v-list-item-group v-model="menu">
+                    <v-list-item
+                      v-for="item in menu"
+                      :key="item.id"
+                    >
+                      <v-list-item-content>
+                        <v-list-item-title v-text="item.text" @click="goTo(item.link)"></v-list-item-title>
+                      </v-list-item-content>
+                    </v-list-item>
+                  </v-list-item-group>
                 </v-list>
-              </v-menu>
-            </v-col>
-          </v-row>
-          <v-row class="menu">
-            <v-col>
-              <v-toolbar class="menu_links">
-                <v-toolbar-items>
-                  <v-btn
-                    v-for="item in menu"
-                    :key="item.id"
-                    @click="goTo(item.link)"
-                    text
-                  >{{item.text}}</v-btn>
-                </v-toolbar-items>
-              </v-toolbar>
-            </v-col>
-          </v-row>
-        </v-col>
-      </v-row>
-      <v-row></v-row>
-    </v-col>
-  </v-row>
+              </v-navigation-drawer>
+          </v-col>
+          <v-col cols="9" style="max-height: 3rem;">
+            <v-row>
+              <v-col v-if="notLogged" class="text-end">
+                <v-btn text @click="register">Zarejestruj</v-btn>
+                <v-btn @click="login">Zaloguj się</v-btn>
+              </v-col>
+              <v-col v-else class="text-end">
+                <v-menu offset-y>
+                  <template v-slot:activator="{ on }">
+                    <v-btn
+                      color="primary"
+                      dark
+                      v-on="on"
+                    >{{loggedUser.name + " "}}{{loggedUser.surname}}</v-btn>
+                  </template>
+                  <v-list>
+                    <v-list-item v-for="(item, id) in userMenu" :key="id" @click="goTo(item.link)">
+                      <v-list-item-title>{{ item.text }}</v-list-item-title>
+                    </v-list-item>
+                  </v-list>
+                </v-menu>
+              </v-col>
+            </v-row>
+          </v-col>
+        </v-row>
 </template>
 
 <script>
@@ -96,7 +95,8 @@ export default {
       ],
       menu: [],
       notLogged: true,
-      loggedUser: ""
+      loggedUser: "",
+      drawer: false
     };
   },
   beforeMount() {
@@ -125,6 +125,7 @@ export default {
       if (route === "logout") {
         this.logout();
       } else {
+        this.drawer = false
         window.location.href = route;
       }
     },
@@ -146,17 +147,13 @@ export default {
 <style scoped>
 .v-card__text.header-text {
   color: white;
-  background-color: #8a5e4e;
-}
-.v-card.v-card--flat.v-sheet.theme--light {
-  border-radius: 0;
 }
 .header {
-  max-height: 9rem;
-  background-color: #8a5e4e;
+  max-height: 3rem;
+
 }
-.menu {
-  margin-bottom: 0;
-  margin-top: 0;
+.menu-items{
+  margin-left: 1rem;
 }
+
 </style>

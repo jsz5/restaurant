@@ -23,7 +23,7 @@ class OrderController extends Controller
      */
     public function create()
     {
-        return view('order/create');
+        return view('order/create', compact(['tableId']));
     }
 
     /**
@@ -40,23 +40,23 @@ class OrderController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  int  $token
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($token)
     {
-        //
+        return view('order/show', compact(['token']));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  int  $token
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($token)
     {
-        return view('order/edit');
+        return view('order/edit', compact(['token']));
     }
 
     /**
@@ -80,5 +80,10 @@ class OrderController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function customerIndex()
+    {
+        return view('order.customerIndex');
     }
 }

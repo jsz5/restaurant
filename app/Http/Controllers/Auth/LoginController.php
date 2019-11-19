@@ -36,4 +36,14 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
+
+    /**
+     * Log the user out (Invalidate the token).
+     *
+     * @return void
+     */
+    public function logout()
+    {
+        \Auth::logout();
+    }
 }

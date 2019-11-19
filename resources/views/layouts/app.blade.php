@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
+    @routes
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -8,7 +9,6 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>{{ config('app.name', 'Laravel') }}</title>
-
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -24,7 +24,7 @@
 <body>
 <v-app id="app" data-app="true">
     @section('header')
-        <ui-header></ui-header>
+        <ui-header :user="{{ json_encode( Auth::user()) ?? ""}}" role="{{\App\Services\UserService::getAuthRoles()}}"></ui-header>
     @show
     <v-container class="main_content">
         <main id="main_page">

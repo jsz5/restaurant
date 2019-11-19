@@ -6,7 +6,7 @@
       class="elevation-1"
   >
     <template v-slot:top>
-      <v-toolbar flat color="white">
+      <v-toolbar flat>
         <v-toolbar-title>Kategorie dań</v-toolbar-title>
         <v-divider
             class="mx-4"
@@ -37,8 +37,8 @@
 
             <v-card-actions>
               <v-spacer></v-spacer>
-              <v-btn @click="close" color="blue darken-1" text>Anuluj</v-btn>
-              <v-btn @click="save" color="blue darken-1" text>Zapisz</v-btn>
+              <v-btn @click="close"  text>Anuluj</v-btn>
+              <v-btn @click="save" color="primary">Zapisz</v-btn>
             </v-card-actions>
           </v-card>
         </v-dialog>

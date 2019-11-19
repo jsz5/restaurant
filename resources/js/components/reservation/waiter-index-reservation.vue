@@ -29,14 +29,14 @@
 								<v-btn text color="primary" @click="$refs.menu.save(date)">OK</v-btn>
 							</v-date-picker>
 						</v-menu>
-						<v-btn @click="getReservations(date)">
+						<v-btn @click="getReservations(date)" color="primary">
 							Wyszukaj
 						</v-btn>
 					</v-card-text>
 				</v-card>
 			</v-col>
 			<v-col>
-				<v-btn @click="addReservation">
+				<v-btn @click="addReservation" color="primary">
 					Dodaj rezerwację
 				</v-btn>
 			</v-col>

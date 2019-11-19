@@ -73,7 +73,7 @@
 					</v-menu>
 			</v-card-text>
 			<v-card-actions>
-				<v-btn @click="send">Zarezerwuj</v-btn>
+				<v-btn @click="send" color="primary">Zarezerwuj</v-btn>
 			</v-card-actions>
 		</v-card>
 	</v-row>

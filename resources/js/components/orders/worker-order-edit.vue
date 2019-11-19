@@ -12,7 +12,7 @@
 						<td class="text-xs-left">{{ props.item.name }}</td>
 						<td class="text-xs-left">{{ props.item.price}}</td>
 						<td class="text-xs-center">
-							<v-btn @click="addToOrder(props.item)">Dodaj do zamówienia</v-btn>
+							<v-btn @click="addToOrder(props.item)" color="primary">Dodaj do zamówienia</v-btn>
 						</td>
 					</tr>
 				</template>
@@ -32,7 +32,7 @@
 							label="Status"
 							v-model="orderStatus"
 						></v-select>
-						<v-btn @click="changeStatus">
+						<v-btn @click="changeStatus" color="primary">
 							Zmień status
 						</v-btn>
 					</v-row>
@@ -69,7 +69,7 @@
 					</v-text-field>
 				</v-card-text>
 				<v-card-actions>
-					<v-btn @click="updateOrder">
+					<v-btn @click="updateOrder" color="primary">
 						Aktualizuj zamówienie
 					</v-btn>
 				</v-card-actions>

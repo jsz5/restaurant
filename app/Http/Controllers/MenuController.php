@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Dish;
+use App\Models\DishCategory;
 use Illuminate\Http\Request;
 
 class MenuController extends Controller
@@ -13,7 +15,7 @@ class MenuController extends Controller
      */
     public function index()
     {
-        return view('menu/index');
+        //
     }
 
     /**
@@ -81,4 +83,28 @@ class MenuController extends Controller
     {
         //
     }
+
+    /**
+     * Show the restaurant menuLayouts for customer
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function menu()
+    {
+        $categories = DishCategory::all();
+        $dishes = Dish::all()->load('category');
+        return view('menu/menu', compact('dishes', 'categories'));
+    }
+
+
+    /**
+     * Show the restaurant menuLayouts for admin
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function adminMenu()
+    {
+        return view('menu/adminMenu');
+    }
+
 }

@@ -11,7 +11,7 @@
           hide-details
       ></v-text-field>
       <v-spacer></v-spacer>
-      <v-btn @click="addWorker">Dodaj pracownika</v-btn>
+      <v-btn @click="addWorker" color="primary">Dodaj pracownika</v-btn>
     </v-card-title>
     <v-data-table
         :headers="headers"
