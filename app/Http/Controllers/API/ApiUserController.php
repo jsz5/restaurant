@@ -60,6 +60,7 @@ class ApiUserController extends Controller
                 (new RegistrationMail($request->password, $request->email))->sendMail();
             }
         } catch (\Exception $exception) {
+            dd($exception);
             Log::notice("Error :" . $exception);
             Log::notice("Error :" . $exception->getMessage());
             Log::notice("Error :" . $exception->getCode());
