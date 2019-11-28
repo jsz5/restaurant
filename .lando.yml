@@ -1,4 +1,4 @@
-name: restaurant
+name: restaurantZSP
 recipe: laravel
 config:
   php: '7.3'
