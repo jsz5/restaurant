@@ -45,6 +45,10 @@ class OrderService
      */
     public function tableByDate(string $date, $table): array
     {
+        $orders = $table->order;
+        foreach ($orders as $order) {
+            $order['status_pl'] = trans('app.status.' . $order->status);
+        }
         $reservationSince = null;
         $reservations = Reservation::where('table_id', $table->id)->get();
         foreach ($reservations as $reservation) {
@@ -77,6 +81,7 @@ class OrderService
     /**
      * @return array of tables with order served by auth user
      * and empty tables without any orders
+     * @codeCoverageIgnore
      */
     public function myTablesWithReservation()
     {
