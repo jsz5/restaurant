@@ -16,8 +16,8 @@ class MyAccount
      */
     public function handle($request, Closure $next)
     {
-        if(Auth::user()->id!==$request->route('user')->email){
-            abort(403, 'Access denied');
+       if(Auth::user()->email!==$request->route('user')->email){
+           abort(403, 'Access denied');
         }
         return $next($request);
     }

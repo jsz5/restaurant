@@ -3,8 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\Table;
+use App\Models\User;
 use Illuminate\Contracts\Support\Renderable;
+use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Auth;
+use Tymon\JWTAuth\JWT;
 
 class TableController extends Controller
 {
@@ -39,6 +43,7 @@ class TableController extends Controller
      */
     public function show($id)
     {
+        $table = Table::find($id);
         return view('tables/show', compact(['table', 'id']));
     }
 

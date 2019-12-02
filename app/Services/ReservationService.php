@@ -24,6 +24,7 @@ class ReservationService
      * @param string $time
      * @param string $date
      * @return bool
+     * @codeCoverageIgnore
      */
     public function timeForSameDay(string $time, string $date): bool
     {
@@ -53,6 +54,7 @@ class ReservationService
     /**
      * @param string $time
      * @return bool
+     * @codeCoverageIgnore
      */
     public function openHours(string $time): bool
     {
@@ -84,7 +86,7 @@ class ReservationService
             if ($table) {
                 return true;
             }
-        } catch (\Exception$exception) {
+        } catch (\Exception $exception) {
         }
         return false;
     }
@@ -105,7 +107,8 @@ class ReservationService
             if ($nowDate == $reservation->date && Carbon::now()->format('H:i') > $reservation->start_time) {
                 $status = self::STATUS_FINISHED;
             }
-            array_push($reservationWithStatus, ['reservation' => $reservation, 'status' => $status]);
+            $tableSize=Table::findOrFail($reservation->table_id)->size;
+            array_push($reservationWithStatus, ['reservation' => $reservation, 'status' => $status, 'size'=>$tableSize]);
         }
         return $reservationWithStatus;
     }
@@ -121,6 +124,7 @@ class ReservationService
 
     /**
      * @return array
+     * @codeCoverageIgnore
      */
     public function customerReservations(): array
     {
@@ -135,18 +139,30 @@ class ReservationService
      */
     public function freeTablesByDate(string $date)
     {
+        try {
+            if (Carbon::now()->format('Y-m-d') == $date) {
+                $time=Carbon::now()->format('H:i:s');
+                $tables = Table::where('occupied_since', null)->whereDoesntHave('reservation', function ($query) use ($date, $time) {
+                    $query->where('date', 'like', $date)->where('start_time', '>=', $time);
+                })->get();
 
-        $tables = Table::where('occupied_since', null)->whereDoesntHave('reservation', function ($query) use ($date) {
-            $query->where('date', 'like', $date);
-        })->get();
+            } else {
+                $tables = Table::whereDoesntHave('reservation', function ($query) use ($date) {
+                    $query->where('date', 'like', $date);
+                })->get();
 
-        return $tables;
+            }
+                return $tables;
+        } catch (\Exception $exception) {
+
+        }
+        return null;
     }
 
     /**
+     * @codeCoverageIgnore
      * @param WorkerReservationRequest $request
      */
-
     public function storeWorkerReservations(WorkerReservationRequest $request)
     {
         foreach ($request->tables as $tableId) {
@@ -163,6 +179,7 @@ class ReservationService
 
     /**
      * @param CustomerReservationRequest $request
+     * @codeCoverageIgnore
      * @return bool
      */
     public function storeCustomerReservation(CustomerReservationRequest $request): bool
@@ -178,5 +195,15 @@ class ReservationService
         }
 
         return false;
+    }
+
+    public function fetchReservation(int $id):array
+    {
+        $reservation= Reservation::with('table')->findOrFail($id);
+        return[
+            "date"=>$reservation->date,
+            "startTime"=>$reservation->start_time,
+            'tableSize'=>$reservation->table->size
+        ];
     }
 }

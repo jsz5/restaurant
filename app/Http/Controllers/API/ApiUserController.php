@@ -57,10 +57,9 @@ class ApiUserController extends Controller
             $user->setPassword($request->password);
             $user->assignRole($role);
             if($user->save()){
-                (new RegistrationMail($request->password, $request->email))->sendMail();
+                (new RegistrationMail($request->password, $request->email, $role))->sendMail();
             }
         } catch (\Exception $exception) {
-            dd($exception);
             Log::notice("Error :" . $exception);
             Log::notice("Error :" . $exception->getMessage());
             Log::notice("Error :" . $exception->getCode());
@@ -157,8 +156,18 @@ class ApiUserController extends Controller
      * @return JsonResponse
      */
     public function myAccount(){
-        $user = Auth::user();
-        return response()->json($user, 200);
+        try {
+            if ($user = Auth::user()){
+                return response()->json($user, 200);
+            }
+            return response()->json("unauthenticated", 200);
+        } catch (\Exception $e) {
+            Log::notice("Error :" . $e);
+            Log::notice("Error :" . $e->getMessage());
+            Log::notice("Error :" . $e->getCode());
+            return response()->json('Wystąpił nieoczekiwany błąd', 500);
+        }
+
     }
 
 

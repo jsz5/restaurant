@@ -3,6 +3,8 @@
 namespace App\Models;
 
 use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -15,6 +17,7 @@ class User extends Authenticatable
 {
     use Notifiable;
     use HasRoles;
+    use SoftDeletes;
     protected $guard_name = 'web';
 //    protected $table = 'users';
 
@@ -45,33 +48,34 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    /**
+     * @codeCoverageIgnore
+     * @return HasMany
+     */
     public function orderWorker()
     {
-        return $this->hasMany(Order::class, 'id', 'worker_id' );
+        return $this->hasMany(Order::class, 'id', 'worker_id');
     }
 
+    /**
+     * @codeCoverageIgnore
+     * @return HasMany
+     */
     public function orderCustomer()
     {
         return $this->hasMany(Order::class, 'id', 'customer_id');
     }
-    public function getJWTIdentifier()
-    {
-        return $this->getKey();
-    }
-    public function getJWTCustomClaims()
-    {
-        return [];
-    }
 
     /**
      * @param $request
+     * @codeCoverageIgnore
      */
     public function fillUser($request)
     {
         $this->name = $request->name;
         $this->surname = $request->surname;
         $this->email = $request->email;
-        $this->address = $request->address;
+        $this->address = json_encode($request->address);
         $this->phone = $request->phone;
         if (!$this->remember_token) {
             $this->remember_token = Str::random(10);
@@ -81,9 +85,9 @@ class User extends Authenticatable
     /**
      * @return array
      */
-    public function fetchUserData():array
+    public function fetchUserData(): array
     {
-        return[
+        return [
             'id' => $this->id,
             'name' => $this->name,
             'surname' => $this->surname,
@@ -94,14 +98,16 @@ class User extends Authenticatable
     }
 
     /**
+     * @codeCoverageIgnore
      * @return bool
      */
-    public function ifAuth():bool
+    public function ifAuth(): bool
     {
-       return $this===Auth::user();
+        return $this === Auth::user();
     }
 
     /**
+     * @codeCoverageIgnore
      * @param string $password
      */
     public function setPassword(string $password)
