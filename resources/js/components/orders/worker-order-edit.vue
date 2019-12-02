@@ -6,18 +6,18 @@
           <h1>Dania</h1>
         </v-card-title>
         <v-text-field
-            v-model="search"
-            append-icon="search"
-            label="Search"
-            single-line
-            hide-details
+          v-model="search"
+          append-icon="search"
+          label="Search"
+          single-line
+          hide-details
         ></v-text-field>
         <v-data-table
-            :headers="headers"
-            :items="menuItems"
-            :items-per-page="5"
-            class="elevation-1"
-            :search="search"
+          :headers="headers"
+          :items="menuItems"
+          :items-per-page="5"
+          class="elevation-1"
+          :search="search"
         >
           <template slot="item" slot-scope="props">
             <tr>
@@ -43,11 +43,11 @@
           <v-row class="justify-space-between" style="margin-bottom: 2rem; ">
             <v-col>
               <v-select
-                  :items="statusItems"
-                  item-value="status"
-                  item-text="status_pl"
-                  label="Status"
-                  v-model="orderStatus"
+                :items="statusItems"
+                item-value="status"
+                item-text="status_pl"
+                label="Status"
+                v-model="orderStatus"
               ></v-select>
             </v-col>
             <v-col>
@@ -57,10 +57,10 @@
             </v-col>
           </v-row>
           <v-data-table
-              :headers="orderedItemsHeaders"
-              :items="orderedItems"
-              :items-per-page="-1"
-              class="elevation-1"
+            :headers="orderedItemsHeaders"
+            :items="orderedItems"
+            :items-per-page="-1"
+            class="elevation-1"
           >
             <template v-slot:item.changeAmount="{ item }">
               <v-icon @click="minusItem(item)" :disabled="orderChangeDisabled">indeterminate_check_box</v-icon>
@@ -72,9 +72,9 @@
           </v-data-table>
           <h5 style="margin-top: 2rem;">Suma zamówienia:</h5>
           <v-text-field
-              readonly
-              v-model="orderSum"
-              style="max-width: 5rem">
+            readonly
+            v-model="orderSum"
+            style="max-width: 5rem">
 
           </v-text-field>
         </v-card-text>
@@ -99,8 +99,8 @@
     props: ['token', 'status'],
     data() {
       return {
-				search: '',
-				menuItems: [],
+        search: '',
+        menuItems: [],
         headers: [
           {text: 'Nazwa', value: 'name',},
           {text: 'Cena (zł)', value: 'price'},
