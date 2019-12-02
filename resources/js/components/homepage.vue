@@ -1,6 +1,8 @@
 <template>
 	<v-row class="homepage_title text-center justify-center align-center">
-		<h1>Restauracja u Pepeciaków</h1>
+		<v-col>
+			<h1 class="header-class">Restauracja u Pepeciakow</h1>
+		</v-col>
 	</v-row>
 </template>
 
@@ -11,10 +13,17 @@
 </script>
 
 <style scoped>
-	h1{
-		font-size: 8rem;
+	.header-class {
+		font-size: 10rem
 	}
-	.homepage_title{
-		height: 100%;
+	@media screen and (max-width: 800px) and (min-width: 500px) {
+		.header-class {
+			font-size: 7rem
+		}
+	}
+	@media screen and (max-width: 500px) {
+		.header-class {
+			font-size: 5rem
+		}
 	}
 </style>

@@ -1,38 +1,46 @@
 <template>
 	<v-row class="justify-center align-center">
-		<v-data-table
-			:headers="headers"
-			:items="tables"
-			:items-per-page="-1"
-			class="elevation-1"
-		>
-			<template slot="item" slot-scope="props">
-				<tr>
-					<td class="text-xs-left">{{ props.item.table.id }}</td>
-					<td class="text-xs-left">{{ props.item.table.size}}</td>
-					<td class="text-xs-left">{{ props.item.table.occupied_since}}</td>
-					<td class="text-xs-left">{{ props.item.reservation_since}}</td>
-					<td class="text-xs-left">
-						<v-btn @click="addOrder(props.item.table.id)" v-if="props.item.table.occupied_since!==null">
-							Dodaj
-						</v-btn>
-					</td>
-					<td class="text-xs-left">
-						<v-btn @click="openTable(props.item.table.id)" v-if="props.item.table.occupied_since===null" color="primary">
-							Otwórz stolik
-						</v-btn>
-						<v-btn @click="closeTable(props.item.table.id)" v-else color="primary">
-							Zamknij stolik
-						</v-btn>
-					</td>
-					<td class="text-xs-center">
-						<v-icon @click="showItem(props.item.table.id)" small>
-							visibility
-						</v-icon>
-					</td>
-				</tr>
-			</template>
-		</v-data-table>
+		<v-col>
+			<v-card class="transparent_form">
+				<v-card-title>
+					<h1>Stoliki</h1>
+				</v-card-title>
+
+				<v-data-table
+					:headers="headers"
+					:items="tables"
+					:items-per-page="-1"
+					class="elevation-1"
+				>
+					<template slot="item" slot-scope="props">
+						<tr>
+							<td class="text-xs-left">{{ props.item.table.id }}</td>
+							<td class="text-xs-left">{{ props.item.table.size}}</td>
+							<td class="text-xs-left">{{ props.item.table.occupied_since}}</td>
+							<td class="text-xs-left">{{ props.item.reservation_since}}</td>
+							<td class="text-xs-left">
+								<v-btn @click="addOrder(props.item.table.id)" v-if="props.item.table.occupied_since!==null">
+									Dodaj
+								</v-btn>
+							</td>
+							<td class="text-xs-left">
+								<v-btn @click="openTable(props.item.table.id)" v-if="props.item.table.occupied_since===null">
+									Otwórz stolik
+								</v-btn>
+								<v-btn @click="closeTable(props.item.table.id)" v-else>
+									Zamknij stolik
+								</v-btn>
+							</td>
+							<td class="text-xs-center">
+								<v-icon @click="showItem(props.item.table.id)" small>
+									visibility
+								</v-icon>
+							</td>
+						</tr>
+					</template>
+				</v-data-table>
+			</v-card>
+		</v-col>
 	</v-row>
 </template>
 
@@ -58,13 +66,14 @@
     beforeMount() {
       this.getData()
     },
+    created() {
+      Echo.channel('table')
+        .listen('TableChanged', (e) => {
+          this.getData()
+        });
+    },
     methods: {
-			created() {
-				Echo.channel('order')
-					.listen('OrderChanged', (e) => {
-						this.getData()
-					});
-			},
+
       showItem(id) {
         window.location.href = route('table.showWaiter', [id])
       },
@@ -77,8 +86,8 @@
         })
       },
       addOrder(tableId){
-				window.location.href = route('order.createWaiter', [tableId])
-			},
+        window.location.href = route('order.createWaiter', [tableId])
+      },
       openTable(table){
         axios.post(route('api.table.openTable',table)).then(
           response => {
