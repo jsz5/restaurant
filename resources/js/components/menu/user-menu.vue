@@ -1,33 +1,33 @@
 <template>
 	<v-row class="justify-space-around">
-<!--		<v-col cols="12" sm="7" md="5" lg="4" xl="3">-->
-<!--			<v-simple-table>-->
-<!--				<template v-slot:default>-->
-<!--					<thead>-->
-<!--					<tr>-->
-<!--						<th class="text-left">Kategorie</th>-->
-<!--					</tr>-->
-<!--					</thead>-->
-<!--					<tbody>-->
-<!--					<tr>-->
-<!--						<td @click="setMenuItems(-1)">Wszystkie</td>-->
-<!--					</tr>-->
-<!--					<tr v-for="item in categoryItems" :key="item.id">-->
-<!--						<td @click="setMenuItems(item.id)">{{ item.name }}</td>-->
-<!--					</tr>-->
-<!--					</tbody>-->
-<!--				</template>-->
-<!--			</v-simple-table>-->
-<!--		</v-col>-->
+		<!--		<v-col cols="12" sm="7" md="5" lg="4" xl="3">-->
+		<!--			<v-simple-table>-->
+		<!--				<template v-slot:default>-->
+		<!--					<thead>-->
+		<!--					<tr>-->
+		<!--						<th class="text-left">Kategorie</th>-->
+		<!--					</tr>-->
+		<!--					</thead>-->
+		<!--					<tbody>-->
+		<!--					<tr>-->
+		<!--						<td @click="setMenuItems(-1)">Wszystkie</td>-->
+		<!--					</tr>-->
+		<!--					<tr v-for="item in categoryItems" :key="item.id">-->
+		<!--						<td @click="setMenuItems(item.id)">{{ item.name }}</td>-->
+		<!--					</tr>-->
+		<!--					</tbody>-->
+		<!--				</template>-->
+		<!--			</v-simple-table>-->
+		<!--		</v-col>-->
 		<v-col cols="12" sm="7" md="6" lg="6" xl="5">
 			<v-select
-					class="beige_select"
-					:items="categoryItems"
-					item-value="id"
-					item-text="name"
-					label="Kategoria"
-					v-model="categoryPicked"
-					v-on:change="setMenuItems()"
+				class="beige_select"
+				:items="categoryItems"
+				item-value="id"
+				item-text="name"
+				label="Kategoria"
+				v-model="categoryPicked"
+				v-on:change="setMenuItems()"
 			></v-select>
 			<v-data-table
 				:headers="headers"
@@ -59,7 +59,7 @@
         ],
         categoryItems: [],
         allMenuItems: [],
-		categoryPicked: -1,
+        categoryPicked: -1,
       }
     },
     beforeMount() {
@@ -69,7 +69,7 @@
     },
     methods: {
       setMenuItems() {
-      	let id = this.categoryPicked;
+        let id = this.categoryPicked;
         if (id === -1) {
           this.menuItems = this.allMenuItems
         } else {

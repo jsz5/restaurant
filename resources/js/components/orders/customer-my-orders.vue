@@ -4,10 +4,10 @@
       <v-card class="transparent_form">
         <v-card-title>
           <h1>Moje zamówienia</h1>
-      </v-card-title>
-      
-      
-      <v-data-table
+        </v-card-title>
+
+
+        <v-data-table
           :expanded.sync="expanded"
           :headers="headers"
           :items="myOrders"
@@ -15,25 +15,25 @@
           class="elevation-1"
           show-expand
           single-expand
-      >
-        <template v-slot:expanded-item="{ headers }">
-          <td :colspan="headers.length">
-            <v-data-table
+        >
+          <template v-slot:expanded-item="{ headers }">
+            <td :colspan="headers.length">
+              <v-data-table
                 class="elevation-0"
                 :headers="watchedHeaders"
                 :items="watchedOrder"
                 style="background-color: transparent!important;"
                 hide-default-footer
-            ></v-data-table>
-            <v-spacer/>
-            <tr>
-              <v-card-text>
-                Cena łącznie: {{watchedSum}} zł
-              </v-card-text>
-            </tr>
-          </td>
-        </template>
-      </v-data-table>
+              ></v-data-table>
+              <v-spacer/>
+              <tr>
+                <v-card-text>
+                  Cena łącznie: {{watchedSum}} zł
+                </v-card-text>
+              </tr>
+            </td>
+          </template>
+        </v-data-table>
       </v-card>
     </v-col>
   </v-row>
