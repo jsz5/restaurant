@@ -3,10 +3,10 @@
 	<v-row class="wrapper">
 		<!-- Header -->
 		<header id="header">
-		
+
 			<!-- Przykładowe logo jako cytrynka z FA:
 			<div class="logo"><i class="icon fa-lemon"></i></div>-->
-			
+
 			<div class="content">
 				<div class="inner">
 					<h1>SmartRestraunt</h1>
@@ -61,7 +61,7 @@
 	  reservationdialog: false,
 	  contactdialog: false,
 	}),
-	
+
 	methods: {
 
     },

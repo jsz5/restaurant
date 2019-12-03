@@ -113,6 +113,7 @@ Vue.component('user-create-reservation', require('./components/reservation/user-
 Vue.component('user-index-reservation', require('./components/reservation/user-index-reservation').default);
 Vue.component('waiter-create-reservation', require('./components/reservation/waiter-create-reservation').default);
 Vue.component('waiter-index-reservation', require('./components/reservation/waiter-index-reservation').default);
+Vue.component('user-show-reservation', require('./components/reservation/user-show-reservation').default);
 
 //USERS
 Vue.component('my-account', require('./components/users/myAccount').default);
@@ -122,6 +123,10 @@ Vue.component('worker-order-index', require('./components/orders/worker-order-in
 Vue.component('worker-order-create', require('./components/orders/worker-order-create').default);
 Vue.component('worker-order-edit', require('./components/orders/worker-order-edit').default);
 Vue.component('order-show', require('./components/orders/order-show').default);
+Vue.component('customer-my-orders', require('./components/orders/customer-my-orders').default);
+Vue.component('customer-order', require('./components/orders/customer-order').default);
+
+
 
 
 Vue.component('homepage', require('./components/homepage').default);
