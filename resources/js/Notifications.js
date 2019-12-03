@@ -6,4 +6,13 @@ function notification(message, type) {
     duration: 5000
   });
 }
-export {notification};
+function notificationError(message) {
+  notification(message, 'error');
+}
+
+function notificationSuccess(message) {
+  notification(message, 'success');
+}
+
+
+export {notification, notificationError, notificationSuccess};
