@@ -1,7 +1,21 @@
 <template>
   <v-row no-gutters class="header">
     <v-col cols="12" >
-      <v-row no-gutters class="justify-space-between">
+      <v-row no-gutters class="justify-space-between mb-3 mt-3">
+        <v-col class="hidden-sm-and-down">
+          <v-toolbar class="menu_links">
+            <v-toolbar-items class="menu_links_full">
+              <v-btn
+                class="menu_item"
+                v-for="item in menu"
+                :key="item.id"
+                @click="goTo(item.link)"
+                text
+              >{{item.text}}
+              </v-btn>
+            </v-toolbar-items>
+          </v-toolbar>
+        </v-col>
         <v-col>
           <v-row class="mx-3">
             <v-col v-if="notLogged" class="text-end">
@@ -26,20 +40,6 @@
             </v-col>
           </v-row>
           <v-row class="menu">
-            <v-col class="hidden-sm-and-down">
-              <v-toolbar class="menu_links">
-                <v-toolbar-items class="menu_links_full">
-                  <v-btn
-                    class="menu_item"
-                    v-for="item in menu"
-                    :key="item.id"
-                    @click="goTo(item.link)"
-                    text
-                  >{{item.text}}
-                  </v-btn>
-                </v-toolbar-items>
-              </v-toolbar>
-            </v-col>
             <v-col class="hidden-md-and-up">
               <v-menu class="responsive_menu" offset-y style="left:0 ;">
                 <template v-slot:activator="{ on }">
@@ -164,7 +164,6 @@
 <style lang="scss" scoped>
   .v-card__text.header-text {
     color: white;
-    background-color: #8a5e4e;
   }
 
   .v-card.v-card--flat.v-sheet.theme--light {
@@ -172,8 +171,7 @@
   }
 
   .header {
-    max-height: 9rem;
-    background-color: #8a5e4e;
+    max-height: 10rem;
   }
 
   .menu {
@@ -189,24 +187,26 @@
 
   .menu_links{
     height: 50px !important;
+    background-color: transparent;
+    box-shadow: none;
   }
 
   .menu_item{
     color: white !important;
   }
 
-  .responsive_menu_button{
-    width: 100%;
-    color: white !important;
-    background-color: #8a5e4e !important;
-    box-shadow: none;
-    border: none;
-  }
-  #responsive{
-    background-color: #8a5e4e !important;
-    width: 100%;
-    .v-list-item__title{
-      color: white !important;
-    }
-  }
+  /*.responsive_menu_button{*/
+  /*  width: 100%;*/
+  /*  color: white !important;*/
+  /*  background-color: #8a5e4e !important;*/
+  /*  box-shadow: none;*/
+  /*  border: none;*/
+  /*}*/
+  /*#responsive{*/
+  /*  background-color: #8a5e4e !important;*/
+  /*  width: 100%;*/
+  /*  .v-list-item__title{*/
+  /*    color: white !important;*/
+  /*  }*/
+  /*}*/
 </style>
