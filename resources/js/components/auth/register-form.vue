@@ -108,7 +108,7 @@
         },
         rules: {
           required: value => !!value || "To pole jest wymagane",
-          emailRules: v => /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(v) || 'Niepoprawny adres email',
+          emailRules: v => /^\w+([.-]?\w+)*([+]\w)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(v) || 'Niepoprawny adres email',
           phoneMax12: value => value.length <= 12 || 'Numer telefonu powinien mieć mniej niż 13 znaków',
           postCodeFormat: value => /^\d{2}-\d{3}$/.test(value) || 'Nieprawidłowy format kodu pocztowego',
           min6: v => v.length >= 6 || 'Hasło musi mieć conajmniej 6 znaków',
