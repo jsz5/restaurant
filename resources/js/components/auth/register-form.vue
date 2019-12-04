@@ -39,7 +39,7 @@
 						</v-text-field>
 						<v-text-field
 							label="Numer mieszkania"
-							v-model="form.address.apartmentNumber">
+							v-model="form.address.flatNumber">
 						</v-text-field>
 						<v-text-field
 							:rules="[rules.required]"
@@ -91,7 +91,7 @@
           address: {
             street: '',
             houseNumber: '',
-            apartmentNumber: '',
+            flatNumber: '',
             postCode: '',
             city: '',
           },
@@ -123,15 +123,7 @@
       register() {
         let formAddress = this.form.address;
         formAddress = JSON.stringify(formAddress);
-        axios.post('/api/user/store-customer', {
-          name:this.form.name,
-          surname:this.form.surname,
-          email:this.form.email,
-          address: formAddress,
-          phone:this.form.phoneNumber,
-          password:this.form.password,
-          repeatPassword:this.form.repeatPassword
-        }).then(
+        axios.post('/api/user/store-customer', this.form).then(
           response => {
             Vue.toasted.success(response.data.message).goAway(5000);
             setTimeout(function () {
