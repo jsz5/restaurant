@@ -1,5 +1,5 @@
 @extends('layouts.app')
 
 @section('content')
-    <admin-menu></admin-menu>
+    <workers-index></workers-index>
 @endsection

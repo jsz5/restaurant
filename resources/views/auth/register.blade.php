@@ -1,5 +1,5 @@
 @extends('layouts.app')
 
 @section('content')
-<registerpage></registerpage>
+<register-form></register-form>
 @endsection

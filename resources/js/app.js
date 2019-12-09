@@ -85,6 +85,13 @@ Vue.component('reset-password-form', require('./components/auth/reset-password-f
 Vue.component('forgot-password-mail', require('./components/auth/forgot-password-mail').default);
 Vue.component('register-form', require('./components/auth/register-form').default);
 
+//HOMEPAGE
+Vue.component('contact-form', require('./components/homepage/contact-form').default);
+Vue.component('menu-form', require('./components/homepage/menu-form').default);
+Vue.component('menu-form-old', require('./components/homepage/menu-form-old').default);
+Vue.component('reservation-form', require('./components/homepage/reservation-form').default);
+Vue.component('order-form', require('./components/homepage/order-form').default);
+
 //MENU
 Vue.component('user-menu', require('./components/menu/user-menu').default);
 Vue.component('admin-menu', require('./components/menu/admin-menu').default);
@@ -105,13 +112,11 @@ Vue.component('workers-edit', require('./components/workers/workers-edit').defau
 Vue.component('dish-category-index', require('./components/dishCategories/dish-category-index').default);
 
 //RESERVATION
-
 Vue.component('user-create-reservation', require('./components/reservation/user-create-reservation').default);
 Vue.component('user-index-reservation', require('./components/reservation/user-index-reservation').default);
 Vue.component('waiter-create-reservation', require('./components/reservation/waiter-create-reservation').default);
 Vue.component('waiter-index-reservation', require('./components/reservation/waiter-index-reservation').default);
 Vue.component('user-show-reservation', require('./components/reservation/user-show-reservation').default);
-
 
 //USERS
 Vue.component('my-account', require('./components/users/myAccount').default);
@@ -121,6 +126,10 @@ Vue.component('worker-order-index', require('./components/orders/worker-order-in
 Vue.component('worker-order-create', require('./components/orders/worker-order-create').default);
 Vue.component('worker-order-edit', require('./components/orders/worker-order-edit').default);
 Vue.component('order-show', require('./components/orders/order-show').default);
+Vue.component('customer-my-orders', require('./components/orders/customer-my-orders').default);
+Vue.component('customer-order', require('./components/orders/customer-order').default);
+
+
 
 
 Vue.component('homepage', require('./components/homepage').default);

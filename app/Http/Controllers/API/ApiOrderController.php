@@ -14,6 +14,7 @@ use App\Models\Check;
 use App\Models\Order;
 use App\Models\Table;
 use App\Services\OrderService;
+use Carbon\Carbon;
 use Exception;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Auth;
@@ -72,7 +73,7 @@ class ApiOrderController extends Controller
     {
         try {
             $orders = Order::status($type)
-                ->statusNotEqual(StatusTypesInterface::TYPE_FINISHED)
+                ->where('created_at',">=", Carbon::today())
                 ->with("check")
                 ->get();
             return response()->json(
