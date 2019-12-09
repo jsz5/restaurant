@@ -54,7 +54,7 @@ class User extends Authenticatable
      */
     public function orderWorker()
     {
-        return $this->hasMany(Order::class, 'id', 'worker_id');
+        return $this->hasMany(Order::class, 'worker_id');
     }
 
     /**
@@ -63,7 +63,25 @@ class User extends Authenticatable
      */
     public function orderCustomer()
     {
-        return $this->hasMany(Order::class, 'id', 'customer_id');
+        return $this->hasMany(Order::class, 'customer_id');
+    }
+
+    /**
+     * @codeCoverageIgnore
+     * @return HasMany
+     */
+    public function voucher()
+    {
+        return $this->hasMany(Voucher::class, 'user_id');
+    }
+
+    /**
+     * @codeCoverageIgnore
+     * @return HasMany
+     */
+    public function favouriteDish()
+    {
+        return $this->hasMany(Dish::class, 'user_id');
     }
 
     /**
