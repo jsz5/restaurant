@@ -2,6 +2,7 @@
 
 namespace App\Http;
 
+use App\Http\Middleware\HeaderHandler;
 use App\Http\Middleware\JwtHandler;
 use App\Http\Middleware\MyAccount;
 use App\Http\Middleware\MyReservation;
@@ -72,6 +73,7 @@ class Kernel extends HttpKernel
         'myReservation'=> MyReservation::class,
         'jwt.auth' => \Tymon\JWTAuth\Http\Middleware\Authenticate::class,
         'jwt.refresh' => \Tymon\JWTAuth\Http\Middleware\RefreshToken::class,
+        'jwt.header' =>HeaderHandler::class,
     ];
 
     /**

@@ -2,11 +2,11 @@
 
 namespace App\Http\Middleware;
 
-use App\Models\LDAPUser;
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Tymon\JWTAuth\Facades\JWTAuth;
+use Tymon\JWTAuth\Token;
 
 class JwtHandler
 {
@@ -22,11 +22,12 @@ class JwtHandler
     {
         $response = $next($request);
         $user = Auth::user();
-
         if ($user !== null) {
             $token = JWTAuth::fromUser($user);
             $token = JWTAuth::refresh(JWTAuth::setToken($token));
-            session()->put('token', $token);
+            $response->headers->set('Authorization', 'Bearer '.$token);
+            session(['token' => $token]);
+            $response->withCookie(cookie('token', $token));
         }
 
         return $response;
