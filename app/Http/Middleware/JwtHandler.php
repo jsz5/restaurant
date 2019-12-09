@@ -26,7 +26,6 @@ class JwtHandler
             $token = JWTAuth::fromUser($user);
             $token = JWTAuth::refresh(JWTAuth::setToken($token));
             $response->headers->set('Authorization', 'Bearer '.$token);
-            session(['token' => $token]);
             $response->withCookie(cookie('token', $token));
         }
 

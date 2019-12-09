@@ -65,7 +65,7 @@ class LoginController extends Controller
         }
 
         return response()->json(compact('token'))
-            ->withCookie(cookie('token-jwt', $token));
+            ->withCookie(cookie('token', $token));
     }
     /**
      * Log the user out (Invalidate the token).
@@ -74,6 +74,8 @@ class LoginController extends Controller
      */
     public function logout()
     {
+        \Cookie::queue(\Cookie::forget('token'));
+        \Cookie::queue(\Cookie::forget('jwt-token'));
         \Auth::logout();
     }
 }
