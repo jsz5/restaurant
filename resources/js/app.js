@@ -147,6 +147,7 @@ window.axios.interceptors.response.use(
     // if(token) {
     //   jwtService.saveToken(token)
     // }
+    console.log(process.env.VUE_APP)
     return response
   },
   error => {

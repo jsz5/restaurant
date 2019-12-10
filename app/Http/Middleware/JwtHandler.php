@@ -7,12 +7,11 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cookie;
 use Tymon\JWTAuth\Facades\JWTAuth;
-use Tymon\JWTAuth\Token;
+
 
 class JwtHandler
 {
     /**
-     * Put token to session
      *
      * @param Request $request
      * @param Closure $next
@@ -27,9 +26,10 @@ class JwtHandler
             $token = JWTAuth::fromUser($user);
             $token = JWTAuth::refresh(JWTAuth::setToken($token));
             $response->headers->set('Authorization', 'Bearer '.$token);
-            $cookie=Cookie::make("token",$token,30, null, null, false, false);
+            $cookie=Cookie::make("token",$token,1, null, null, false, false);
             $response->withCookie($cookie);
         }
+        
 
         return $response;
     }

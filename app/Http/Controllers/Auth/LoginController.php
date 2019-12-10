@@ -49,16 +49,6 @@ class LoginController extends Controller
      * @return \Illuminate\Http\JsonResponse
      */
     public function login(Request $request) {
-//        if (Auth::attempt(['email' => $request->get('email'), 'password' => $request->get('password')])) {
-//            $token= JWTAuth::fromUser(Auth::user());
-//            $response = new Response([
-//                'msg'=>"Pomyślnie zalogowałeś się do systemu",
-//                 'token' => $token]);
-//            return $response->withCookie(cookie('token', $token));;
-//        }else{
-//            return response()->json(['error' => 'Unauthorized'], 401);
-//        }
-//
         $credentials = $request->only('email', 'password');
 
         try {
@@ -68,7 +58,7 @@ class LoginController extends Controller
         } catch (JWTException $e) {
             return response()->json(['error' => 'could_not_create_token'], 500);
         }
-        $cookie=Cookie::make("token",$token,30, null, null, false, false);
+        $cookie=Cookie::make("token",$token,1, null, null, false, false);
         return response()->json(compact('token'))
             ->withCookie($cookie);
     }
@@ -79,8 +69,8 @@ class LoginController extends Controller
      */
     public function logout()
     {
+        JWTAuth::invalidate(JWTAuth::parseToken());
         \Cookie::queue(\Cookie::forget('token'));
-        \Cookie::queue(\Cookie::forget('jwt-token'));
         \Auth::logout();
     }
 }
