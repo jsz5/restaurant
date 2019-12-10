@@ -142,11 +142,11 @@ window.addEventListener('storage', function (evt) {
 
 window.axios.interceptors.response.use(
   response => {
-    console.log(response)
-    let token = response.headers.authorization;
-    if(token) {
-      jwtService.saveToken(token)
-    }
+    // console.log(response)
+    // let token = response.headers.authorization;
+    // if(token) {
+    //   jwtService.saveToken(token)
+    // }
     return response
   },
   error => {
