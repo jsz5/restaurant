@@ -29,7 +29,7 @@ class JwtHandler
             $cookie=Cookie::make("token",$token,1, null, null, false, false);
             $response->withCookie($cookie);
         }
-        
+
 
         return $response;
     }
