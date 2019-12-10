@@ -193,6 +193,12 @@
     },
     beforeMount() {
       this.getData()
+			axios.get(route('api.user.getMyVoucher'))
+					.then(response => {
+						console.log(response)
+					}).catch(error => {
+				console.error(error)
+			})
     },
     methods: {
       getData() {

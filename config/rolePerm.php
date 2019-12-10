@@ -36,6 +36,7 @@ return[
         "onlineReservationDelete",
         "onlineReservationIndex",
         "createUser",
+        "createVoucher"
     ],
     "worker"=>[
         "reservationCreate",
@@ -69,6 +70,6 @@ return[
         "onlineReservationIndex",
         "userOrderIndex",
         "orderShow",
-
+        "showVoucher"
     ]
 ];
