@@ -100,7 +100,7 @@ Route::name('api.')->namespace('API')->middleware(['jwt.auth'])->group(function 
         Route::get('/show/{id}', 'ApiReservationController@fetchReservation')->name('show')->middleware('permission:reservationShow|onlineReservationShow');
         Route::get('/show-user/{id}', 'ApiReservationController@fetchReservation')->name('showUser')->middleware('permission:reservationShow|onlineReservationShow','myReservation');
         Route::get('/customer-index', 'ApiReservationController@customerIndex')->name('customerIndex')->middleware('permission:onlineReservationIndex');
-        Route::get('/worker-index/{date}', 'ApiReservationController@workerIndex')->name('workerIndex');//->middleware('permission:reservationIndex');
+        Route::get('/worker-index/{date}', 'ApiReservationController@workerIndex')->name('workerIndex')->middleware('permission:reservationIndex');
         Route::get('/tables/{date}', 'ApiReservationController@fetchTablesByDate')->name('fetchTablesByDate')->middleware('permission:reservationIndex');
         Route::delete('/{id}', 'ApiReservationController@delete')->name('delete')->middleware('permission:reservationDelete|onlineReservationDelete');
     });
@@ -124,6 +124,6 @@ Route::name('api.')->namespace('API')->middleware(['jwt.auth'])->group(function 
         Route::put('/update-customer/{user}', 'ApiUserController@update')->name('updateCustomer')->middleware('permission:customerEdit');
         Route::post('/store-worker', 'ApiUserController@storeWorker')->name('storeWorker')->middleware('permission:createUser');
         Route::delete('/{id}', 'ApiUserController@destroy')->name('delete')->middleware('permission:userDelete');
-
+        Route::get('/vouchers', 'ApiVoucherController@myVoucher')->name('getMyVoucher')->middleware('permission:showVoucher');
     });
 });
