@@ -5,6 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Cookie;
 use Tymon\JWTAuth\Facades\JWTAuth;
 use Tymon\JWTAuth\Token;
 
@@ -26,7 +27,8 @@ class JwtHandler
             $token = JWTAuth::fromUser($user);
             $token = JWTAuth::refresh(JWTAuth::setToken($token));
             $response->headers->set('Authorization', 'Bearer '.$token);
-            $response->withCookie(cookie('token', $token));
+            $cookie=Cookie::make("token",$token,30, null, null, false, false);
+            $response->withCookie($cookie);
         }
 
         return $response;

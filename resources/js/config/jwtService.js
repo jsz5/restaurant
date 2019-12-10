@@ -5,7 +5,7 @@ import Cookies from '../mixins/Cookies'
 const ID_TOKEN_KEY = 'token';
 export default {
 	getToken() {
-		return Cookies.methods.$getCookie('jwt-token')
+		return Cookies.methods.$getCookie('token')
 
 		if (!this.tokenHasExpired()) {
       return Cookies.methods.$getCookie(ID_TOKEN_KEY)

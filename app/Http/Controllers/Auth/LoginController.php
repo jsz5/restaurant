@@ -7,6 +7,7 @@ use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Cookie;
 use Tymon\JWTAuth\Exceptions\JWTException;
 use Tymon\JWTAuth\Facades\JWTAuth;
 
@@ -43,6 +44,10 @@ class LoginController extends Controller
     }
 
 
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function login(Request $request) {
 //        if (Auth::attempt(['email' => $request->get('email'), 'password' => $request->get('password')])) {
 //            $token= JWTAuth::fromUser(Auth::user());
@@ -63,9 +68,9 @@ class LoginController extends Controller
         } catch (JWTException $e) {
             return response()->json(['error' => 'could_not_create_token'], 500);
         }
-
+        $cookie=Cookie::make("token",$token,30, null, null, false, false);
         return response()->json(compact('token'))
-            ->withCookie(cookie('token', $token));
+            ->withCookie($cookie);
     }
     /**
      * Log the user out (Invalidate the token).
