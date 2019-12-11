@@ -40,7 +40,7 @@
 </template>
 
 <script>
-  import {notification} from "../../Notifications";
+  import {notification, notificationError, notificationSuccess} from "../../Notifications";
 
   export default {
     name: "admin-menu",
