@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Support\Facades\Auth;
+use Tymon\JWTAuth\Facades\JWTAuth;
 
 class RedirectIfAuthenticated
 {
@@ -17,6 +18,11 @@ class RedirectIfAuthenticated
      */
     public function handle($request, Closure $next, $guard = null)
     {
+//        $token=$request->cookie('token');
+//        if($token&& JWTAuth::toUser($token)){
+//            return redirect('/home');
+//        }
+//        return $next($request);
         if (Auth::guard($guard)->check()) {
             return redirect('/home');
         }

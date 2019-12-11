@@ -13,7 +13,7 @@ use Spatie\Permission\Traits\HasRoles;
 use Tymon\JWTAuth\Contracts\JWTSubject;
 use Illuminate\Notifications\Notifiable;
 
-class User extends Authenticatable
+class User extends Authenticatable implements JWTSubject
 {
     use Notifiable;
     use HasRoles;
@@ -54,7 +54,7 @@ class User extends Authenticatable
      */
     public function orderWorker()
     {
-        return $this->hasMany(Order::class, 'id', 'worker_id');
+        return $this->hasMany(Order::class, 'worker_id');
     }
 
     /**
@@ -63,7 +63,25 @@ class User extends Authenticatable
      */
     public function orderCustomer()
     {
-        return $this->hasMany(Order::class, 'id', 'customer_id');
+        return $this->hasMany(Order::class, 'customer_id');
+    }
+
+    /**
+     * @codeCoverageIgnore
+     * @return HasMany
+     */
+    public function voucher()
+    {
+        return $this->hasMany(Voucher::class, 'user_id');
+    }
+
+    /**
+     * @codeCoverageIgnore
+     * @return HasMany
+     */
+    public function favouriteDish()
+    {
+        return $this->hasMany(Dish::class, 'user_id');
     }
 
     /**
@@ -113,5 +131,15 @@ class User extends Authenticatable
     public function setPassword(string $password)
     {
         $this->password = Hash::make($password);
+    }
+
+    public function getJWTIdentifier()
+    {
+        return $this->getKey();
+    }
+
+    public function getJWTCustomClaims()
+    {
+        return [];
     }
 }

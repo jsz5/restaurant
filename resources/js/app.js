@@ -13,6 +13,8 @@ import 'vuetify/dist/vuetify.min.css'
 import Toasted from 'vue-toasted';
 import 'material-design-icons-iconfont/dist/material-design-icons.css'
 import '@mdi/font/css/materialdesignicons.css'
+import Cookies from "./mixins/Cookies";
+import jwtService from "./config/jwtService";
 
 require('./bootstrap');
 
@@ -59,6 +61,7 @@ const Options = {
 };
 Vue.use(Toasted, Options);
 
+Vue.mixin(Cookies);
 
 /**
  * The following block of code may be used to automatically register your
@@ -130,6 +133,38 @@ Vue.component('customer-order', require('./components/orders/customer-order').de
 
 
 Vue.component('homepage', require('./components/homepage').default);
+
+window.addEventListener('storage', function (evt) {
+  if (evt.key === 'jwt-token') {
+    jwtService.saveToken(evt.newValue)
+  }
+});
+
+window.axios.interceptors.response.use(
+  response => {
+    console.log(response)
+    let token = response.headers.authorization;
+    if(token) {
+      jwtService.saveToken(token)
+    }
+    return response
+  },
+  error => {
+    console.log("rejected")
+  //   let token = error.response.headers.authorization;
+  //   if (error.response.status === 401) {
+  //     if(jwtService.tokenHasExpired()) {
+  //       axios.get('/logout').then(() => {
+  //         window.location.href = Vue.mixin(Cookies);'/'
+  //       })
+  //     }
+  //   }
+  //   if (token) {
+  //     jwtService.saveToken(token)
+  //   }
+  //   return Promise.reject(error)
+  }
+);
 
 const app = new Vue({
   el: '#app',
