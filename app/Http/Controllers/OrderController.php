@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Dish;
 use App\Models\DishCategory;
 use App\Models\Order;
+use App\Services\DishService;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
@@ -13,7 +14,7 @@ class OrderController extends Controller
     public function createOrder()
     {
         $categories = DishCategory::all();
-        $dishes = Dish::all()->load('category');
+        $dishes = (new DishService())->dishWithFavourite(Dish::all()->load('category'));
         return view('orders.customerOrder', compact('dishes', 'categories'));
     }
 
