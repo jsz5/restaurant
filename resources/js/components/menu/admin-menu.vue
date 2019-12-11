@@ -81,17 +81,7 @@
         })
       },
       addDish() {
-        axios.post(route('api.favouriteDish.store'), {
-          id: 13
-        }).then(
-            response => {
-              console.log(response)
-            },
-            error => {
-              console.error(error);
-            },
-        )
-        // window.location.replace(route('dish.create'));
+        window.location.replace(route('dish.create'));
       }
     }
   }
