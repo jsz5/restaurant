@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Dish;
 use App\Models\DishCategory;
+use App\Services\DishService;
 use Illuminate\Http\Request;
 
 class DishController extends Controller
@@ -28,7 +29,7 @@ class DishController extends Controller
     public function menu()
     {
         $categories = DishCategory::all();
-        $dishes = Dish::all()->load('category');
+        $dishes = (new DishService)->dishWithFavourite(Dish::all()->load('category'));
         return view('menuLayouts/menu', compact('dishes', 'categories'));
     }
 

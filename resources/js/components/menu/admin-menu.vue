@@ -40,7 +40,7 @@
 </template>
 
 <script>
-  import {notification} from "../../Notifications";
+  import {notification, notificationError, notificationSuccess} from "../../Notifications";
 
   export default {
     name: "admin-menu",
@@ -81,7 +81,17 @@
         })
       },
       addDish() {
-        window.location.replace(route('dish.create'));
+        axios.post(route('api.favouriteDish.store'), {
+          id: 13
+        }).then(
+            response => {
+              console.log(response)
+            },
+            error => {
+              console.error(error);
+            },
+        )
+        // window.location.replace(route('dish.create'));
       }
     }
   }
