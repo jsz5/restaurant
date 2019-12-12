@@ -29,10 +29,8 @@ import jwtService from "./config/jwtService";
 const tokenjwt = jwtService.getToken()
 
 if(tokenjwt) {
-  console.log(tokenjwt)
   window.axios.defaults.headers.common.Authorization = `Bearer ${tokenjwt}`
 }
-// window.axios.defaults.headers.common.Authorization = `Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9sb2NhbGhvc3Q6MzI3NzRcL2xvZ2luIiwiaWF0IjoxNTc1Mzk3MzAxLCJleHAiOjE1NzU0MDA5MDEsIm5iZiI6MTU3NTM5NzMwMSwianRpIjoiZk05RlRnbUM1WGFYR3pFQiIsInN1YiI6MywicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.h3LcTXLuzTA7pBJUZbF1Y5oJ4ToBidObmP629X7Gzq0`
 
 /**
  * Echo exposes an expressive API for subscribing to channels and listening

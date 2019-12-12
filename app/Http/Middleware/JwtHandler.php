@@ -12,10 +12,8 @@ use Tymon\JWTAuth\Facades\JWTAuth;
 class JwtHandler
 {
     /**
-     *
      * @param Request $request
-     * @param Closure $next
-     *
+     * @param Closure $next     *
      * @return mixed
      */
     public function handle(Request $request, Closure $next)
@@ -26,11 +24,9 @@ class JwtHandler
             $token = JWTAuth::fromUser($user);
             $token = JWTAuth::refresh(JWTAuth::setToken($token));
             $response->headers->set('Authorization', 'Bearer '.$token);
-            $cookie=Cookie::make("token",$token,1, null, null, false, false);
+            $cookie=Cookie::make("token",$token,config('session.lifetime'), null, null, false, false);
             $response->withCookie($cookie);
         }
-
-
         return $response;
     }
 }

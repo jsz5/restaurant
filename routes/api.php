@@ -33,8 +33,9 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 //
 //});
 Route::post('/authenticate', 'API\ApiAuthenticateController@authenticate');
+Route::post('/logout', 'API\ApiAuthenticateController@logout');
 
-Route::name('api.')->namespace('API')->middleware(['jwt.auth'])->group(function () {
+Route::name('api.')->namespace('API')->middleware(['jwt.auth','jwt.handler'])->group(function () {
     //todo refactor na group
 //table
     Route::get('/table', 'ApiTableController@index')->name('table.index')

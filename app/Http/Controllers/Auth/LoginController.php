@@ -58,7 +58,7 @@ class LoginController extends Controller
         } catch (JWTException $e) {
             return response()->json(['error' => 'could_not_create_token'], 500);
         }
-        $cookie=Cookie::make("token",$token,1, null, null, false, false);
+        $cookie=Cookie::make("token",$token,config('session.lifetime'), null, null, false, false);
         return response()->json(compact('token'))
             ->withCookie($cookie);
     }

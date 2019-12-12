@@ -16,7 +16,6 @@ class ApiAuthenticateController extends Controller
     public function authenticate(Request $request): JsonResponse
     {
         $credentials = $request->only('email', 'password');
-
         try {
             if (! $token = JWTAuth::attempt($credentials)) {
                 return response()->json(['error' => 'invalid_credentials'], 401);
@@ -25,8 +24,20 @@ class ApiAuthenticateController extends Controller
             return response()->json(['error' => 'could_not_create_token'], 500);
         }
         $auth=Auth::user();
-        return response()->json(['token' => $token, 'fullName' => $auth->name." ".$auth->surname]);
+        return response()->json(['token' => $token, 'fullName' => $auth->name." ".$auth->surname, 'email'=>$auth->email]);
     }
 
+    /**
+     * @return JsonResponse
+     */
+    public function logout(): JsonResponse
+    {
+        try {
+            JWTAuth::invalidate(JWTAuth::parseToken());
+            return response()->json("Wylogowano pomyślnie");
+        } catch (JWTException $e) {
+            return response()->json("Wystąpił błąd", 500);
+        }
+    }
 
 }
