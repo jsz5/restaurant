@@ -5,7 +5,6 @@ import Cookies from '../mixins/Cookies'
 const TOKEN_NAME = 'token';
 export default {
 	getToken() {
-		console.log("yyyy "+process.env.MIX_APP_KEY)
 		if (!this.tokenHasExpired()) {
       return Cookies.methods.$getCookie(TOKEN_NAME)
 		}

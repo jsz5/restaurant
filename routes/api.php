@@ -32,6 +32,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 //    });
 //
 //});
+Route::post('/authenticate', 'API\ApiAuthenticateController@authenticate');
 
 Route::name('api.')->namespace('API')->middleware(['jwt.auth'])->group(function () {
     //todo refactor na group
