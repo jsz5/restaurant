@@ -88,7 +88,6 @@
         'password': this.form.password,
       })
         .then((response)=> {
-          console.log("tutu")
           Vue.toasted.success("Zostałeś pomyślnie zalogowany do systemu").goAway(5000);
           setTimeout(function(){window.location.href="/"} , 3000);
         })
