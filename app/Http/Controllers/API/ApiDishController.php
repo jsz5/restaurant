@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\DishRequest;
 use App\Models\Dish;
 use App\Models\DishCategory;
+use App\Services\DishService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
@@ -16,11 +17,11 @@ class ApiDishController extends Controller
     /**
      * Show the application dashboard.
      *
-     * @return Dish[]|\Illuminate\Database\Eloquent\Collection
+     * @return JsonResponse
      */
     public function index()
     {
-        return response()->json(Dish::all()->load('category'));
+        return response()->json((new DishService())->dishWithFavourite(Dish::all()->load('category')));
     }
 
     /**

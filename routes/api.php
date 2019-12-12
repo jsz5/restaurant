@@ -77,6 +77,16 @@ Route::name('api.')->namespace('API')->middleware(['jwt.auth','jwt.handler'])->g
     Route::delete('/dishCategory/{dishCategory}', 'ApiDishCategoryController@delete')->name('dishCategory.delete')
         ->middleware('permission:dishCategoryDelete');
 
+//favouriteDish
+    Route::get('/myFavourite', 'ApiFavouriteDishController@myFavourite')->name('favouriteDishId.index')
+        ->middleware('permission:showVoucher');
+    Route::get('/favouriteDish', 'ApiFavouriteDishController@onlyFavourite')->name('favouriteDish.index')
+        ->middleware('permission:showVoucher');
+    Route::post('/favouriteDish/create', 'ApiFavouriteDishController@addFavourite')->name('favouriteDish.store')
+        ->middleware('permission:showVoucher');
+    Route::post('/favouriteDish/delete', 'ApiFavouriteDishController@deleteFavourite')->name('favouriteDish.delete')
+        ->middleware('permission:showVoucher');
+
 //order
     Route::post('/order/status', 'ApiOrderController@changeStatusOrder')->name('order.changeStatusOrder')
         ->middleware('permission:orderEdit');
