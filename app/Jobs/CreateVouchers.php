@@ -47,32 +47,17 @@ class CreateVouchers implements ShouldQueue
      */
     public function handle()
     {
-        $user = User::findOrFail(1);
-//        foreach ($users as $user) {
+        $users = User::all();
+        foreach ($users as $user) {
             $voucher = new Voucher();
             $voucher -> discount = $this->discount;
             $voucher -> token = uniqid();
             $voucher -> user() ->associate($user);
             if($voucher ->save()) {
-                $qr = QrCode::format('png')->size(200)->generate('http://google.com');
-                Mail::send(
-                    'mails.voucherQrCode',
-                    [
-                        'account' => "thytyt",
-                        'product' => "rfrtrt",
-                        'qr' => $qr
-                    ],
-                    function ($m) use ($user) {
-                        $m->to($user->email)
-                            ->subject('Prospector theater - Redeem product')
-                            ->from('no-reply@prospectortheater.org', 'Prospector theater');
-
-                    }
-                );
-//                $this->sendMail($user->email, $voucher);
+                $this->sendMail($user->email, $voucher);
             }
-            //todo mail z info o kuponie
-//        }
+
+        }
     }
 
     /**

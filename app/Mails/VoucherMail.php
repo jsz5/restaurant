@@ -4,6 +4,7 @@ namespace App\Mails;
 
 use App\Models\Reservation;
 use App\Models\Voucher;
+use Carbon\Carbon;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
@@ -17,9 +18,9 @@ class VoucherMail extends Mailable
     use Queueable, SerializesModels;
 
     public $sendToMail;
-    public $QRcode;
-    public $qr;
-    public $message;
+    public $discount;
+    public $token;
+    public $date;
     private const SUBJECT="Zamówienie online w systemie restauracji \"W-17 wydział smaków\"";
 
     /**
@@ -31,8 +32,9 @@ class VoucherMail extends Mailable
     public function __construct(string $email, Voucher $voucher)
     {
         $this->sendToMail=$email;
-//        $this->qr = QrCode::format('png')->size(200)->generate('http://google.com');
-        $this->qr= QrCode::size(250)->generate('ItSolutionStuff.com');
+        $this->discount=$voucher->discount.'%';
+        $this->token=$voucher->token;
+        $this->date=Carbon::now()->addDays(14)->format('Y-m-d');
     }
 
     /**
@@ -42,7 +44,7 @@ class VoucherMail extends Mailable
      */
     public function build()
     {
-        return $this->view('mails.voucherQrCode') ->subject(self::SUBJECT);//->attach(view('mails.voucherQrCode'));
+        return $this->view('mails.voucherQrCode') ->subject(self::SUBJECT);
     }
 
     /**
@@ -51,7 +53,7 @@ class VoucherMail extends Mailable
      */
     public function sendMail()
     {
-        Log::notice("Mail order online to:" . $this->sendToMail);
+        Log::notice("Mail voucher to:" . $this->sendToMail);
         Mail::to($this->sendToMail)->queue($this);
     }
 }

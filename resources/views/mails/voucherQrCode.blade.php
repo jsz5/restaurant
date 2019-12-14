@@ -6,19 +6,21 @@
 </head>
 
 <body>
-<h3>Hello ,</h3>
+<p>Witaj,</p>
 
-<p>This email serves as a ticket for a free . <br />
-    Please bring a printed version of this email with you in order to redeem it on-site.</p>
-
+<p>
+Otrzymujesz kupon o wartości {{$discount}} na całą ofertę w naszej restauracji!<br>
+Pamiętaj, żeby pokazać poniższy email przy składaniu zamówienia w restauracji. Zniżka obowiązuje także na zamówienia online.<br>
+Oferta ważna do {{$date}}.
+</p>
 <br />
-<br />
-<br />
+{{$qr = QrCode::format('png')->size(200)->generate($token)}}
 <img src="{!!$message->embedData($qr, 'QrCode.png', 'image/png')!!}">
 {{--{!! $qr !!}--}}
 
-<p>Thank you,</p>
+<p>Zapraszamy,
 <br />
-<p>Prospector theater</p>
+System restauracji Smart Restaurant<br><br>
+</p>
 </body>
 </html>
