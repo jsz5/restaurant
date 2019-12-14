@@ -43,8 +43,10 @@ class ApiVoucherController extends Controller
     {
         try {
             $discount = (new VoucherService())->checkVoucher($request->discount_token);
-            if ($order = Order::where('token', $request->token) && $discount != 0){
-                $order->discount_token = $discount;
+            $order = Order::where('token', $request->token)->first();
+            if ($order != null && $discount != 0){
+                $order->discount = $discount;
+                $order->save();
                 return response()->json("Zniżka " . $discount * 100 . "% dodana do zamówienia!", 200);
             }
             return response()->json("Niepoprawne dane", 422);
@@ -66,7 +68,7 @@ class ApiVoucherController extends Controller
     {
         try {
             CreateVouchers::dispatch($request->discount);
-            return response()->json("Promocja utowrzona. Wysyłąnie maili w trakcie", 200);
+            return response()->json("Promocja utowrzona. Wysyłanie maili w trakcie", 200);
         } catch (Exception $e) {
             Log::notice("Error :" . $e);
             Log::notice("Error :" . $e->getMessage());

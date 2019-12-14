@@ -16,13 +16,12 @@ use Illuminate\Support\Facades\Auth;
 class VoucherService
 {
     /**
-     * @param string $date
-     * @param $tables
-     * @return array
+     * @param string $voucher
+     * @return float
      */
     public function checkVoucher(string $voucher): float
     {
-        $vochers = Voucher::all()->pluck(['token']);
+        $vochers = Voucher::all()->pluck(['token'])->toArray();
         if (in_array($voucher, $vochers)){
             $obj = Voucher::where('token',$voucher)->first();
             $disscount = $obj->discount;
