@@ -29,6 +29,7 @@ Route::get('/', 'HomeController@index')->name('home');
 Route::get('/api/user/auth-user', 'API\ApiUserController@myAccount')->name('api.user.authenticatedUser');
 Route::delete('/order/delete/{token}', 'API\ApiOrderController@deleteOrder')->name('api.order.delete');
 Route::get('qrcode', function () {
+    return view('mails.voucherQrCode');
     return QrCode::size(300)->generate('A basic example of QR code!');
 });
 Auth::routes();

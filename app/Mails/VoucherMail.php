@@ -18,6 +18,8 @@ class VoucherMail extends Mailable
 
     public $sendToMail;
     public $QRcode;
+    public $qr;
+    public $message;
     private const SUBJECT="Zamówienie online w systemie restauracji \"W-17 wydział smaków\"";
 
     /**
@@ -29,7 +31,8 @@ class VoucherMail extends Mailable
     public function __construct(string $email, Voucher $voucher)
     {
         $this->sendToMail=$email;
-//        $this->QRcode= QrCode::format('png')->size(250)->generate('ItSolutionStuff.com');
+//        $this->qr = QrCode::format('png')->size(200)->generate('http://google.com');
+        $this->qr= QrCode::size(250)->generate('ItSolutionStuff.com');
     }
 
     /**
@@ -39,7 +42,7 @@ class VoucherMail extends Mailable
      */
     public function build()
     {
-        return $this->view('mails.voucherQrCode') ->subject(self::SUBJECT);
+        return $this->view('mails.voucherQrCode') ->subject(self::SUBJECT);//->attach(view('mails.voucherQrCode'));
     }
 
     /**

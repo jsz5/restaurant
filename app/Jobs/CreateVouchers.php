@@ -14,6 +14,8 @@ use Illuminate\Http\Response;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Mail;
+use SimpleSoftwareIO\QrCode\Facades\QrCode;
 use Swift_TransportException;
 
 class CreateVouchers implements ShouldQueue
@@ -52,7 +54,22 @@ class CreateVouchers implements ShouldQueue
             $voucher -> token = uniqid();
             $voucher -> user() ->associate($user);
             if($voucher ->save()) {
-                $this->sendMail($user->email, $voucher);
+                $qr = QrCode::format('png')->size(200)->generate('http://google.com');
+                Mail::send(
+                    'mails.voucherQrCode',
+                    [
+                        'account' => "thytyt",
+                        'product' => "rfrtrt",
+                        'qr' => $qr
+                    ],
+                    function ($m) use ($user) {
+                        $m->to($user->email)
+                            ->subject('Prospector theater - Redeem product')
+                            ->from('no-reply@prospectortheater.org', 'Prospector theater');
+
+                    }
+                );
+//                $this->sendMail($user->email, $voucher);
             }
             //todo mail z info o kuponie
 //        }

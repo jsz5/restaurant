@@ -1,35 +1,24 @@
 <!DOCTYPE html>
-
 <html>
-
 <head>
-
-    <title></title>
+    <title>Prospector theater</title>
 
 </head>
 
 <body>
+<h3>Hello ,</h3>
 
+<p>This email serves as a ticket for a free . <br />
+    Please bring a printed version of this email with you in order to redeem it on-site.</p>
 
+<br />
+<br />
+<br />
+<img src="{!!$message->embedData($qr, 'QrCode.png', 'image/png')!!}">
+{{--{!! $qr !!}--}}
 
-<img class="visible-print text-center">
-
-    <h1>Laravel 5.7 - QR Code Generator Example</h1>
-
-    <?php
-    use  SimpleSoftwareIO\QrCode\Facades\QrCode;
-    $q=QrCode::size(300)->format('png')->generate('A basic example of QR code!');
-    ?>
-
-    <img src="{{$q}}" alt="ytyt">
-
-
-    <p>example by ItSolutionStuf.com.</p>
-
-</div>
-
-
-
+<p>Thank you,</p>
+<br />
+<p>Prospector theater</p>
 </body>
-
 </html>
