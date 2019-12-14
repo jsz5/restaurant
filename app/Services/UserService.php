@@ -33,4 +33,15 @@ class UserService
        return "guest";
    }
 
+    public function getUserData($user)
+    {
+        return [
+            "id" => $user->id,
+            "name" => $user->name,
+            "surname" => $user->surname,
+            "email" => $user->email,
+            "address" => $user->address,
+            "phone" => $user->phone
+        ];
+    }
 }
