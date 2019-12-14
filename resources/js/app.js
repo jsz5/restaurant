@@ -134,12 +134,6 @@ Vue.component('customer-order', require('./components/orders/customer-order').de
 
 Vue.component('homepage', require('./components/homepage').default);
 
-window.addEventListener('storage', function (evt) {
-  if (evt.key === 'jwt-token') {
-    jwtService.saveToken(evt.newValue)
-  }
-});
-
 
 const app = new Vue({
   el: '#app',

@@ -2,6 +2,7 @@
 
 namespace App\Jobs;
 
+use App\Mails\VoucherMail;
 use App\Models\User;
 use App\Models\Voucher;
 use Carbon\Carbon;
@@ -14,6 +15,7 @@ use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
+use SimpleSoftwareIO\QrCode\Facades\QrCode;
 use Swift_TransportException;
 
 class CreateVouchers implements ShouldQueue
@@ -51,22 +53,23 @@ class CreateVouchers implements ShouldQueue
             $voucher -> discount = $this->discount;
             $voucher -> token = uniqid();
             $voucher -> user() ->associate($user);
-            $voucher ->save();
-//            $this->sentMailAll();
-            //todo mail z info o kuponie
+            if($voucher ->save()) {
+                $this->sendMail($user->email, $voucher);
+            }
+
         }
     }
 
     /**
      * @param $mail
-     * @param $data
+     * @param Voucher $voucher
      * @return ResponseFactory|Response
      * @codeCoverageIgnore
      */
-    public function sentMail($mail, $data)
+    public function sendMail($mail, Voucher $voucher)
     {
         try {
-//            Mail::to($mail)->queue(new AdvertisementMail($data));
+            (new VoucherMail($mail,$voucher))->sendMail();
             Log::channel('subscriptionsMail')->notice("Sending email to " . $mail);
             return response(null, Response::HTTP_NO_CONTENT);
         } catch (Swift_TransportException $e) {
