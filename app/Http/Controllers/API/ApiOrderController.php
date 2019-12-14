@@ -283,7 +283,8 @@ class ApiOrderController extends Controller
                         'amount' => $item->amount]);
                     $sum += (float)$item->dish->price * (float)$item->amount;
                 }
-                return response()->json(["dishes" => $dishes, 'sum' => round($sum * $order->discount,2),
+                return response()->json(["dishes" => $dishes,
+                    'sum' => round($sum * (1 -$order->discount),2),
                     'sumWithoutDiscount' => $sum,
                     'status' => $order->status, 'status_pl' =>
                     trans('app.status.' . $order->status)], 200);
