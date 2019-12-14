@@ -23,8 +23,8 @@ class JwtHandler
         if ($user !== null) {
             $token = JWTAuth::fromUser($user);
             $token = JWTAuth::refresh(JWTAuth::setToken($token));
-            $response->headers->set('Authorization', 'Bearer '.$token);
-            $cookie=Cookie::make("token",$token,config('session.lifetime'), null, null, false, false);
+            $response->headers->set('Authorization', 'Bearer ' . $token);
+            $cookie = Cookie::make("token", $token, config('session.lifetime'), null, null, false, false);
             $response->withCookie($cookie);
         }
         return $response;
