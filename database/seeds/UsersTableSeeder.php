@@ -28,7 +28,8 @@ class UsersTableSeeder extends Seeder
                 }
                 factory(User::class)->create(
                     [
-                        'address' => json_encode('{"street":"W\u0119gielna","houseNumber":"1","flatNumber":null,"postCode":"59-234","city":"Wiejskie G\u00f3ry"}, phone: 525252252}'),
+                        'address' => json_encode(["street" => "Węgielna", "houseNumber" => "1", "flatNumber" => "1a",
+                            "postCode" => "59-234", "city" => "Wiejskie Góry"]),
                         'email' => $user . $domain,
                         'phone' => $phoneNumber,
                         'password' => bcrypt($pass)
@@ -36,7 +37,8 @@ class UsersTableSeeder extends Seeder
             }
             factory(User::class)->create(
                 [
-                    'address' => json_encode('{"street":"W\u0119gielna","houseNumber":"1","flatNumber":"1a","postCode":"59-234","city":"Wiejskie G\u00f3ry"}, phone: 525252252}'),
+                    'address' => json_encode(["street" => "Węgielna", "houseNumber" => "1", "flatNumber" => "1a",
+                        "postCode" => "59-234", "city" => "Wiejskie Góry"]),
                     'name' => 'Jakub',
                     'surname' => 'Filistyński',
                     'email' => 'j.filistynski@bonasoft.pl',
