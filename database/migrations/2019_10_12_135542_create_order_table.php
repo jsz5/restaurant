@@ -28,7 +28,7 @@ class CreateOrderTable extends Migration
             $table->json('deliverer_location')->nullable();
             $table->text('comment')->nullable();
             $table->string('token');
-            $table->float('discount')->nullable();
+            $table->float('discount')->nullable()->default(0);
             $table->timestamps();
         });
     }

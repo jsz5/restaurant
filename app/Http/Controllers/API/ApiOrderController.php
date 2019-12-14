@@ -14,6 +14,7 @@ use App\Models\Check;
 use App\Models\Order;
 use App\Models\Table;
 use App\Services\OrderService;
+use App\Services\VoucherService;
 use Carbon\Carbon;
 use Exception;
 use Illuminate\Http\JsonResponse;
@@ -189,6 +190,16 @@ class ApiOrderController extends Controller
             $order->table()->associate($request->table_id);
             $order->status = StatusTypesInterface::TYPE_ORDERED;
             $order->worker()->associate(Auth::user());
+            if ($request->discount_token){
+                $discount = (new VoucherService())->checkVoucher($request->discount_token);
+                if ($discount == 0) {
+                    return response()->json("Nieważny kod promocyjny", 422);
+                }
+                $order->discount = $discount;
+            }
+            if ($request->comment){
+                $order->comment = $request->comment;
+            }
             $order->save();
             (new OrderService())->addItems($order, $request->items);
             broadcast(new OrderChanged())->toOthers();
@@ -223,6 +234,16 @@ class ApiOrderController extends Controller
             $order->takeaway = $request->takeaway;
             if (!$request->takeaway) {
                 $order->address = json_encode($request->address);
+            }
+            if ($request->discount_token){
+                $discount = (new VoucherService())->checkVoucher($request->discount_token);
+                if ($discount == 0) {
+                    return response()->json("Nieważny kod promocyjny", 422);
+                }
+                $order->discount = $discount;
+            }
+            if ($request->comment){
+                $order->comment = $request->comment;
             }
             $order->status = StatusTypesInterface::TYPE_ORDERED;
             $order->save();
@@ -320,6 +341,16 @@ class ApiOrderController extends Controller
                     $item->delete();
                 }
                 (new OrderService())->addItems($order, $request->items);
+                if ($request->discount_token && $order->discount == 0){
+                    $discount = (new VoucherService())->checkVoucher($request->discount_token);
+                    if ($discount == 0) {
+                        return response()->json("Nieważny kod promocyjny", 422);
+                    }
+                    $order->discount = $discount;
+                }
+                if ($request->comment){
+                    $order->comment = $request->comment;
+                }
                 broadcast(new OrderChanged())->toOthers();
                 return response()->json("Zamówienie pomyślnie edytowane", 200);
             }
@@ -355,6 +386,13 @@ class ApiOrderController extends Controller
                 $order->save();
                 foreach ($items as $item) {
                     $item->delete();
+                }
+                if ($request->discount_token && $order->discount == 0){
+                    $discount = (new VoucherService())->checkVoucher($request->discount_token);
+                    if ($discount == 0) {
+                        return response()->json("Nieważny kod promocyjny", 422);
+                    }
+                    $order->discount = $discount;
                 }
                 (new OrderService())->addItems($order, $request->items);
                 broadcast(new OrderChanged())->toOthers();
