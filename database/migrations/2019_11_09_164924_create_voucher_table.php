@@ -19,6 +19,7 @@ class CreateVoucherTable extends Migration
             $table->string('token');
             $table->integer('user_id')->unsigned()->index()->nullable();
             $table->foreign('user_id')->references('id')->on('users');
+            $table->date('expire_at')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });

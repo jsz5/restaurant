@@ -32,6 +32,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 //    });
 //
 //});
+Route::post('/authenticate', 'API\ApiAuthenticateController@authenticate');
+Route::post('/logout', 'API\ApiAuthenticateController@logout');
 
 Route::name('api.')->namespace('API')->middleware(['jwt.auth'])->group(function () {
     //todo refactor na group
@@ -102,6 +104,13 @@ Route::name('api.')->namespace('API')->middleware(['jwt.auth'])->group(function 
 
     Route::post('/order/worker/update', 'ApiOrderController@updateOrderFromWorker')->name('order.updateOrderFromWorker')
         ->middleware('permission:orderEdit');
+
+
+    Route::post('/voucher/create', 'ApiVoucherController@createVouchers')->name('voucher.create')
+        ->middleware('permission:createVoucher');
+    Route::post('/voucher/use', 'ApiVoucherController@addVoucherToOrder')->name('voucher.use')
+        ->middleware('permission:orderCreate');
+
 
     Route::name('reservation.')->prefix('reservation')->group(function () {
         Route::post('/store-as-customer', 'ApiReservationController@storeAsCustomer')->name('storeAsCustomer')->middleware('permission:onlineReservationCreate');

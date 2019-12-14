@@ -120,7 +120,6 @@
                 this.clicked = statusName;
                 axios.get(route('api.order.orderWithStatus', statusName)).then(response => {
                     this.orders = response.data;
-                    console.log(response.data)
                 }).catch(error => {
                     console.error(error)
                 }).finally(() => {
