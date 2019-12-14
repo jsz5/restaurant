@@ -15,6 +15,8 @@
 //    return view('welcome');
 //});
 
+use SimpleSoftwareIO\QrCode\Facades\QrCode;
+
 Route::get('/menu', 'DishController@menu')->name('menu');
 Route::post('api/user/store-customer', 'API\ApiUserController@storeCustomer')->name('storeCustomer');
 Route::get('/contact', 'ContactController@index')->name('contact');
@@ -26,7 +28,9 @@ Route::get('/order-show/{token}', 'OrderController@show')->name('order.show');
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('/api/user/auth-user', 'API\ApiUserController@myAccount')->name('api.user.authenticatedUser');
 Route::delete('/order/delete/{token}', 'API\ApiOrderController@deleteOrder')->name('api.order.delete');
-
+Route::get('qrcode', function () {
+    return QrCode::size(300)->generate('A basic example of QR code!');
+});
 Auth::routes();
 Route::middleware('auth')->group(function () {
     Route::get('/table-admin', 'TableController@index')->name('table.index')->middleware('permission:tableIndex');
