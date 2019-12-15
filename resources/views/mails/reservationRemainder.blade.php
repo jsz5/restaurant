@@ -2,7 +2,7 @@
     <h4>Rezerwacja w {{config('app.name')}}! <br>
     </h4>
     <p>
-      Złożono rezerwację na {{$date}} o godzinie {{$time}}.<br>
+      Uprzejmne informuję o jutrzejszej rezerwacj tj. {{$date}} o godzinie {{$time}}.<br>
         Liczba osób: {{$size}}. <br>
         Szczegóły rezerwacji znajdują się na stronie:
       <a href="{{$link}}">{{$link}}.</a><br><br>
