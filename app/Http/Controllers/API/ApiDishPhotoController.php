@@ -41,8 +41,7 @@ class ApiDishPhotoController extends Controller
     {
         try {
             $photo = Photo::findOrFail($id);
-            Storage::delete('public' . $photo->path);
-            $photo->delete();
+            $photo->deletePhoto();
             return response()->json(["Zdjęcie zostało usunięte"], 200);
         } catch (\Exception $exception) {
             return response()->json(["Wystąpił błąd podczas usuwania zdjęcia"], 500);

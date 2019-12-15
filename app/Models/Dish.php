@@ -36,7 +36,7 @@ class Dish extends Model
      */
     public function category()
     {
-        return $this->belongsTo(Dish::class);
+        return $this->belongsTo(DishCategory::class);
     }
 
     /**
