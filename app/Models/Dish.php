@@ -17,7 +17,8 @@ class Dish extends Model
     protected $fillable = [
         'name',
         'category_id',
-        'price'
+        'price',
+        'photo_id'
     ];
 
     /**
@@ -40,11 +41,11 @@ class Dish extends Model
 
     /**
      * @codeCoverageIgnore
-     * @return HasOne
+     * @return BelongsTo
      */
     public function photo()
     {
-        return $this->hasOne(Photo::class);
+        return $this->belongsTo(Photo::class);
     }
 
     /**

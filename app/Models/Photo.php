@@ -10,14 +10,13 @@ class Photo extends Model
 
     protected $fillable = [
         'name',
-        'path',
-        'dish_id'
+        'path'
     ];
     /**
     * @codeCoverageIgnore
     */
-    public function danger()
+    public function dish()
     {
-        return $this->belongsTo(Dish::class);
+        return $this->hasOne(Dish::class);
     }
 }

@@ -62,7 +62,11 @@ Route::name('api.')->namespace('API')->middleware(['jwt.auth'])->group(function 
     Route::get('/dish/{dish}', 'ApiDishController@load')->name('dish.load')
         ->middleware('permission:dishShow');
     Route::post('/dish', 'ApiDishController@store')->name('dish.store')
-        ->middleware('permission:tableCreate');
+        ->middleware('permission:dishCreate');
+    Route::post('/dish/photo', 'ApiDishPhotoController@store')->name('dish.photoAdd')
+        ->middleware('permission:dishCreate');
+    Route::delete('/dish/photo/{id}', 'ApiDishPhotoController@destroy')->name('dish.photoDelete')
+        ->middleware('permission:dishCreate');
     Route::post('/dish/update', 'ApiDishController@update')->name('dish.update')
         ->middleware('permission:dishEdit');
     Route::delete('/dish/{dish}', 'ApiDishController@delete')->name('dish.delete')

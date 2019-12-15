@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\DishRequest;
 use App\Models\Dish;
 use App\Models\DishCategory;
+use App\Models\Photo;
 use App\Services\DishService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -28,7 +29,7 @@ class ApiDishController extends Controller
      * @param Dish $dish
      * @return JsonResponse
      */
-    public function load (Dish $dish)
+    public function load(Dish $dish)
     {
         try {
             return response()->json($dish);
@@ -68,6 +69,10 @@ class ApiDishController extends Controller
             $dish->name = $request->name;
             $dish->price = $request->price;
             $dish->category()->associate(DishCategory::findOrFail($request->category_id));
+            if ($request->photoId) {
+                $photo = Photo::findOrFail($request->photoId);
+                $dish->photo()->associate($photo);
+            }
             $dish->save();
             return response()->json(['message' => "Danie zostało pomyślnie zapisane."], 200);
         } catch (\Exception $e) {
@@ -82,7 +87,7 @@ class ApiDishController extends Controller
      * @param DishRequest $request [id,name,price,category_id]
      * @return JsonResponse
      */
-    public function update (DishRequest $request)
+    public function update(DishRequest $request)
     {
         try {
             $dish = Dish::findOrFail($request->id);

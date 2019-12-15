@@ -53,10 +53,10 @@ class LoginController extends Controller
 
         try {
             if (! $token = JWTAuth::attempt($credentials)) {
-                return response()->json(['error' => 'invalid_credentials'], 401);
+                return response()->json(["Niepoprawne dane"], 401);
             }
         } catch (JWTException $e) {
-            return response()->json(['error' => 'could_not_create_token'], 500);
+            return response()->json(["Wystąpił błąd"], 500);
         }
         $cookie=Cookie::make("token",$token,config('session.lifetime'), null, null, false, false);
         return response()->json(compact('token'))
