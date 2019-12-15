@@ -16,52 +16,45 @@ class StatisticsService
      * @param string $year
      * @return array
      */
-    public function statisticsService(string $year): array
+    public function yearsStatistics(string $year): array
     {
         $data = [];
         for ($i = 1; $i <= 12; $i++) {
             $data[$i] = 0;
         }
-        $orders = Order::where('status', StatusTypesInterface::TYPE_FINISHED)->whereYear('created_at', $year)->get();
-//todo every/each
-        foreach ($orders as $order) {
-            $sum = 0;
-            $items = Check::where('order_id', $order->id)->with('dish')->get();
-
-            foreach ($items as $item) {
-                $sum += (float)$item->dish->price * (float)$item->amount;
-            }
-            $sum = round($sum * (1 - (float)$order->discount), 2);
-            $data[$order->created_at->month] += $sum;
-        }
+        Order::where('status', StatusTypesInterface::TYPE_FINISHED)
+            ->whereYear('created_at', $year)->get()->each(function ($order) use (&$data) {
+                $sum = 0;
+                foreach ($order->check as $item) {
+                    $sum += (float)$item->dish->price * (float)$item->amount;
+                }
+                $sum = round($sum * (1 - (float)$order->discount), 2);
+                $data[$order->created_at->month] += $sum;
+            });
         return $data;
     }
 
     /**
      * @param string $year
-     * @param string $waiterId
+     * @param int $waiterId
      * @return array
      */
-    public function waiterStatisticsService(string $year, string $waiterId): array
+    public function waiterStatistics(string $year, int $waiterId): array
     {
         $data = [];
         for ($i = 1; $i <= 12; $i++) {
             $data[$i] = 0;
         }
-        $orders = Order::where('status', StatusTypesInterface::TYPE_FINISHED)
+        Order::where('status', StatusTypesInterface::TYPE_FINISHED)
             ->where('worker_id', $waiterId)
-            ->whereYear('created_at', $year)->get();
-//todo every/each
-        foreach ($orders as $order) {
-            $sum = 0;
-            $items = Check::where('order_id', $order->id)->with('dish')->get();
-
-            foreach ($items as $item) {
-                $sum += (float)$item->dish->price * (float)$item->amount;
-            }
-            $sum = round($sum * (1 - (float)$order->discount), 2);
-            $data[$order->created_at->month] += $sum;
-        }
+            ->whereYear('created_at', $year)->get()->each(function ($order) use (&$data) {
+                $sum = 0;
+                foreach ($order->check as $item) {
+                    $sum += (float)$item->dish->price * (float)$item->amount;
+                }
+                $sum = round($sum * (1 - (float)$order->discount), 2);
+                $data[$order->created_at->month] += $sum;
+            });
         return $data;
     }
 

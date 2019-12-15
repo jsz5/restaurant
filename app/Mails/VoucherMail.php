@@ -44,7 +44,7 @@ class VoucherMail extends Mailable
      */
     public function build()
     {
-        return $this->view('mails.voucherQrCode') ->subject(self::SUBJECT);
+        return $this->view('mails.voucherQrCode') ->subject("Promocja w " . config('app.name'));;
     }
 
     /**

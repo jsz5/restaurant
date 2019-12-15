@@ -2,7 +2,9 @@
 
 namespace App\Jobs;
 
-use App\Mails\VoucherMail;
+use App\Mails\ReservationMail;
+use App\Mails\ReservationRemainderMail;
+use App\Models\Reservation;
 use App\Models\User;
 use App\Models\Voucher;
 use Carbon\Carbon;
@@ -15,28 +17,21 @@ use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
-use SimpleSoftwareIO\QrCode\Facades\QrCode;
 use Swift_TransportException;
 
-class CreateVouchers implements ShouldQueue
+class ReservationRemainder implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
-    /**
-     * collection of investments
-     * @var
-     */
-    protected $discount;
 
     /**
      * Create a new job instance.
      *
-     * @param $discount
      * @codeCoverageIgnore
      */
-    public function __construct($discount)
+    public function __construct()
     {
-        $this->discount = $discount;
+
     }
 
     /**
@@ -47,33 +42,26 @@ class CreateVouchers implements ShouldQueue
      */
     public function handle()
     {
-        $users = User::all();
-        foreach ($users as $user) {
-            $voucher = new Voucher();
-            $voucher -> discount = $this->discount;
-            $voucher -> token = uniqid();
-            $voucher -> user() ->associate($user);
-            if($voucher ->save()) {
-                $this->sendMail($user->email, $voucher);
-            }
-
-        }
+        $tomorrow = Carbon::tomorrow()->toDateString();
+        Reservation::where('date', $tomorrow)->get()->each(function ($reservation){
+            $this->sentMail($reservation->email, $reservation);
+        });
     }
 
     /**
      * @param $mail
-     * @param Voucher $voucher
+     * @param $data
      * @return ResponseFactory|Response
      * @codeCoverageIgnore
      */
-    public function sendMail($mail, Voucher $voucher)
+    public function sentMail($mail, $data)
     {
         try {
-            (new VoucherMail($mail,$voucher))->sendMail();
-            Log::info("Sending email with voucher to " . $mail);
+            Mail::to($mail)->queue(new ReservationRemainderMail($data));
+            Log::channel('subscriptionsMail')->notice("Sending email to " . $mail);
             return response(null, Response::HTTP_NO_CONTENT);
         } catch (Swift_TransportException $e) {
-            Log::error("Sending email with voucher to " . $mail . " failed.");
+            Log::channel('subscriptionsMail')->error("Sending email to " . $mail . " failed.");
             return response(null, Response::HTTP_NO_CONTENT);
         }
     }

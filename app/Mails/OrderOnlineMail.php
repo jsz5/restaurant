@@ -16,7 +16,6 @@ class OrderOnlineMail extends Mailable
 
     public $sendToMail;
     public $link;
-    private const SUBJECT="Zamówienie online w systemie restauracji \"W-17 wydział smaków\"";
 
     /**
      * OrderOnlineMail constructor.
@@ -37,7 +36,7 @@ class OrderOnlineMail extends Mailable
      */
     public function build()
     {
-        return $this->view('mails.order') ->subject(self::SUBJECT);
+        return $this->view('mails.order') ->subject("Nowe zamówienie w " . config('app.name'));
     }
 
     /**

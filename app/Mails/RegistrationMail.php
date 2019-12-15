@@ -18,7 +18,6 @@ class RegistrationMail extends Mailable
     public $password;
     public $link;
     private $role;
-    private const SUBJECT="Rejestracja w systemie restauracji \"W-17 wydział smaków\"";
 
     /**
      * RegistrationMail constructor.
@@ -53,9 +52,10 @@ class RegistrationMail extends Mailable
     private function checkRole()
     {
         if($this->role=='customer'){
-            return $this->view('mails.registrationCustomer') ->subject(self::SUBJECT);
+            return $this->view('mails.registrationCustomer')->subject("Rejestracja w "
+                . config('app.name'));
         }
-        return $this->view('mails.registration') ->subject(self::SUBJECT);
+        return $this->view('mails.registration')->subject("Rejestracja w " . config('app.name'));
     }
     /**
      * sends mail to customer

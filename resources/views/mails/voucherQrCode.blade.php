@@ -20,7 +20,7 @@ Oferta ważna do {{$date}}.
 
 <p>Zapraszamy,
 <br />
-System restauracji Smart Restaurant<br><br>
+    {{config('app.name')}}<br><br>
 </p>
 </body>
 </html>
