@@ -1,5 +1,5 @@
 <div class="well col-sm-8">
-    <h4>Zamówienie w restauracji "W-17 wydział smaków"! <br>
+    <h4>Zamówienie w {{config('app.name')}}! <br>
     </h4>
     <p>
         Szczegóły złożonego zamówienia oraz możliwość anulowania znajdują się na stronie:

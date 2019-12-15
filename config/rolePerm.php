@@ -70,6 +70,8 @@ return[
         "onlineReservationIndex",
         "userOrderIndex",
         "orderShow",
-        "showVoucher"
+        "showVoucher",
+        "dishCategoryIndex",
+        "dishIndex"
     ]
 ];

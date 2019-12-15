@@ -20,9 +20,25 @@ class OrderTableSeeder extends Seeder
                         $order = new \App\Models\Order();
                         $order->token = uniqid();
                         $order->takeaway = false;
-                        $order->worker()->associate(\App\Models\User::find(1));
+                        $order->worker()->associate(\App\Models\User::find(3));
                         $order->table()->associate($table);
                         $order->address = null;
+                        $order->save();
+                    }
+                }
+            }
+//zamówienia archiwalne
+            for ($day = 1; $day < 400; $day ++){
+                foreach ($tables as $table){
+                    for ($i = 0; $i < random_int(1, $table->size); $i++) {
+                        $order = new \App\Models\Order();
+                        $order->token = uniqid();
+                        $order->takeaway = false;
+                        $order->worker()->associate(\App\Models\User::find(3));
+                        $order->table()->associate($table);
+                        $order->address = null;
+                        $order->status = \App\Interfaces\StatusTypesInterface::TYPE_FINISHED;
+                        $order->created_at = \Carbon\Carbon::today()->subDays($day);
                         $order->save();
                     }
                 }
