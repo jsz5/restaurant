@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
 
 
-class ReservationMail extends Mailable
+class ReservationRemainderMail extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -41,7 +41,8 @@ class ReservationMail extends Mailable
      */
     public function build()
     {
-        return $this->view('mails.reservation') ->subject("Rezerwacja w " . config('app.name'));
+        return $this->view('mails.reservationRemainder') ->subject("Zbliżająca się rezerwacja w "
+            . config('app.name'));
     }
 
     /**
