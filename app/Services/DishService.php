@@ -27,6 +27,7 @@ class DishService
             $dishArray['name'] =$dish->name;
             $dishArray['price'] =$dish->price;
             $dishArray['category'] =$dish->category;
+            $dishArray['comment'] =$dish->comment;
             $dishArray['photoPath'] =$path;
             if (Auth::user()) {
                 $favouriteDishArray = FavouriteDish::where('user_id', Auth::id())->pluck('dish_id')->toArray();
@@ -57,6 +58,7 @@ class DishService
                     $dishArray['id'] =$dish->id;
                     $dishArray['name'] =$dish->name;
                     $dishArray['price'] =$dish->price;
+                    $dishArray['comment'] =$dish->comment;
                     $dishArray['photoPath'] =$path;
                     array_push($arr,$dishArray);
                 }
@@ -80,6 +82,7 @@ class DishService
           'id'=>$dish->id,
           'name'=>$dish ->name,
           'price'=>$dish->price,
+          'comment'=>$dish->comment,
           'category_id'=>$dish->category_id,
           'photo_path'=>$path
         ];

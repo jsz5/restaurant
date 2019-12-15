@@ -69,6 +69,7 @@ class ApiDishController extends Controller
             $dish = new Dish();
             $dish->name = $request->name;
             $dish->price = $request->price;
+            $dish->comment = $request->comment;
             $dish->category()->associate(DishCategory::findOrFail($request->category_id));
             if ($request->photoId) {
                 $photo = Photo::findOrFail($request->photoId);
@@ -94,6 +95,7 @@ class ApiDishController extends Controller
             $dish = Dish::findOrFail($request->id);
             $dish->name = $request->name;
             $dish->price = $request->price;
+            $dish->comment = $request->comment;
             $dish->category()->associate(DishCategory::findOrFail($request->category_id));
             $dish->save();
             return response()->json(['message' => "Danie zostało pomyślnie zapisane."], 200);
