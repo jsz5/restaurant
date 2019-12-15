@@ -28,7 +28,7 @@ Route::get('/api/user/auth-user', 'API\ApiUserController@myAccount')->name('api.
 Route::delete('/order/delete/{orderToken}', 'API\ApiOrderController@deleteOrder')->name('api.order.delete');
 
 Auth::routes();
-Route::middleware('jwt.auth')->group(function () {
+Route::middleware('auth','jwt.auth')->group(function () {
     Route::get('/table-admin', 'TableController@index')->name('table.index')->middleware('permission:tableIndex');
     Route::get('/table/edit/{id}', 'TableController@edit')->name('table.edit')->middleware('permission:tableEdit');
     Route::get('/table/{id}', 'TableController@show')->name('table.show')->middleware('permission:tableShow');
