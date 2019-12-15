@@ -17,8 +17,6 @@ class CreatePhotosTable extends Migration
             $table->bigIncrements('id');
             $table->string('name');
             $table->string('path');
-            $table->integer('dish_id')->unsigned()->index()->nullable();
-            $table->foreign('dish_id')->references('id')->on('dish');
             $table->timestamps();
         });
     }
