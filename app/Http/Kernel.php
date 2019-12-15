@@ -6,6 +6,7 @@ use App\Http\Middleware\HeaderHandler;
 use App\Http\Middleware\JwtHandler;
 use App\Http\Middleware\MyAccount;
 use App\Http\Middleware\MyReservation;
+use App\Http\Middleware\MyStatistics;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
 class Kernel extends HttpKernel
@@ -37,7 +38,7 @@ class Kernel extends HttpKernel
             \Illuminate\Session\Middleware\StartSession::class,
             // \Illuminate\Session\Middleware\AuthenticateSession::class,
             \Illuminate\View\Middleware\ShareErrorsFromSession::class,
-            \App\Http\Middleware\VerifyCsrfToken::class,
+             \App\Http\Middleware\VerifyCsrfToken::class,
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
             JwtHandler::class
 
@@ -73,7 +74,7 @@ class Kernel extends HttpKernel
         'myReservation'=> MyReservation::class,
         'jwt.auth' => \Tymon\JWTAuth\Http\Middleware\Authenticate::class,
         'jwt.refresh' => \Tymon\JWTAuth\Http\Middleware\RefreshToken::class,
-        'jwt.header' =>HeaderHandler::class,
+        'jwt.handler'=>JwtHandler::class
     ];
 
     /**

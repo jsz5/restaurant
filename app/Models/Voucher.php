@@ -14,7 +14,8 @@ class Voucher extends Model
     protected $fillable = [
         'token',
         'discount',
-        'user_id'
+        'user_id',
+        'qr_code_path'
     ];
     /**
     * @codeCoverageIgnore

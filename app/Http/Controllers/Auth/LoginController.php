@@ -7,6 +7,7 @@ use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Cookie;
 use Tymon\JWTAuth\Exceptions\JWTException;
 use Tymon\JWTAuth\Facades\JWTAuth;
 
@@ -43,29 +44,23 @@ class LoginController extends Controller
     }
 
 
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function login(Request $request) {
-//        if (Auth::attempt(['email' => $request->get('email'), 'password' => $request->get('password')])) {
-//            $token= JWTAuth::fromUser(Auth::user());
-//            $response = new Response([
-//                'msg'=>"Pomyślnie zalogowałeś się do systemu",
-//                 'token' => $token]);
-//            return $response->withCookie(cookie('token', $token));;
-//        }else{
-//            return response()->json(['error' => 'Unauthorized'], 401);
-//        }
-//
         $credentials = $request->only('email', 'password');
 
         try {
             if (! $token = JWTAuth::attempt($credentials)) {
-                return response()->json(['error' => 'invalid_credentials'], 401);
+                return response()->json(["Niepoprawne dane"], 401);
             }
         } catch (JWTException $e) {
-            return response()->json(['error' => 'could_not_create_token'], 500);
+            return response()->json(["Wystąpił błąd"], 500);
         }
-
+        $cookie=Cookie::make("token",$token,config('session.lifetime'), null, null, false, false);
         return response()->json(compact('token'))
-            ->withCookie(cookie('token', $token));
+            ->withCookie($cookie);
     }
     /**
      * Log the user out (Invalidate the token).
@@ -74,8 +69,8 @@ class LoginController extends Controller
      */
     public function logout()
     {
+        JWTAuth::invalidate(JWTAuth::parseToken());
         \Cookie::queue(\Cookie::forget('token'));
-        \Cookie::queue(\Cookie::forget('jwt-token'));
         \Auth::logout();
     }
 }

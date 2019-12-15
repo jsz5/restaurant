@@ -195,7 +195,6 @@
       this.getData()
 			axios.get(route('api.user.getMyVoucher'))
 					.then(response => {
-						console.log(response)
 					}).catch(error => {
 				console.error(error)
 			})
@@ -259,7 +258,6 @@
             notificationSuccess(response.data.message);
             window.location.href = route('home');
           }).catch(error => {
-          console.log(error.response);
           if (error.response.status === 422) {
             notificationError("Podano niepoprawne dane, spróbuj jeszcze raz");
             this.fillErrors(error, this.errors);
@@ -285,7 +283,6 @@
             window.location.href = route('home');
           }).catch(
           error => {
-            console.log(error.response);
             if (error.response.status === 422) {
               notificationError("Podano niepoprawne dane, spróbuj jeszcze raz");
               this.fillErrors(error, this.passwordErrors);

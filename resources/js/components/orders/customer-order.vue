@@ -112,7 +112,7 @@
                   <v-text-field :rules="[rules.required]" label="Numer domu " outlined
                                 v-model="form.address.houseNumber"></v-text-field>
                   <v-text-field label="Numer mieszkania" outlined
-                                v-model="form.address.apartmentNumber"></v-text-field>
+                                v-model="form.address.flatNumber"></v-text-field>
                   <v-text-field
                       :rules="[rules.required]"
                       label="Miejscowość"
@@ -164,9 +164,9 @@
                   <v-icon color="primary">room</v-icon>
                 </v-list-item-icon>
                 <v-list-item-content>
-                  <v-list-item-title v-if="this.form.address.apartmentNumber">
+                  <v-list-item-title v-if="this.form.address.flatNumber">
                     {{this.form.address.street + " " + this.form.address.houseNumber+ "/" +
-                    this.form.address.apartmentNumber}}
+                    this.form.address.flatNumber}}
                   </v-list-item-title>
                   <v-list-item-content v-else>
                     {{ this.form.address.street + " " + this.form.address.houseNumber }}
@@ -251,7 +251,7 @@
           address: {
             street: "",
             houseNumber: "",
-            apartmentNumber: "",
+            flatNumber: "",
             postCode: "",
             city: ""
           },
@@ -327,13 +327,12 @@
       },
       setMenuItems() {
         let id = this.selectedCategory;
-        console.log(id);
         if (id === -1) {
           this.menuItems = this.allMenuItems;
         } else {
           this.menuItems = [];
           this.allMenuItems.forEach(item => {
-            if (item.category_id === id) {
+            if (item.category.id === id) {
               this.menuItems.push(item);
             }
           });

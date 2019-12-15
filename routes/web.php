@@ -21,14 +21,14 @@ Route::get('/contact', 'ContactController@index')->name('contact');
 Route::get('/order/online', 'OrderController@createOrder')->name('order.create.online');
 Route::post('/api/order/online/update', 'API\ApiOrderController@updateOnlineOrder')->name('api.order.updateOnlineOrder');
 Route::post('/api/order/online', 'API\ApiOrderController@storeNewOrderOnline')->name('api.order.storeNewOrderOnline');
-Route::get('/api/order/show/{token}', 'API\ApiOrderController@loadOrder')->name('api.order.loadOrder');
-Route::get('/order-show/{token}', 'OrderController@show')->name('order.show');
+Route::get('/api/order/show/{orderToken}', 'API\ApiOrderController@loadOrder')->name('api.order.loadOrder');
+Route::get('/order-show/{orderToken}', 'OrderController@show')->name('order.show');
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('/api/user/auth-user', 'API\ApiUserController@myAccount')->name('api.user.authenticatedUser');
-Route::delete('/order/delete/{token}', 'API\ApiOrderController@deleteOrder')->name('api.order.delete');
+Route::delete('/order/delete/{orderToken}', 'API\ApiOrderController@deleteOrder')->name('api.order.delete');
 
 Auth::routes();
-Route::middleware('auth')->group(function () {
+Route::middleware('auth','jwt.auth')->group(function () {
     Route::get('/table-admin', 'TableController@index')->name('table.index')->middleware('permission:tableIndex');
     Route::get('/table/edit/{id}', 'TableController@edit')->name('table.edit')->middleware('permission:tableEdit');
     Route::get('/table/{id}', 'TableController@show')->name('table.show')->middleware('permission:tableShow');
@@ -58,7 +58,7 @@ Route::middleware('auth')->group(function () {
     });
     Route::get('/orders/waiter-index', 'OrderController@index')->name('order.index');
     Route::get('/orders/waiter-create/{tableId}', 'OrderController@createWaiterOrder')->name('order.createWaiter');
-    Route::get('/orders/waiter-edit/{token}', 'OrderController@editWaiter')->name('order.editWaiter');
+    Route::get('/orders/waiter-edit/{orderToken}', 'OrderController@editWaiter')->name('order.editWaiter');
     
     Route::get('/tables/waiter-index', 'TableController@waiterIndex')->name('table.waiterIndex')->middleware('permission:tableIndex');
 });

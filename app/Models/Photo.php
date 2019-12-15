@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Storage;
 
 class Photo extends Model
 {
@@ -10,14 +11,19 @@ class Photo extends Model
 
     protected $fillable = [
         'name',
-        'path',
-        'dish_id'
+        'path'
     ];
     /**
     * @codeCoverageIgnore
     */
-    public function danger()
+    public function dish()
     {
-        return $this->belongsTo(Dish::class);
+        return $this->hasOne(Dish::class);
+    }
+
+    public function deletePhoto()
+    {
+        Storage::delete('public' . $this->path);
+        $this->delete();
     }
 }

@@ -3,30 +3,38 @@
 namespace App\Mails;
 
 use App\Models\Reservation;
+use App\Models\Voucher;
+use Carbon\Carbon;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
+use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
 
-class OrderOnlineMail extends Mailable
+class VoucherMail extends Mailable
 {
     use Queueable, SerializesModels;
 
     public $sendToMail;
-    public $link;
+    public $discount;
+    public $token;
+    public $date;
+    private const SUBJECT="Zamówienie online w systemie restauracji \"W-17 wydział smaków\"";
 
     /**
      * OrderOnlineMail constructor.
      * @param string $email
-     * @param string $token
+     * @param Voucher $voucher
      * @codeCoverageIgnore
      */
-    public function __construct(string $email, string $token)
+    public function __construct(string $email, Voucher $voucher)
     {
         $this->sendToMail=$email;
-        $this->link=route('order.show',$token);
+        $this->discount=$voucher->discount.'%';
+        $this->token=$voucher->token;
+        $this->date=Carbon::now()->addDays(14)->format('Y-m-d');
     }
 
     /**
@@ -36,7 +44,7 @@ class OrderOnlineMail extends Mailable
      */
     public function build()
     {
-        return $this->view('mails.order') ->subject("Nowe zamówienie w " . config('app.name'));
+        return $this->view('mails.voucherQrCode') ->subject("Promocja w " . config('app.name'));;
     }
 
     /**
@@ -45,7 +53,7 @@ class OrderOnlineMail extends Mailable
      */
     public function sendMail()
     {
-        Log::notice("Mail order online to:" . $this->sendToMail);
+        Log::notice("Mail voucher to:" . $this->sendToMail);
         Mail::to($this->sendToMail)->queue($this);
     }
 }

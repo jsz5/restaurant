@@ -2,6 +2,7 @@
 
 namespace App\Console;
 
+use App\Mails\ReservationRemainderMail;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
@@ -13,7 +14,8 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-        VoucherActions::class
+        VoucherActions::class,
+        ReservationRemainderCommand::class
     ];
 
     /**
@@ -24,8 +26,8 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        // $schedule->command('inspire')
-        //          ->hourly();
+       $schedule->command('reservation:remainder')->dailyAt('12:00');
+        // $schedule->command('reservation:remainder')->everyMinute();
     }
 
     /**

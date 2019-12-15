@@ -1,4 +1,4 @@
-<template>
+<template xmlns:v-slot="http://www.w3.org/1999/XSL/Transform">
   <v-row class="justify-center align-center">
     <v-col cols="12" lg="5" ma-2 md="8" sm="10" xl="4">
       <v-card class="transparent_form">
@@ -22,6 +22,28 @@
               v-bind:items="dishCategory"
               v-model="form.category_id">
             </v-select>
+            <input
+              @change="uploadPhoto($event.target.files[0])"
+              id="fileInput"
+              style="display:none"
+              type="file"
+            />
+            <v-btn
+              :loading="loadingPhoto"
+              class="lightblue_action_button button-padding"
+              id="fileInputButton"
+              onclick="document.getElementById('fileInput').click()"
+            >Dodaj zdjęcie
+            </v-btn>
+            <v-card v-if="photoUrl" flat tile color="transparent" height="100%">
+              <v-img :src="photoUrl" aspect-ratio="1.7" contain></v-img>
+              <v-card-actions>
+                <v-btn
+                  @click="deletePhoto()"
+                >Usuń zdjęcie
+                </v-btn>
+              </v-card-actions>
+            </v-card>
           </v-form>
         </v-card-text>
         <v-card-actions>
@@ -44,6 +66,7 @@
     data() {
       return {
         loading: false,
+        loadingPhoto: false,
         rules: {
           required: value => !!value || "To pole jest wymagane",
           numeric: value => /^(\d+|\d+\.\d{1,2})$/.test(value) || 'Nieprawidłowy format ceny'
@@ -52,13 +75,15 @@
         form: {
           name: '',
           price: '',
-          category_id: ''
+          category_id: '',
+          photoId: ''
         },
         errors: {
           name: [],
           price: [],
           category_id: []
-        }
+        },
+        photoUrl: ''
       };
     },
     beforeMount() {
@@ -93,7 +118,6 @@
             notification('Pomyślnie dodano danie', 'success');
             window.location.replace(route('menu.admin'));
           }).catch(error => {
-            console.error(error.response);
             if (error.response.statusCode === 500) {
               notificationError(error.response.data);
             } else {
@@ -104,6 +128,53 @@
             this.loading = false;
           })
         }
+      },
+      uploadPhoto(file) {
+        var ext = file.type
+          .split("/")
+          .pop()
+          .toLowerCase();
+        if (ext != "jpeg" && ext != "jpg" && ext != "png" && ext != "bmp") {
+          notificationError("Poprawny format zdjęcia to: jpeg, jpg, png oraz bmp");
+          return;
+        }
+        if (file.size > 5210000) {
+          notificationError("Maksymalny rozmiar zdjęcia to 5 MB");
+          return;
+        }
+        this.loadingPhoto = true;
+        let reader = new FileReader();
+        let _this = this;
+        reader.readAsDataURL(file);
+        reader.onload = function () {
+          window.axios.post(route('api.dish.photoAdd'), {
+            file: reader.result,
+            photoId: _this.form.photoId
+          }).then(response => {
+            _this.loadingPhoto = false;
+            _this.photoUrl = response.data.photoUrl;
+            _this.form.photoId = response.data.photoId;
+          }).catch(error => {
+              console.error(error)
+              notificationError(error.response.data);
+              _this.loadingPhoto = false;
+            });
+        };
+        reader.onerror = function (error) {
+          console.error(error)
+          notificationError(error.response.data);
+        };
+      },
+      deletePhoto() {
+        window.axios.delete(route('api.dish.photoDelete', this.form.photoId))
+          .then(response => {
+            this.form.photoId = ''
+            this.photoUrl = ''
+            notification(response.data, 'success')
+          })
+          .catch(error => {
+            notificationError(error.response.data);
+          });
       },
     }
   }

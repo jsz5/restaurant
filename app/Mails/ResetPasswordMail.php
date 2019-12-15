@@ -15,7 +15,6 @@ class ResetPasswordMail extends Mailable
 
     public $sendToMail;
     public $link;
-    private const SUBJECT="Zmiana hasła w systemie restauracji \"W-17 wydział smaków\"";
 
     /**
      * ResetPasswordMail constructor.
@@ -36,7 +35,7 @@ class ResetPasswordMail extends Mailable
      */
     public function build()
     {
-        return $this->view('mails.resetPassword') ->subject(self::SUBJECT);
+        return $this->view('mails.resetPassword') ->subject("Zmiana hasła " . config('app.name'));;
     }
 
     /**
