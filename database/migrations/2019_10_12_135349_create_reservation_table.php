@@ -21,6 +21,7 @@ class CreateReservationTable extends Migration
             $table->foreign('table_id')->references('id')->on('table');
             $table->string('email');
             $table->string('phone')->nullable();
+            $table->softDeletes();
             $table->timestamps();
         });
     }

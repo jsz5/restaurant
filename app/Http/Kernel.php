@@ -6,6 +6,7 @@ use App\Http\Middleware\HeaderHandler;
 use App\Http\Middleware\JwtHandler;
 use App\Http\Middleware\MyAccount;
 use App\Http\Middleware\MyReservation;
+use App\Http\Middleware\MyStatistics;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
 class Kernel extends HttpKernel
@@ -71,6 +72,7 @@ class Kernel extends HttpKernel
         'role_or_permission' => \Spatie\Permission\Middlewares\RoleOrPermissionMiddleware::class,
         'myAccount'=> MyAccount::class,
         'myReservation'=> MyReservation::class,
+        'myStatistics'=> MyStatistics::class,
         'jwt.auth' => \Tymon\JWTAuth\Http\Middleware\Authenticate::class,
         'jwt.refresh' => \Tymon\JWTAuth\Http\Middleware\RefreshToken::class,
         'jwt.handler'=>JwtHandler::class

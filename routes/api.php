@@ -62,7 +62,11 @@ Route::name('api.')->namespace('API')->middleware(['jwt.auth'])->group(function 
     Route::get('/dish/{dish}', 'ApiDishController@load')->name('dish.load')
         ->middleware('permission:dishShow');
     Route::post('/dish', 'ApiDishController@store')->name('dish.store')
-        ->middleware('permission:tableCreate');
+        ->middleware('permission:dishCreate');
+    Route::post('/dish/photo', 'ApiDishPhotoController@store')->name('dish.photoAdd')
+        ->middleware('permission:dishCreate');
+    Route::delete('/dish/photo/{id}', 'ApiDishPhotoController@destroy')->name('dish.photoDelete')
+        ->middleware('permission:dishCreate');
     Route::post('/dish/update', 'ApiDishController@update')->name('dish.update')
         ->middleware('permission:dishEdit');
     Route::delete('/dish/{dish}', 'ApiDishController@delete')->name('dish.delete')
@@ -144,5 +148,13 @@ Route::name('api.')->namespace('API')->middleware(['jwt.auth'])->group(function 
         Route::post('/store-worker', 'ApiUserController@storeWorker')->name('storeWorker')->middleware('permission:createUser');
         Route::delete('/{id}', 'ApiUserController@destroy')->name('delete')->middleware('permission:userDelete');
         Route::get('/vouchers', 'ApiVoucherController@myVoucher')->name('getMyVoucher')->middleware('permission:showVoucher');
+    });
+
+    Route::name('statistics.')->prefix('statistics')->group(function () {
+        Route::get('/year/{year}', 'ApiStatisticsController@yearStatisticsIndex')->name('yearIndex')->middleware('permission:statisticsShow');
+        Route::get('/waiter/{year}/{id}', 'ApiStatisticsController@waiterStatisticsIndex')->name('waiterIndex')->middleware('myStatistics');
+        Route::get('/customer/{year}', 'ApiStatisticsController@customerYearStatisticsIndex')->name('customerYearIndex')->middleware('permission:statisticsShow');
+        Route::get('/customer-interval/{from}/{to}', 'ApiStatisticsController@customerIntervalStatisticsIndex')->name('customerIntervalIndex')->middleware('permission:statisticsShow');
+        Route::get('/favourite-dishes', 'ApiStatisticsController@favouriteDishesStatisticsIndex')->name('favouriteDishesIndex')->middleware('permission:statisticsShow');
     });
 });

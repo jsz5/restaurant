@@ -333,7 +333,7 @@
         } else {
           this.menuItems = [];
           this.allMenuItems.forEach(item => {
-            if (item.category_id === id) {
+            if (item.category.id === id) {
               this.menuItems.push(item);
             }
           });
