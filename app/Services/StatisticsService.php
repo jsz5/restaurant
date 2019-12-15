@@ -64,8 +64,64 @@ class StatisticsService
      * [dish_id => number of people who likes this dish]
      * @return FavouriteDish[]|Collection
      */
-    public function favouriteDishes(){
+    public function favouriteDishes()
+    {
         $dishes = FavouriteDish::all()->countBy('dish_id');
         return $dishes->sort()->reverse();
+    }
+
+    /**
+     * Return array of customer who spend the most on online orders
+     * [userId => sum of spend cash in given interval]
+     * @param string $year
+     * @return array
+     */
+    public function customerStatisticsYear(string $year): array
+    {
+        $data = [];
+
+        Order::where([['status', StatusTypesInterface::TYPE_FINISHED], ['customer_id', '!=', null]])
+            ->whereYear('created_at', $year)->get()->each(function ($order) use (&$data) {
+                $sum = 0;
+                foreach ($order->check as $item) {
+                    $sum += (float)$item->dish->price * (float)$item->amount;
+                }
+                $sum = round($sum * (1 - (float)$order->discount), 2);
+                if (isset($data[$order->customer_id])) {
+                    $data[$order->customer_id] += $sum;
+                } else {
+                    $data[$order->customer_id] = $sum;
+                }
+            });
+        arsort($data, SORT_NUMERIC);
+        return $data;
+    }
+
+    /**
+     * Return array of customer who spend the most on online orders
+     * [userId => sum of spend cash in given interval]
+     * @param string $from
+     * @param string $to
+     * @return array
+     */
+    public function customerStatisticsInterval(string $from,string $to): array
+    {
+        $data = [];
+
+        Order::where([['status', StatusTypesInterface::TYPE_FINISHED], ['customer_id', '!=', null]])
+            ->whereBetween('created_at', [$from, $to])->get()->each(function ($order) use (&$data) {
+                $sum = 0;
+                foreach ($order->check as $item) {
+                    $sum += (float)$item->dish->price * (float)$item->amount;
+                }
+                $sum = round($sum * (1 - (float)$order->discount), 2);
+                if (isset($data[$order->customer_id])) {
+                    $data[$order->customer_id] += $sum;
+                } else {
+                    $data[$order->customer_id] = $sum;
+                }
+            });
+        arsort($data, SORT_NUMERIC);
+        return $data;
     }
 }
