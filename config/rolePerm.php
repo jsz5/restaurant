@@ -36,7 +36,8 @@ return[
         "onlineReservationDelete",
         "onlineReservationIndex",
         "createUser",
-        "createVoucher"
+        "createVoucher",
+        "statisticsShow"
     ],
     "worker"=>[
         "reservationCreate",
@@ -59,7 +60,8 @@ return[
         "tableIndex",
         "tableShow",
         "dishIndex",
-        "reservationShow"
+        "reservationShow",
+        "workerStatisticsShow"
 
     ],
     "customer"=>[
