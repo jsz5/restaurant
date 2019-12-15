@@ -145,7 +145,6 @@
             this.menuItems.forEach(item => {
               item.amount = 0
             });
-            console.log(this.menuItems)
           }).catch(error => {
           console.error(error)
         })
@@ -156,7 +155,6 @@
             this.orderedItems = response.data.dishes;
             this.orderSum = response.data.sum;
             this.orderStatus = response.data.status;
-            console.log(this.orderStatus)
             this.orderChangeDisabled = this.orderStatus !== "ordered";
           }).catch(error => {
           console.error(error)
@@ -219,7 +217,6 @@
         this.orderedItems.forEach(item => {
           orderArray.push({amount: item.amount, dishId: item.id});
         });
-        console.log(this.token);
         axios.post(route('api.order.updateOrderFromWorker'), {
           token: this.token,
           items: orderArray,

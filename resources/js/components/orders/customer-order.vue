@@ -327,7 +327,6 @@
       },
       setMenuItems() {
         let id = this.selectedCategory;
-        console.log(id);
         if (id === -1) {
           this.menuItems = this.allMenuItems;
         } else {
