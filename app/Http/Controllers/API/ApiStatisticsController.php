@@ -5,6 +5,7 @@ namespace App\Http\Controllers\API;
 use App\Http\Controllers\Controller;
 use App\Services\StatisticsService;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 
 class ApiStatisticsController extends Controller
@@ -32,6 +33,25 @@ class ApiStatisticsController extends Controller
      */
     public function waiterStatisticsIndex(string $year, int $waiterId)
     {
+        return $this->waiterStatistics($year,$waiterId);
+    }
+
+    /**
+     * @param string $year
+     * @return JsonResponse
+     */
+    public function waiterMyStatisticsIndex(string $year)
+    {
+       return $this->waiterStatistics($year,Auth::id());
+    }
+
+    /**
+     * @param string $year
+     * @param int $waiterId
+     * @return JsonResponse
+     */
+    private function waiterStatistics(string $year, int $waiterId)
+    {
         try {
             return response()->json(['statistics' => $this->getStatisticsService()->waiterStatistics($year, $waiterId)], 200);
         } catch (\Exception $exception) {
@@ -41,7 +61,6 @@ class ApiStatisticsController extends Controller
             return response()->json('Wystąpił nieoczekiwany błąd', 500);
         }
     }
-
 
     /**
      * @param string $year

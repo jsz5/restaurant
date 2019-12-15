@@ -131,7 +131,6 @@
             }, 5000);
           },
           error => {
-            console.log(error.response);
             if (error.response.status === 422) {
               Vue.toasted.error("Podano niepoprawne dane, spróbuj jeszcze raz").goAway(3000);
             } else {

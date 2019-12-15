@@ -152,7 +152,8 @@ Route::name('api.')->namespace('API')->middleware(['jwt.auth'])->group(function 
 
     Route::name('statistics.')->prefix('statistics')->group(function () {
         Route::get('/year/{year}', 'ApiStatisticsController@yearStatisticsIndex')->name('yearIndex')->middleware('permission:statisticsShow');
-        Route::get('/waiter/{year}/{id}', 'ApiStatisticsController@waiterStatisticsIndex')->name('waiterIndex')->middleware('myStatistics');
+        Route::get('/waiter/{year}/{id}', 'ApiStatisticsController@waiterStatisticsIndex')->name('waiterIndex')->middleware('permission:statisticsShow');
+        Route::get('/waiter/{year}', 'ApiStatisticsController@waiterMyStatisticsIndex')->name('myWaiterIndex')->middleware('permission:workerStatisticsShow');
         Route::get('/customer/{year}', 'ApiStatisticsController@customerYearStatisticsIndex')->name('customerYearIndex')->middleware('permission:statisticsShow');
         Route::get('/customer-interval/{from}/{to}', 'ApiStatisticsController@customerIntervalStatisticsIndex')->name('customerIntervalIndex')->middleware('permission:statisticsShow');
         Route::get('/favourite-dishes', 'ApiStatisticsController@favouriteDishesStatisticsIndex')->name('favouriteDishesIndex')->middleware('permission:statisticsShow');
