@@ -72,7 +72,6 @@ class Kernel extends HttpKernel
         'role_or_permission' => \Spatie\Permission\Middlewares\RoleOrPermissionMiddleware::class,
         'myAccount'=> MyAccount::class,
         'myReservation'=> MyReservation::class,
-        'myStatistics'=> MyStatistics::class,
         'jwt.auth' => \Tymon\JWTAuth\Http\Middleware\Authenticate::class,
         'jwt.refresh' => \Tymon\JWTAuth\Http\Middleware\RefreshToken::class,
         'jwt.handler'=>JwtHandler::class

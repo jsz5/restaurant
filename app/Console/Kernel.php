@@ -26,8 +26,8 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-//        $schedule->command('reservation:remainder')->dailyAt('12:00');
-        $schedule->command('reservation:remainder')->everyMinute();
+       $schedule->command('reservation:remainder')->dailyAt('12:00');
+        // $schedule->command('reservation:remainder')->everyMinute();
     }
 
     /**

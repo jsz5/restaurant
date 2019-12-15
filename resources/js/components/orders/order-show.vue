@@ -68,7 +68,6 @@
                       this.orderSum = response.data.sum.toFixed(2);
                       this.orderStatus = response.data.status_pl
                       this.orderStatusEn = response.data.status
-                      console.log(response)
                   }).catch(error => {
                     console.error(error)
                 })

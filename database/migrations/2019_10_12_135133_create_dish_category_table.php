@@ -16,7 +16,6 @@ class CreateDishCategoryTable extends Migration
         Schema::create('dish_category', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
-            $table->text('description')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });
