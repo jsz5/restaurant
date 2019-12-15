@@ -32,7 +32,7 @@ class ApiDishController extends Controller
     public function load(Dish $dish)
     {
         try {
-            return response()->json($dish);
+            return response()->json((new DishService())->getDish($dish));
         } catch (\Exception $e) {
             Log::notice("Error deleting data all:" . $e);
             Log::notice("Error deleting data msg:" . $e->getMessage());
@@ -51,6 +51,7 @@ class ApiDishController extends Controller
             $dish->delete();
             return response()->json("Danie usunięte", 201);
         } catch (\Exception $e) {
+            dd($e);
             Log::notice("Error deleting data all:" . $e);
             Log::notice("Error deleting data msg:" . $e->getMessage());
             Log::notice("Error deleting data code:" . $e->getCode());
