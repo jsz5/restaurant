@@ -80,6 +80,7 @@
           {id: 3, text: "Kategorie dań", link: route("dishCategory.index")},
           {id: 4, text: "Kelnerzy", link: route("worker.index")},
           {id: 5, text: "Kupony", link: route("voucher.add")},
+          {id: 6, text: "Statystyki", link: route("admin.statistics")},
           {id: 7, text: "Stoliki", link: route("table.index")}
         ],
         waiterMenu: [

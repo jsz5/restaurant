@@ -2,8 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-
 class StatisticsController extends Controller
 {
 
@@ -17,4 +15,22 @@ class StatisticsController extends Controller
     {
         return view('statistics/workerList');
     }
+
+
+    public function listAllWorkers()
+    {
+        return view('statistics/workersList');
+    }
+
+    public function allStatistics()
+    {
+        return view('statistics/adminList');
+    }
+
+    public function mainStatistics()
+    {
+        return view('statistics/mainAdmin');
+    }
+
+
 }
