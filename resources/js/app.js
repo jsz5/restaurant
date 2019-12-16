@@ -133,7 +133,8 @@ Vue.component('customer-order', require('./components/orders/customer-order').de
 //VOUCHERS
 Vue.component('admin-create-voucher', require('./components/vouchers/admin-create-voucher').default);
 
-
+//STATISTICS
+Vue.component('my-worker-statistics', require('./components/statistics/my-worker-statistics').default);
 
 Vue.component('homepage', require('./components/homepage').default);
 
