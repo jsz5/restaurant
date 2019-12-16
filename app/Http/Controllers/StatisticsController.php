@@ -32,5 +32,15 @@ class StatisticsController extends Controller
         return view('statistics/mainAdmin');
     }
 
+    /**
+     * @param $workerId
+     * @param $year
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function workerStatistics($workerId, $year)
+    {
+        return view('statistics/givenWorkerList', compact('year', 'workerId'));
+    }
+
 
 }

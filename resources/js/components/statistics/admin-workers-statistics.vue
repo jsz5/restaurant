@@ -1,42 +1,31 @@
 <template>
 	<v-row class="justify-center align-center">
-		<v-col cols="12" lg="5" ma-2 md="8" sm="10" xl="4">
+		<v-col cols="12" lg="8" ma-2 md="10" sm="12" xl="6">
 			<v-card class="transparent_form">
-				<v-col class="justify-center align-center">
-					<v-card-title>
-						Statystyki restauracji
-						<v-spacer></v-spacer>
-						<v-select
-							:items="yearItems"
-							label="Wybierz rok"
-							outlined
-							v-model="year"
-							v-on:change="getData()"
-						/>
-					</v-card-title>
-					<v-card-text>
-						<v-simple-table>
-							<template v-slot:default>
-								<thead>
-								<tr>
-									<th class="text-center">Miesiąc</th>
-									<th class="text-center">Ilość wszystkich zamówień</th>
-								</tr>
-								</thead>
-								<tbody>
-								<tr :key="item.id" v-for="(item, index) in statisticsItems">
-									<td>{{ getMonth(index) }}</td>
-									<td>{{ item }}</td>
-								</tr>
-								</tbody>
-							</template>
-						</v-simple-table>
-					</v-card-text>
-				</v-col>
+				<v-card-title>
+					Pracownicy
+					<v-spacer></v-spacer>
+					<v-select
+						:items="yearItems"
+						label="Wybierz rok"
+						outlined
+						v-model="year"
+						v-on:change="getData(item)"
+					/>
+				</v-card-title>
+				<v-data-table
+					:headers="headers"
+					:items="workers"
+				>
+					<template v-slot:item.action="{ item }">
+						<v-btn :disabled="!year" @click="getStatistics(item.id)"  text>Pokaż statystyki</v-btn>
+<!--						<v-icon>edit</v-icon>-->
+					</template>
+
+				</v-data-table>
 			</v-card>
 		</v-col>
 	</v-row>
-
 </template>
 
 <script>
@@ -45,34 +34,45 @@
     name: "admin-workers-statistics",
     data() {
       return {
-        statisticsItems: [],
+        search: '',
+        workers: [],
         headers: [
-          {text: 'Miesiąc', value: 'name',},
-          {text: 'Ilość zamówień', value: 'price'},
+          {
+            text: 'ID',
+            value: 'id'
+          },
+          {
+            text: 'Imię',
+            value: 'name'
+          },
+          {
+            text: 'Nazwisko',
+            value: 'surname'
+          },
+          {
+            text: 'E-mail',
+            value: 'email'
+          },
+          {
+            text: 'Statystyki',
+            value: 'action'
+          },
         ],
         yearItems: ['2018', '2019', '2020'],
         year: '',
-        months :[
-          'Styczeń', 'Luty', 'Marzec', 'Kwiecień', 'Maj',
-          'Czerwiec', 'Lipiec', 'Sierpień', 'Wrzesień',
-          'Październik', 'Listopad', 'Grudzień'
-        ]
-      }
+      };
+    },
+    beforeMount() {
+      axios.get(route('api.user.fetchWorkers')).then(result => {
+        this.workers = result.data;
+      }).catch(error => {
+        console.error(error.response);
+      });
     },
     methods: {
-      getData() {
-        console.log(this.months[1])
-        axios.get(route('api.statistics.yearIndex', this.year))
-          .then(response => {
-            console.log(response)
-            this.statisticsItems = response.data.statistics
-          }).catch(error => {
-          console.error(error)
-        })
-      },
-      getMonth(index) {
-        return this.months[index-1]
-      }
+     getData(id){
+       console.log(id)
+		 }
     }
   }
 </script>
