@@ -108,7 +108,6 @@
       });
       axios.get(route('api.dish.load', this.id)).then(response => {
         let keys = Object.keys(this.form);
-        console.log(response.data)
         for (let key of keys) {
           this.form[key] = response.data[key];
         }
