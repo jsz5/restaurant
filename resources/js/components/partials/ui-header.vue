@@ -106,7 +106,8 @@
         ],
         employerMenu: [
           {id: 1, text: "moje konto", link: route("user.myAccount")},
-          {id: 2, text: "wyloguj", link: "logout"}
+          {id: 2, text: "moje statystyki", link: route("myStatistics.asWorker")},
+          {id: 3, text: "wyloguj", link: "logout"}
         ],
         loggedUserMenu: [],
         menu: [],

@@ -63,4 +63,5 @@ Route::middleware('auth','jwt.auth')->group(function () {
     Route::get('/tables/waiter-index', 'TableController@waiterIndex')->name('table.waiterIndex')->middleware('permission:tableIndex');
 
     Route::get('/vouchers/generate', 'VoucherController@add')->name('voucher.add')->middleware('permission:createVoucher');
+    Route::get('/my-statistics/worker', 'StatisticsController@listWorker')->name('myStatistics.asWorker')->middleware('permission:workerStatisticsShow');
 });
