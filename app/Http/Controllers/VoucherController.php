@@ -2,8 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-
 class VoucherController extends Controller
 {
 
@@ -16,5 +14,10 @@ class VoucherController extends Controller
     public function add()
     {
         return view('vouchers/admin-add');
+    }
+
+    public function listCustomerVouchers()
+    {
+        return view('vouchers/customerIndex');
     }
 }
