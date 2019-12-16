@@ -34,8 +34,9 @@
 							:type="showPassword ? 'text' : 'password'"
 							:rules="[rules.required]"
 							@click:append="showPassword = !showPassword"
+							v-on:keyup.enter="login"
 							v-model="form.password">
-						>
+							>
 						</v-text-field>
 						<v-btn
 							text
@@ -54,8 +55,8 @@
 					</v-form>
 				</v-card-text>
 				<v-card-actions>
-					<v-spacer />
-					<v-btn color="primary" @click="login">Zaloguj</v-btn>
+					<v-spacer/>
+					<v-btn :loading="isLoading" color="primary" @click="login">Zaloguj</v-btn>
 				</v-card-actions>
 			</v-card>
 		</v-col>
@@ -65,46 +66,56 @@
 <script>
   export default {
     name: "login-form",
-    data(){return {
-      showPassword: false,
-      form: {
-        email: "",
-        password: "",
+    data() {
+      return {
+        showPassword: false,
+        form: {
+          email: "",
+          password: "",
+        },
+        snackbarShow: false,
+        text: "",
+        isLoading: false,
+        rules: {
+          required: value => !!value || "To pole jest wymagane",
+          emailRules: v =>
+            /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(v) ||
+            "Niepoprawny adres email",
+        },
+      }
+    },
+    methods: {
+      login() {
+        this.isLoading = true
+        axios.post('/login', {
+          'email': this.form.email,
+          'password': this.form.password,
+        })
+          .then((response) => {
+            Vue.toasted.success("Zostałeś pomyślnie zalogowany do systemu").goAway(5000);
+            setTimeout(function () {
+              window.location.href = "/"
+            }, 3000);
+          })
+          .catch(error => {
+            if (error.response.status === 422) {
+              Vue.toasted.error("Podano niepoprawne dane, spróbuj jeszcze raz").goAway(3000);
+            } else {
+              Vue.toasted.error(error.response.data).goAway(3000);
+            }
+          })
+          .finally(() => {
+              this.isLoading = false
+            }
+          );
       },
-      snackbarShow: false,
-      text: "",
-      rules: {
-        required: value => !!value || "To pole jest wymagane",
-        emailRules: v =>
-          /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(v) ||
-          "Niepoprawny adres email",
+      register() {
+        window.location.href = route('register');
+      },
+      forgetPassword() {
+        window.location.href = route('password.request')
       },
     }
-  },
-  methods: {
-    login() {
-      axios.post('/login', {
-        'email': this.form.email,
-        'password': this.form.password,
-      })
-        .then((response)=> {
-          Vue.toasted.success("Zostałeś pomyślnie zalogowany do systemu").goAway(5000);
-          setTimeout(function(){window.location.href="/"} , 3000);
-        })
-        .catch(error => {
-          if(error.response.status === 422){
-            Vue.toasted.error("Podano niepoprawne dane, spróbuj jeszcze raz").goAway(3000);
-          }else{
-            Vue.toasted.error(error.response.data).goAway(3000);
-          }});
-    },
-    register() {
-      window.location.href = route('register');
-    },
-    forgetPassword() {
-      window.location.href=route('password.request')
-    },
-  }
   }
 </script>
 
