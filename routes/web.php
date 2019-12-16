@@ -61,4 +61,6 @@ Route::middleware('auth','jwt.auth')->group(function () {
     Route::get('/orders/waiter-edit/{orderToken}', 'OrderController@editWaiter')->name('order.editWaiter');
     
     Route::get('/tables/waiter-index', 'TableController@waiterIndex')->name('table.waiterIndex')->middleware('permission:tableIndex');
+
+    Route::get('/vouchers/generate', 'VoucherController@add')->name('voucher.add')->middleware('permission:createVoucher');
 });

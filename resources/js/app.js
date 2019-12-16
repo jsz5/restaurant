@@ -130,6 +130,9 @@ Vue.component('customer-my-orders', require('./components/orders/customer-my-ord
 Vue.component('customer-order', require('./components/orders/customer-order').default);
 
 
+//VOUCHERS
+Vue.component('admin-create-voucher', require('./components/vouchers/admin-create-voucher').default);
+
 
 
 Vue.component('homepage', require('./components/homepage').default);
