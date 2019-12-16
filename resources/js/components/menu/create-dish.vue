@@ -8,10 +8,10 @@
             ref="form">
             <v-text-field :rules="[rules.required]" label="Nazwa" v-bind:error-messages="errors.name"
                           v-model="form.name" outlined
-            ></v-text-field>
+            />
             <v-text-field :rules="[rules.required, rules.numeric]" label="Cena" v-bind:error-messages="errors.price"
                           v-model="form.price" outlined
-            ></v-text-field>
+            />
             <v-select
               :rules="[rules.required]"
               item-text="name"
@@ -22,6 +22,14 @@
               v-bind:items="dishCategory"
               v-model="form.category_id">
             </v-select>
+            <v-textarea
+              :rules="[rules.required]"
+              label="Opis dania"
+              name="input-7-4"
+              outlined
+              v-bind:error-messages="errors.category_id"
+              v-bind:items="dishCategory"
+              v-model="form.comment"/>
             <input
               @change="uploadPhoto($event.target.files[0])"
               id="fileInput"
@@ -36,7 +44,7 @@
             >Dodaj zdjęcie
             </v-btn>
             <v-card v-if="photoUrl" flat tile color="transparent" height="100%">
-              <v-img :src="photoUrl" aspect-ratio="1.7" contain></v-img>
+              <v-img :src="photoUrl" aspect-ratio="1.7" contain/>
               <v-card-actions>
                 <v-btn
                   @click="deletePhoto()"
@@ -47,11 +55,10 @@
           </v-form>
         </v-card-text>
         <v-card-actions>
-          <v-row class="justify-space-between">
+          <v-row class="justify-space-between mx-3" >
             <v-btn @click="cancel" text>Anuluj</v-btn>
             <v-btn @click="save" class="yellow_form_button" color="secondary" v-bind:loading="loading">Zapisz</v-btn>
           </v-row>
-
         </v-card-actions>
       </v-card>
     </v-col>
@@ -76,7 +83,8 @@
           name: '',
           price: '',
           category_id: '',
-          photoId: ''
+          photoId: '',
+          comment: ''
         },
         errors: {
           name: [],
