@@ -189,7 +189,12 @@
         };
       },
       deletePhoto() {
-        window.axios.delete(route('api.dish.photoDelete', this.form.photoId))
+        let _this=this
+        window.axios.post(route('api.dish.removePhoto'),
+          {
+            "photoId":_this.form.photoId,
+            "id":_this.form.id
+          })
           .then(response => {
             this.form.photoId = ''
             this.form.photo_path = ''
