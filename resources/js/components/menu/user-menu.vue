@@ -1,24 +1,5 @@
 <template>
 	<v-row class="justify-space-around">
-		<!--		<v-col cols="12" sm="7" md="5" lg="4" xl="3">-->
-		<!--			<v-simple-table>-->
-		<!--				<template v-slot:default>-->
-		<!--					<thead>-->
-		<!--					<tr>-->
-		<!--						<th class="text-left">Kategorie</th>-->
-		<!--					</tr>-->
-		<!--					</thead>-->
-		<!--					<tbody>-->
-		<!--					<tr>-->
-		<!--						<td @click="setMenuItems(-1)">Wszystkie</td>-->
-		<!--					</tr>-->
-		<!--					<tr v-for="item in categoryItems" :key="item.id">-->
-		<!--						<td @click="setMenuItems(item.id)">{{ item.name }}</td>-->
-		<!--					</tr>-->
-		<!--					</tbody>-->
-		<!--				</template>-->
-		<!--			</v-simple-table>-->
-		<!--		</v-col>-->
 		<v-col cols="12" sm="7" md="6" lg="6" xl="5">
 			<v-select
 				class="beige_select"
@@ -28,7 +9,7 @@
 				label="Kategoria"
 				v-model="categoryPicked"
 				v-on:change="setMenuItems()"
-			></v-select>
+			/>
 			<v-data-table
 				:headers="headers"
 				:items="menuItems"
@@ -39,6 +20,9 @@
 					<tr>
 						<td class="text-xs-left">{{ props.item.name }}</td>
 						<td class="text-xs-left">{{ props.item.price}}</td>
+						<td v-if="favourite"><v-rating @input="changeFavourite(props.item)" clearable length="1" v-model="props.item.favourite"/></td>
+						<td v-if="props.item.photoPath"><v-img  :src="props.item.photoPath" aspect-ratio="1.7" contain/></td>
+						<td v-else>Brak zdjecia</td>
 					</tr>
 				</template>
 			</v-data-table>
@@ -47,27 +31,83 @@
 </template>
 
 <script>
+  import {notification, notificationError} from "../../Notifications";
+
   export default {
     name: "user-menu",
     props: ['dishes', 'categories'],
     data() {
       return {
         menuItems: [],
-        headers: [
+        headersAuthUser: [
           {text: 'Nazwa', value: 'name',},
           {text: 'Cena (zł)', value: 'price'},
+					{text: 'Ulubione', value: 'action'},
+					{text: 'Zdjęcie', value: 'photoPath'}
         ],
+				headerQuest:[
+          {text: 'Nazwa', value: 'name',},
+          {text: 'Cena (zł)', value: 'price'},
+          {text: 'Zdjęcie', value: 'photoPath'}
+				],
         categoryItems: [],
         allMenuItems: [],
         categoryPicked: -1,
+				headers:[],
+				rating: 0,
+				favourite: false,
       }
     },
     beforeMount() {
+			if(this.dishes.length > 0){
+			  if(this.dishes[0].hasOwnProperty('isFavourite')){
+					this.headers = this.headersAuthUser
+					this.favourite = true
+          for (let dish of this.dishes) {
+            if(dish.isFavourite === true){
+              dish.favourite = 1
+						}else{
+              dish.favourite = 0
+						}
+          }
+        }else{
+          this.favourite = false
+          this.headers = this.headerQuest
+        }
+			}
       this.menuItems = this.dishes;
       this.allMenuItems = this.dishes;
       this.categoryItems = [{'id': -1, 'name': 'Wszystkie'}].concat(this.categories)
     },
     methods: {
+      changeFavourite(item){
+				if(item.favourite === 1){
+				  this.addFavourite(item.id)
+				}else{
+				  this.removeFavourite(item.id)
+				}
+			},
+      addFavourite(id){
+        axios.post(route('api.favouriteDish.store'), {id: id}).then(response => {
+          notification('Danie zostało pomyślnie dodane do Twoich ulubionych', 'success');
+        }).catch(error => {
+          if (error.response.statusCode === 500) {
+            notificationError(error.response.data);
+          } else {
+            notification('Wystąpił błąd podczas dodawania dania do Twoich ulubionych', 'error');
+            this.fillErrors(error);
+          }
+        })
+			},
+      removeFavourite(id){
+        axios.post(route('api.favouriteDish.delete'),  {id: id})
+          .then(response => {
+            notification('Danie zostało usunięte z Twoich ulubionych', 'success');
+          }).catch(error => {
+          notification('Wystąpił błąd podczas usuwania dania z Twoich ulubionych', 'error');
+          console.error(error)
+        })
+			},
       setMenuItems() {
         let id = this.categoryPicked;
         if (id === -1) {
@@ -75,7 +115,7 @@
         } else {
           this.menuItems = [];
           this.allMenuItems.forEach(item => {
-            if (item.category_id === id) {
+            if (item.category.id === id) {
               this.menuItems.push(item)
             }
           })
