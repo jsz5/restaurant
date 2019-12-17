@@ -190,7 +190,6 @@
       },
       deletePhoto() {
         let _this=this
-        console.log(this.form.id)
         window.axios.post(route('api.dish.removePhoto'),
           {
             "photoId":_this.form.photoId,
@@ -202,7 +201,6 @@
             notification(response.data, 'success')
           })
           .catch(error => {
-            console.log(error)
             notificationError(error.response.data);
           });
       },
