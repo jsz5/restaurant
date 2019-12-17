@@ -29,6 +29,7 @@ Route::middleware('auth','jwt.auth')->group(function () {
     Route::get('/table/{id}', 'TableController@show')->name('table.show')->middleware('permission:tableShow');
     Route::get('/table-waiter/{id}', 'TableController@showWaiter')->name('table.showWaiter')->middleware('permission:tableShow');
     Route::get('/dish', 'DishController@index')->name('dish.index')->middleware('permission:dishIndex');
+    Route::get('/myFavouriteDishes', 'FavouriteDishController@index')->name('myFavouriteDishes.index')->middleware('permission:dishIndex');
     Route::get('/menu-admin', 'DishController@adminMenu')->name('menu.admin');
     Route::get('/dish/edit/{id}', 'DishController@edit')->name('dish.edit')->middleware('permission:dishEdit');
     Route::get('/dishCategory', 'DishCategoryController@index')->name('dishCategory.index')->middleware('permission:dishCategoryIndex');
