@@ -288,7 +288,8 @@ class ApiOrderController extends Controller
                     'sumWithoutDiscount' => $sum,
                     'status' => $order->status,
                     'status_pl' => trans('app.status.' . $order->status),
-                    'order' => $order
+                    'order' => $order,
+                    'address' => $order->address
                 ],
                     200);
             }
