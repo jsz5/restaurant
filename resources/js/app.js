@@ -96,6 +96,7 @@ Vue.component('user-menu', require('./components/menu/user-menu').default);
 Vue.component('admin-menu', require('./components/menu/admin-menu').default);
 Vue.component('edit-dish', require('./components/menu/edit-dish').default);
 Vue.component('create-dish', require('./components/menu/create-dish').default);
+Vue.component('user-favourite-dishes', require('./components/menu/user-favourite-dishes').default);
 
 //TABLES
 Vue.component('admin-tables-index', require('./components/tables/admin-tables-index').default);
