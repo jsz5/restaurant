@@ -69,7 +69,7 @@
             axios
               .get(
                 route("api.order.loadOrder", {
-                  token: this.expanded[0].token
+                  orderToken: this.expanded[0].token
                 })
               )
               .then(response => {
