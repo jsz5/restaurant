@@ -7,6 +7,7 @@ use App\Interfaces\StatusTypesInterface;
 use App\Models\Check;
 use App\Models\FavouriteDish;
 use App\Models\Order;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\Auth;
 
@@ -94,7 +95,14 @@ class StatisticsService
                 }
             });
         arsort($data, SORT_NUMERIC);
-        return $data;
+        $arr = [];
+        foreach ($data as $userId => $amount){
+            if ($user = User::find($userId)) {
+                $user["amountSpend"] = $amount;
+                array_push($arr, $user);
+            }
+        }
+        return $arr;
     }
 
     /**
@@ -122,6 +130,15 @@ class StatisticsService
                 }
             });
         arsort($data, SORT_NUMERIC);
-        return $data;
+
+        $arr = [];
+        foreach ($data as $userId => $amount){
+            if ($user = User::find($userId)) {
+                $user["amountSpend"] = $amount;
+                array_push($arr, $user);
+            }
+        }
+
+        return $arr;
     }
 }
