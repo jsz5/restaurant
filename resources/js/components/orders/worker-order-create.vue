@@ -8,10 +8,10 @@
 				<v-text-field
 					v-model="search"
 					append-icon="search"
-					label="Search"
+					label="Wyszukaj"
 					single-line
 					hide-details
-				></v-text-field>
+				/>
 				<v-data-table
 					:headers="headers"
 					:items="menuItems"
@@ -55,8 +55,13 @@
 					<v-text-field
 						readonly
 						style="max-width: 5rem"
+						suffix="zł"
 						v-model="orderSum">
 					</v-text-field>
+					<v-textarea auto-grow label="Komentarz do zamówienia" outlined row-height="20" rows="5" v-model="comment"/>
+					<v-text-field
+						label="Kupon zniżkowy"
+						v-model="discount_token"/>
 				</v-card-text>
 				<v-card-actions>
 					<v-row class="justify-center">
@@ -94,7 +99,9 @@
           {text: 'Usuń', value: 'delete'},
         ],
         orderedItems: [],
-        orderSum: ''
+        orderSum: '',
+				comment: '',
+        discount_token: ''
       }
     },
     beforeMount() {
@@ -159,6 +166,8 @@
         axios.post(route('api.order.storeNewOrderFromWorker'), {
           table_id: this.tableid,
           items: orderArray,
+					comment: this.comment,
+          discount_token: this.discount_token
         }).then(
           response => {
             notificationSuccess(response.data);
