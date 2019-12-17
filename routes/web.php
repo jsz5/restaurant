@@ -16,16 +16,11 @@
 //});
 
 Route::get('/menu', 'DishController@menu')->name('menu');
-Route::post('api/user/store-customer', 'API\ApiUserController@storeCustomer')->name('storeCustomer');
 Route::get('/contact', 'ContactController@index')->name('contact');
 Route::get('/order/online', 'OrderController@createOrder')->name('order.create.online');
-Route::post('/api/order/online/update', 'API\ApiOrderController@updateOnlineOrder')->name('api.order.updateOnlineOrder');
-Route::post('/api/order/online', 'API\ApiOrderController@storeNewOrderOnline')->name('api.order.storeNewOrderOnline');
-Route::get('/api/order/show/{orderToken}', 'API\ApiOrderController@loadOrder')->name('api.order.loadOrder');
 Route::get('/order-show/{orderToken}', 'OrderController@show')->name('order.show');
 Route::get('/', 'HomeController@index')->name('home');
-Route::get('/api/user/auth-user', 'API\ApiUserController@myAccount')->name('api.user.authenticatedUser');
-Route::delete('/order/delete/{orderToken}', 'API\ApiOrderController@deleteOrder')->name('api.order.delete');
+
 
 Auth::routes();
 Route::middleware('auth','jwt.auth')->group(function () {
@@ -61,4 +56,8 @@ Route::middleware('auth','jwt.auth')->group(function () {
     Route::get('/orders/waiter-edit/{orderToken}', 'OrderController@editWaiter')->name('order.editWaiter');
     
     Route::get('/tables/waiter-index', 'TableController@waiterIndex')->name('table.waiterIndex')->middleware('permission:tableIndex');
+
+    Route::get('/vouchers/generate', 'VoucherController@add')->name('voucher.add')->middleware('permission:createVoucher');
+    Route::get('/vouchers/customerVouchers', 'VoucherController@listCustomerVouchers')->name('user.myVouchers')->middleware('permission:showVoucher');
+    Route::get('/my-statistics/worker', 'StatisticsController@listWorker')->name('myStatistics.asWorker')->middleware('permission:workerStatisticsShow');
 });

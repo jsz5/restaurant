@@ -14,26 +14,26 @@ class DishService
      * @param $dishes
      * @return array
      */
-    public function dishWithFavourite($dishes):array
+    public function dishWithFavourite($dishes): array
     {
-        $dishesArray=[];
+        $dishesArray = [];
         foreach ($dishes as $dish) {
-            $dishArray=[];
-            $path=null;
-            if($dish->photo){
-                $path=url('storage'.$dish->photo->path);
+            $dishArray = [];
+            $path = null;
+            if ($dish->photo) {
+                $path = url('storage' . $dish->photo->path);
             }
-            $dishArray['id'] =$dish->id;
-            $dishArray['name'] =$dish->name;
-            $dishArray['price'] =$dish->price;
-            $dishArray['category'] =$dish->category;
-            $dishArray['comment'] =$dish->comment;
-            $dishArray['photoPath'] =$path;
+            $dishArray['id'] = $dish->id;
+            $dishArray['name'] = $dish->name;
+            $dishArray['price'] = $dish->price;
+            $dishArray['category'] = $dish->category;
+            $dishArray['comment'] = $dish->comment;
+            $dishArray['photoPath'] = $path;
             if (Auth::user()) {
                 $favouriteDishArray = FavouriteDish::where('user_id', Auth::id())->pluck('dish_id')->toArray();
-                $dishArray['isFavourite']=in_array($dish->id, $favouriteDishArray) ? true : false;
+                $dishArray['isFavourite'] = in_array($dish->id, $favouriteDishArray) ? true : false;
             }
-            array_push($dishesArray,$dishArray);
+            array_push($dishesArray, $dishArray);
         }
         return $dishesArray;
     }
@@ -46,21 +46,21 @@ class DishService
     public function dishOnlyFavourite($dishes)
     {
         $arr = [];
-        if (Auth::user()){
+        if (Auth::user()) {
             $favouriteDishArray = FavouriteDish::where('user_id', Auth::id())->pluck('dish_id')->toArray();
             foreach ($dishes as $dish) {
-                if(in_array($dish->id, $favouriteDishArray)){
-                    $dishArray=[];
-                    $path=null;
-                    if($dish->photo){
-                        $path=url('storage'.$dish->photo->path);
+                if (in_array($dish->id, $favouriteDishArray)) {
+                    $dishArray = [];
+                    $path = null;
+                    if ($dish->photo) {
+                        $path = url('storage' . $dish->photo->path);
                     }
-                    $dishArray['id'] =$dish->id;
-                    $dishArray['name'] =$dish->name;
-                    $dishArray['price'] =$dish->price;
-                    $dishArray['comment'] =$dish->comment;
-                    $dishArray['photoPath'] =$path;
-                    array_push($arr,$dishArray);
+                    $dishArray['id'] = $dish->id;
+                    $dishArray['name'] = $dish->name;
+                    $dishArray['price'] = $dish->price;
+                    $dishArray['comment'] = $dish->comment;
+                    $dishArray['photoPath'] = $path;
+                    array_push($arr, $dishArray);
                 }
 
             }
@@ -72,19 +72,22 @@ class DishService
      * @param Dish $dish
      * @return array
      */
-    public function getDish(Dish $dish):array
+    public function getDish(Dish $dish): array
     {
-        $path=null;
-        if($dish->photo){
-            $path=url('storage'.$dish->photo->path);
+        $path = null;
+        $photoId=null;
+        if ($dish->photo) {
+            $path = url('storage' . $dish->photo->path);
+            $photoId=$dish->photo->id;
         }
-        return[
-          'id'=>$dish->id,
-          'name'=>$dish ->name,
-          'price'=>$dish->price,
-          'comment'=>$dish->comment,
-          'category_id'=>$dish->category_id,
-          'photo_path'=>$path
+        return [
+            'id' => $dish->id,
+            'name' => $dish->name,
+            'price' => $dish->price,
+            'comment' => $dish->comment,
+            'category_id' => $dish->category_id,
+            'photo_path' => $path,
+            'photoId' => $photoId
         ];
     }
 }

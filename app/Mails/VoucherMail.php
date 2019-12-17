@@ -32,7 +32,7 @@ class VoucherMail extends Mailable
     public function __construct(string $email, Voucher $voucher)
     {
         $this->sendToMail=$email;
-        $this->discount=$voucher->discount.'%';
+        $this->discount=($voucher->discount*100).'%';
         $this->token=$voucher->token;
         $this->date=Carbon::now()->addDays(14)->format('Y-m-d');
     }

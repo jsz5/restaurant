@@ -52,7 +52,8 @@ class OrderTableSeeder extends Seeder
                     $order->takeaway = false;
                     $order->email = $user->email;
                     $order->customer()->associate($user);
-                    $order->address = json_encode("adres");
+                    $order->address = json_encode(["street" => "Węgielna", "houseNumber" => "1", "flatNumber" => "1a",
+                        "postCode" => "59-234", "city" => "Wiejskie Góry"]);
                     $order->status = \App\Interfaces\StatusTypesInterface::TYPE_FINISHED;
                     $order->created_at = \Carbon\Carbon::today()->subDays($day);
                     $order->save();

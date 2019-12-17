@@ -14,7 +14,6 @@ import Toasted from 'vue-toasted';
 import 'material-design-icons-iconfont/dist/material-design-icons.css'
 import '@mdi/font/css/materialdesignicons.css'
 import Cookies from "./mixins/Cookies";
-import jwtService from "./config/jwtService";
 
 require('./bootstrap');
 
@@ -130,7 +129,12 @@ Vue.component('customer-my-orders', require('./components/orders/customer-my-ord
 Vue.component('customer-order', require('./components/orders/customer-order').default);
 
 
+//VOUCHERS
+Vue.component('admin-create-voucher', require('./components/vouchers/admin-create-voucher').default);
+Vue.component('user-vouchers-index', require('./components/vouchers/user-vouchers-index').default);
 
+//STATISTICS
+Vue.component('my-worker-statistics', require('./components/statistics/my-worker-statistics').default);
 
 Vue.component('homepage', require('./components/homepage').default);
 
