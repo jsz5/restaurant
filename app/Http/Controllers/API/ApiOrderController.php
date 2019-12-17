@@ -74,7 +74,7 @@ class ApiOrderController extends Controller
     {
         try {
             $orders = Order::status($type)
-                ->where('created_at',">=", Carbon::today())
+                ->where('created_at', ">=", Carbon::today())
                 ->with("check")
                 ->get();
             return response()->json(
@@ -190,14 +190,14 @@ class ApiOrderController extends Controller
             $order->table()->associate($request->table_id);
             $order->status = StatusTypesInterface::TYPE_ORDERED;
             $order->worker()->associate(Auth::user());
-            if ($request->discount_token){
+            if ($request->discount_token) {
                 $discount = (new VoucherService())->checkVoucher($request->discount_token);
                 if ($discount == 0) {
                     return response()->json("Nieważny kod promocyjny", 422);
                 }
                 $order->discount = $discount;
             }
-            if ($request->comment){
+            if ($request->comment) {
                 $order->comment = $request->comment;
             }
             $order->save();
@@ -235,14 +235,14 @@ class ApiOrderController extends Controller
             if (!$request->takeaway) {
                 $order->address = json_encode($request->address);
             }
-            if ($request->discount_token){
+            if ($request->discount_token) {
                 $discount = (new VoucherService())->checkVoucher($request->discount_token);
                 if ($discount == 0) {
                     return response()->json("Nieważny kod promocyjny", 422);
                 }
                 $order->discount = $discount;
             }
-            if ($request->comment){
+            if ($request->comment) {
                 $order->comment = $request->comment;
             }
             $order->status = StatusTypesInterface::TYPE_ORDERED;
@@ -284,10 +284,13 @@ class ApiOrderController extends Controller
                     $sum += (float)$item->dish->price * (float)$item->amount;
                 }
                 return response()->json(["dishes" => $dishes,
-                    'sum' => round($sum * (1 -$order->discount),2),
+                    'sum' => round($sum * (1 - $order->discount), 2),
                     'sumWithoutDiscount' => $sum,
-                    'status' => $order->status, 'status_pl' =>
-                    trans('app.status.' . $order->status)], 200);
+                    'status' => $order->status,
+                    'status_pl' => trans('app.status.' . $order->status),
+                    'order' => $order
+                ],
+                    200);
             }
             return response()->json('Wystąpił nieoczekiwany błąd', 500);
         } catch (Exception $e) {
@@ -344,14 +347,14 @@ class ApiOrderController extends Controller
                     $item->delete();
                 }
                 (new OrderService())->addItems($order, $request->items);
-                if ($request->discount_token && $order->discount == 0){
+                if ($request->discount_token && $order->discount == 0) {
                     $discount = (new VoucherService())->checkVoucher($request->discount_token);
                     if ($discount == 0) {
                         return response()->json("Nieważny kod promocyjny", 422);
                     }
                     $order->discount = $discount;
                 }
-                if ($request->comment){
+                if ($request->comment) {
                     $order->comment = $request->comment;
                 }
                 broadcast(new OrderChanged())->toOthers();
@@ -390,7 +393,7 @@ class ApiOrderController extends Controller
                 foreach ($items as $item) {
                     $item->delete();
                 }
-                if ($request->discount_token && $order->discount == 0){
+                if ($request->discount_token && $order->discount == 0) {
                     $discount = (new VoucherService())->checkVoucher($request->discount_token);
                     if ($discount == 0) {
                         return response()->json("Nieważny kod promocyjny", 422);
