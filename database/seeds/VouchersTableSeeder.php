@@ -1,5 +1,6 @@
 <?php
 
+use Carbon\Carbon;
 use Illuminate\Database\Seeder;
 
 class VouchersTableSeeder extends Seeder
@@ -18,6 +19,7 @@ class VouchersTableSeeder extends Seeder
                     $voucher = new \App\Models\Voucher();
                     $voucher->token = uniqid();
                     $voucher->discount = random_int(1, 99) / 100;
+                    $voucher->expire_at = Carbon::today()->addDays(config('vouchers.expire_in'));
                     $voucher->user()->associate($user);
                     $voucher->save();
                 }
