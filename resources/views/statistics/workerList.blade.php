@@ -1,5 +1,5 @@
 @extends('layouts.app')
 
 @section('content')
-    <my-worker-statistics></my-worker-statistics>
+    <worker-statistics></worker-statistics>
 @endsection

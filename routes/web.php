@@ -68,4 +68,5 @@ Route::middleware('auth','jwt.auth')->group(function () {
     Route::get('/admin/allStatistics', 'StatisticsController@allStatistics')->name('admin.allStatistics')->middleware('permission:statisticsShow');
     Route::get('/admin/workersStatistics', 'StatisticsController@listAllWorkers')->name('admin.workersStatistics')->middleware('permission:statisticsShow');
     Route::get('/admin/statistics', 'StatisticsController@mainStatistics')->name('admin.statistics')->middleware('permission:statisticsShow');
+    Route::get('/admin/workerStatistics/{year}/{id}', 'StatisticsController@workerStatistics')->name('admin.workerStatistics')->middleware('permission:statisticsShow');
 });

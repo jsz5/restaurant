@@ -1,5 +1,5 @@
 @extends('layouts.app')
 
 @section('content')
-<admin-statistics-index></admin-statistics-index>
+    <worker-statistics id="{{$workerId}}" year="{{$year}}"></worker-statistics>
 @endsection

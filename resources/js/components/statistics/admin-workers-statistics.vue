@@ -10,7 +10,6 @@
 						label="Wybierz rok"
 						outlined
 						v-model="year"
-						v-on:change="getData(item)"
 					/>
 				</v-card-title>
 				<v-data-table
@@ -19,7 +18,7 @@
 				>
 					<template v-slot:item.action="{ item }">
 						<v-btn :disabled="!year" @click="getStatistics(item.id)"  text>Pokaż statystyki</v-btn>
-<!--						<v-icon>edit</v-icon>-->
+
 					</template>
 
 				</v-data-table>
@@ -70,8 +69,8 @@
       });
     },
     methods: {
-     getData(id){
-       console.log(id)
+      getStatistics(id){
+       window.location.href = route('admin.workerStatistics', [id, this.year])
 		 }
     }
   }
