@@ -1,5 +1,5 @@
 <?php
 
 return [
-    'expire_in' => 7,
+    'expire_in' => 14,
 ];

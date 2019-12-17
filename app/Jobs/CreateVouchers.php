@@ -48,10 +48,11 @@ class CreateVouchers implements ShouldQueue
         $users = User::all();
         foreach ($users as $user) {
             $voucher = new Voucher();
-            $voucher -> discount = $this->discount;
-            $voucher -> token = uniqid();
-            $voucher -> user() ->associate($user);
-            if($voucher ->save()) {
+            $voucher->discount = $this->discount;
+            $voucher->token = uniqid();
+            $voucher->expire_at = Carbon::today()->addDays(config('vouchers.expire_in'));
+            $voucher->user()->associate($user);
+            if ($voucher->save()) {
                 $this->sendMail($user->email, $voucher);
             }
 
@@ -67,7 +68,7 @@ class CreateVouchers implements ShouldQueue
     public function sendMail($mail, Voucher $voucher)
     {
         try {
-            (new VoucherMail($mail,$voucher))->sendMail();
+            (new VoucherMail($mail, $voucher))->sendMail();
             Log::info("Sending email with voucher to " . $mail);
             return response(null, Response::HTTP_NO_CONTENT);
         } catch (Swift_TransportException $e) {
