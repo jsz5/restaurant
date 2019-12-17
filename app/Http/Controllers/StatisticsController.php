@@ -2,8 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-
 class StatisticsController extends Controller
 {
 
@@ -17,4 +15,32 @@ class StatisticsController extends Controller
     {
         return view('statistics/workerList');
     }
+
+
+    public function listAllWorkers()
+    {
+        return view('statistics/workersList');
+    }
+
+    public function allStatistics()
+    {
+        return view('statistics/adminList');
+    }
+
+    public function mainStatistics()
+    {
+        return view('statistics/mainAdmin');
+    }
+
+    /**
+     * @param $workerId
+     * @param $year
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function workerStatistics($workerId, $year)
+    {
+        return view('statistics/givenWorkerList', compact('year', 'workerId'));
+    }
+
+
 }

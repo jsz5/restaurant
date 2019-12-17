@@ -135,6 +135,10 @@ Vue.component('user-vouchers-index', require('./components/vouchers/user-voucher
 
 //STATISTICS
 Vue.component('my-worker-statistics', require('./components/statistics/my-worker-statistics').default);
+Vue.component('admin-workers-statistics', require('./components/statistics/admin-workers-statistics').default);
+Vue.component('all-statistics', require('./components/statistics/all-statistics').default);
+Vue.component('admin-statistics-index', require('./components/statistics/admin-statistics-index').default);
+Vue.component('worker-statistics', require('./components/statistics/worker-statistics').default);
 
 Vue.component('homepage', require('./components/homepage').default);
 
