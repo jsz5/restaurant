@@ -16,24 +16,15 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
-//Route::name('api.')->namespace('API')->group(function () {
-//    Route::get('/table', 'ApiTableController@index')->name('table.index');
-//    Route::get('/dish', 'ApiDishController@index')->name('dish.index');
-//    Route::get('/dishCategory', 'ApiDishCategoryController@index')->name('dishCategory.index');
-//
-//
-//    Route::name('reservation.')->prefix('reservation')->group(function () {
-//
-//        Route::post('/store-as-citizen', 'ApiReservationController@storeAsCitizen')->name('storeAsCitizen');
-//        Route::post('/store-as-worker', 'ApiReservationController@storeAsWorker')->name('storeAsWorker');
-//        Route::get('/show/{id}', 'ApiReservationController@fetchReservation')->name('show');
-//        Route::get('', 'ApiReservationController@customerIndex')->name('customerIndex');
-//        Route::delete('/{id}', 'ApiReservationController@delete')->name('delete');
-//    });
-//
-//});
+
 Route::post('/authenticate', 'API\ApiAuthenticateController@authenticate');
 Route::post('/logout', 'API\ApiAuthenticateController@logout');
+Route::post('/user/store-customer', 'API\ApiUserController@storeCustomer')->name('storeCustomer');
+Route::post('/order/online/update', 'API\ApiOrderController@updateOnlineOrder')->name('api.order.updateOnlineOrder');
+Route::post('/order/online', 'API\ApiOrderController@storeNewOrderOnline')->name('api.order.storeNewOrderOnline');
+Route::get('/order/show/{orderToken}', 'API\ApiOrderController@loadOrder')->name('api.order.loadOrder');
+Route::get('/user/auth-user', 'API\ApiUserController@myAccount')->name('api.user.authenticatedUser');
+Route::delete('/order/delete/{orderToken}', 'API\ApiOrderController@deleteOrder')->name('api.order.delete');
 
 Route::name('api.')->namespace('API')->middleware(['jwt.auth'])->group(function () {
     //todo refactor na group
@@ -71,6 +62,8 @@ Route::name('api.')->namespace('API')->middleware(['jwt.auth'])->group(function 
         ->middleware('permission:dishEdit');
     Route::delete('/dish/{dish}', 'ApiDishController@delete')->name('dish.delete')
         ->middleware('permission:dishDelete');
+    Route::post('/dish/remove-photo', 'ApiDishController@removePhoto')->name('dish.removePhoto')
+        ->middleware('permission:dishEdit');
 //dishCategory
     Route::get('/dishCategory', 'ApiDishCategoryController@index')->name('dishCategory.index')
         ->middleware('permission:dishCategoryIndex');

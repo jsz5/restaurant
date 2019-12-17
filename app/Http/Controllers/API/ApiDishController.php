@@ -51,7 +51,6 @@ class ApiDishController extends Controller
             $dish->delete();
             return response()->json("Danie usunięte", 201);
         } catch (\Exception $e) {
-            dd($e);
             Log::notice("Error deleting data all:" . $e);
             Log::notice("Error deleting data msg:" . $e->getMessage());
             Log::notice("Error deleting data code:" . $e->getCode());
@@ -97,9 +96,33 @@ class ApiDishController extends Controller
             $dish->price = $request->price;
             $dish->comment = $request->comment;
             $dish->category()->associate(DishCategory::findOrFail($request->category_id));
+            if ($request->photoId) {
+                $photo = Photo::findOrFail($request->photoId);
+                $dish->photo()->associate($photo);
+            }
             $dish->save();
             return response()->json(['message' => "Danie zostało pomyślnie zapisane."], 200);
         } catch (\Exception $e) {
+            Log::notice("Error updating data all:" . $e);
+            Log::notice("Error updating data msg:" . $e->getMessage());
+            Log::notice("Error updating data code:" . $e->getCode());
+            return response()->json('Wystąpił nieoczekiwany błąd', 500);
+        }
+    }
+
+    /**
+     * @param Request $request
+     * @return JsonResponse
+     */
+    public function removePhoto(Request $request)
+    {
+        try {
+            $dish = Dish::findOrFail($request->id);
+            $photo = Photo::findOrFail($request->photoId);
+            $dish->photo_id = null;
+            $dish->save();
+            $photo->deletePhoto();
+        }catch (\Exception $e){
             Log::notice("Error updating data all:" . $e);
             Log::notice("Error updating data msg:" . $e->getMessage());
             Log::notice("Error updating data code:" . $e->getCode());

@@ -189,13 +189,20 @@
         };
       },
       deletePhoto() {
-        window.axios.delete(route('api.dish.photoDelete', this.form.photoId))
+        let _this=this
+        console.log(this.form.id)
+        window.axios.post(route('api.dish.removePhoto'),
+          {
+            "photoId":_this.form.photoId,
+            "id":_this.form.id
+          })
           .then(response => {
             this.form.photoId = ''
             this.form.photo_path = ''
             notification(response.data, 'success')
           })
           .catch(error => {
+            console.log(error)
             notificationError(error.response.data);
           });
       },
