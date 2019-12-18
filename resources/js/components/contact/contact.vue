@@ -1,9 +1,9 @@
 <template>
 	<v-row class="justify-center align-center">
-		<v-col cols="12" lg="4" md="5" sm="8" xl="3" >
+		<v-col cols="12" lg="5" md="6" sm="8" xl="4" >
 			<v-card class="transparent_form" max-width="375">
 				<v-card-title>
-					<h1>Kontakt</h1>
+					<h2>Gdzie można nas znaleźć?</h2>
 				</v-card-title>
 				<v-list style="background-color: transparent !important" two-line>
 					<v-list-item>
@@ -53,6 +53,9 @@
 					</v-list-item>
 				</v-list>
 			</v-card>
+		</v-col>
+		<v-col cols="12" lg="6" md="10" sm="12" xl="6">
+			<contact-form></contact-form>
 		</v-col>
 	</v-row>
 </template>
