@@ -358,6 +358,7 @@ class ApiOrderController extends Controller
                 if ($request->comment) {
                     $order->comment = $request->comment;
                 }
+                $order->save();
                 broadcast(new OrderChanged())->toOthers();
                 return response()->json("Zamówienie pomyślnie edytowane", 200);
             }
@@ -390,7 +391,6 @@ class ApiOrderController extends Controller
                 if (!$request->takeaway) {
                     $order->address = json_encode($request->address);
                 }
-                $order->save();
                 foreach ($items as $item) {
                     $item->delete();
                 }
@@ -401,6 +401,7 @@ class ApiOrderController extends Controller
                     }
                     $order->discount = $discount;
                 }
+                $order->save();
                 (new OrderService())->addItems($order, $request->items);
                 broadcast(new OrderChanged())->toOthers();
                 return response()->json("Zamówienie pomyślnie edytowane", 200);
