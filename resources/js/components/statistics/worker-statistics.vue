@@ -4,45 +4,37 @@
 			<v-card class="transparent_form">
 				<v-col class="justify-center align-center">
 					<v-card-title>
-						Statystyki kelnera
+						Statystyki kelnera o identyfikatorze numer {{id}}
 						<v-spacer></v-spacer>
-						<v-select
-							:items="yearItems"
-							label="Wybierz rok"
-							outlined
-							v-model="year"
-							v-on:change="getData()"
-						/>
 					</v-card-title>
 					<v-card-text>
 						<v-simple-table>
-											<template v-slot:default>
-												<thead>
-												<tr>
-													<th class="text-center">Miesiąc</th>
-													<th class="text-center">Ilość zrealizowanych zamówień</th>
-												</tr>
-												</thead>
-												<tbody>
-												<tr v-for="(item, index) in statisticsItems" :key="item.id">
-													<td>{{ getMonth(index) }}</td>
-													<td>{{ item }}</td>
-												</tr>
-												</tbody>
-											</template>
-										</v-simple-table>
+							<template v-slot:default>
+								<thead>
+								<tr>
+									<th class="text-center">Miesiąc</th>
+									<th class="text-center">Ilość zrealizowanych zamówień</th>
+								</tr>
+								</thead>
+								<tbody>
+								<tr v-for="(item, index) in statisticsItems" :key="item.id">
+									<td>{{ getMonth(index) }}</td>
+									<td>{{ item }}</td>
+								</tr>
+								</tbody>
+							</template>
+						</v-simple-table>
 					</v-card-text>
 				</v-col>
 			</v-card>
 		</v-col>
 	</v-row>
-	
 </template>
 
 <script>
-
   export default {
-    name: "my-worker-statistics",
+    name: "worker-statistics",
+    props: ['id', 'year'],
     data() {
       return {
         statisticsItems: [],
@@ -50,8 +42,6 @@
           {text: 'Miesiąc', value: 'name',},
           {text: 'Ilość zamówień', value: 'price'},
         ],
-				yearItems: ['2018', '2019', '2020'],
-				year: '',
         months :[
           'Styczeń', 'Luty', 'Marzec', 'Kwiecień', 'Maj',
           'Czerwiec', 'Lipiec', 'Sierpień', 'Wrzesień',
@@ -59,9 +49,12 @@
         ]
       }
     },
+		beforeMount() {
+      this.getData()
+    },
     methods: {
       getData() {
-        axios.get(route('api.statistics.myWaiterIndex', this.year))
+        axios.get(route('api.statistics.waiterIndex', [this.year, this.id]))
           .then(response => {
             this.statisticsItems = response.data.statistics
           }).catch(error => {

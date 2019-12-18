@@ -8,10 +8,10 @@
         <v-text-field
           v-model="search"
           append-icon="search"
-          label="Search"
+          label="Wyszukaj danie"
           single-line
           hide-details
-        ></v-text-field>
+        />
         <v-data-table
           :headers="headers"
           :items="menuItems"
@@ -48,7 +48,7 @@
                 item-text="status_pl"
                 label="Status"
                 v-model="orderStatus"
-              ></v-select>
+              />
             </v-col>
             <v-col>
               <v-btn @click="changeStatus" v-bind:loading="statusLoading" class="yellow_form_button" color="secondary">
@@ -73,10 +73,16 @@
           <h5 style="margin-top: 2rem;">Suma zamówienia:</h5>
           <v-text-field
             readonly
-            v-model="orderSum"
-            style="max-width: 5rem">
-
+            style="max-width: 5rem"
+            suffix="zł"
+            v-model="orderSum">
           </v-text-field>
+          <v-textarea auto-grow label="Komentarz do zamówienia" outlined row-height="20" rows="5" v-if="this.statusOrder !== 'finished'" v-model="comment"/>
+          <v-text-field
+            :disabled="discountDisabled"
+            label="Kupon zniżkowy"
+            v-if="this.statusOrder !== 'finished'"
+            v-model="discount_token"/>
         </v-card-text>
         <v-card-actions>
           <v-row class="justify-center">
@@ -120,7 +126,10 @@
         statusLoading: false,
         orderLoading: false,
         orderChangeDisabled: false,
-        statusOrder: ''
+        statusOrder: '',
+        discountDisabled: false,
+        comment: '',
+        discount_token: ''
       }
     },
     mounted() {
@@ -155,6 +164,10 @@
             this.orderedItems = response.data.dishes;
             this.orderSum = response.data.sum;
             this.orderStatus = response.data.status;
+            this.comment = response.data.order.comment
+            if(response.data.order.discount != 0){
+              this.discountDisabled = true
+            }
             this.orderChangeDisabled = this.orderStatus !== "ordered";
           }).catch(error => {
           console.error(error)
@@ -220,6 +233,8 @@
         axios.post(route('api.order.updateOrderFromWorker'), {
           token: this.token,
           items: orderArray,
+          comment: this.comment,
+          discount_token: this.discount_token
         }).then(
           response => {
             notification(response.data, 'success');
@@ -258,6 +273,7 @@
           this.statusLoading = false;
           this.statusOrder = this.orderStatus
           this.orderChangeDisabled = this.orderStatus !== "ordered";
+          this.discountDisabled = this.orderStatus === "finished"
         });
 
       },

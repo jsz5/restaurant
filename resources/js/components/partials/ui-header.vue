@@ -80,6 +80,7 @@
           {id: 3, text: "Kategorie dań", link: route("dishCategory.index")},
           {id: 4, text: "Kelnerzy", link: route("worker.index")},
           {id: 5, text: "Kupony", link: route("voucher.add")},
+          {id: 6, text: "Statystyki", link: route("admin.statistics")},
           {id: 7, text: "Stoliki", link: route("table.index")}
         ],
         waiterMenu: [
@@ -91,8 +92,9 @@
           {id: 1, text: "moje zamówienia", link: route("orders.myOrders")},
           {id: 2, text: "moje rezerwacje", link: route("reservation.indexUser")},
           {id: 3, text: "moje kupony", link: route("user.myVouchers")},
-          {id: 4, text: "moje konto", link: route("user.myAccount")},
-          {id: 5, text: "wyloguj", link: "logout"}
+          {id: 4, text: "moje ulubione dania", link: route("myFavouriteDishes.index")},
+          {id: 5, text: "moje konto", link: route("user.myAccount")},
+          {id: 6, text: "wyloguj", link: "logout"}
         ],
         customerMenu: [
           {id: 1, text: "Strona główna", link: route("home")},

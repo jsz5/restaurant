@@ -7,64 +7,45 @@
       </v-card>
     <v-stepper-header>
       <v-stepper-step :complete="e1 > 1" step="1">Wybierz dania</v-stepper-step>
-      <v-divider></v-divider>
+      <v-divider/>
       <v-stepper-step :complete="e1 > 2" step="2">Uzupełnij swoje dane</v-stepper-step>
-      <v-divider></v-divider>
+      <v-divider/>
       <v-stepper-step step="3">Potwierdź zamówienie</v-stepper-step>
     </v-stepper-header>
     <v-stepper-items>
       <v-stepper-content step="1">
         <v-card class="background">
           <v-row class="justify-space-between">
-            <!--            <v-col>-->
-            <!--              <v-simple-table>-->
-            <!--                <template v-slot:default>-->
-            <!--                  <thead>-->
-            <!--                  <tr>-->
-            <!--                    <th class="text-left">Kategorie</th>-->
-            <!--                  </tr>-->
-            <!--                  </thead>-->
-            <!--                  <tbody>-->
-            <!--                  <tr>-->
-            <!--                    <td @click="setMenuItems(-1)">Wszystkie</td>-->
-            <!--                  </tr>-->
-            <!--                  <tr :key="item.id" v-for="item in categoryItems">-->
-            <!--                    <td @click="setMenuItems(item.id)">{{ item.name }}</td>-->
-            <!--                  </tr>-->
-            <!--                  </tbody>-->
-            <!--                </template>-->
-            <!--              </v-simple-table>-->
-            <!--            </v-col>-->
             <v-col>
               <v-card-title>
                 <v-col>
                   <v-select
-                      :items="categoryItems"
-                      item-text="name"
-                      item-value="id"
-                      label="Wybierz kategorię"
-                      outlined
-                      v-model="selectedCategory"
-                      @change="setMenuItems"
-                  ></v-select>
+                    :items="categoryItems"
+                    @change="setMenuItems"
+                    item-text="name"
+                    item-value="id"
+                    label="Wybierz kategorię"
+                    outlined
+                    v-model="selectedCategory"
+                  />
                   <v-text-field
-                      append-icon="search"
-                      hide-details
-                      label="Szukaj"
-                      single-line
-                      v-model="search"
-                  ></v-text-field>
+                    append-icon="search"
+                    hide-details
+                    label="Szukaj"
+                    single-line
+                    v-model="search"
+                  />
                 </v-col>
               </v-card-title>
               <v-data-table
-                  :headers="headers"
-                  :items="menuItems"
-                  :items-per-page="5"
-                  :search="search"
-                  class="elevation-1"
-                  show-select
-                  v-model="selected"
-              ></v-data-table>
+                :headers="headers"
+                :items="menuItems"
+                :items-per-page="5"
+                :search="search"
+                class="elevation-1"
+                show-select
+                v-model="selected"
+              />
             </v-col>
             <v-col>
               <v-data-table
@@ -101,30 +82,30 @@
                     ref="form"
                 >
                   <v-text-field
-                      :disabled="mailDisabled"
-                      :rules="[rules.required, rules.emailRules]"
-                      label="E-mail"
-                      outlined
-                      v-model="form.email"
-                  ></v-text-field>
+                    :disabled="mailDisabled"
+                    :rules="[rules.required, rules.emailRules]"
+                    label="E-mail"
+                    outlined
+                    v-model="form.email"
+                  />
                   <v-text-field :rules="[rules.required]" label="Ulica" outlined
-                                v-model="form.address.street"></v-text-field>
+                                v-model="form.address.street"/>
                   <v-text-field :rules="[rules.required]" label="Numer domu " outlined
-                                v-model="form.address.houseNumber"></v-text-field>
+                                v-model="form.address.houseNumber"/>
                   <v-text-field label="Numer mieszkania" outlined
-                                v-model="form.address.flatNumber"></v-text-field>
+                                v-model="form.address.flatNumber"/>
                   <v-text-field
-                      :rules="[rules.required]"
-                      label="Miejscowość"
-                      outlined
-                      v-model="form.address.city"
-                  ></v-text-field>
+                    :rules="[rules.required]"
+                    label="Miejscowość"
+                    outlined
+                    v-model="form.address.city"
+                  />
                   <v-text-field
-                      :rules="[rules.required, rules.postCodeFormat]"
-                      label="Kod pocztowy"
-                      outlined
-                      v-model="form.address.postCode"
-                  ></v-text-field>
+                    :rules="[rules.required, rules.postCodeFormat]"
+                    label="Kod pocztowy"
+                    outlined
+                    v-model="form.address.postCode"
+                  />
                 </v-form>
               </v-card-text>
               <v-card-actions>
@@ -175,7 +156,7 @@
                 </v-list-item-content>
               </v-list-item>
               <v-list-item>
-                <v-list-item-icon></v-list-item-icon>
+                <v-list-item-icon/>
                 <v-list-item-content>
                   <v-list-item-title>
                     {{this.form.address.postCode + " " + this.form.address.city}}
@@ -187,11 +168,12 @@
           </v-col>
           <v-col cols="12" lg="5" md="7" sm="10" xl="4">
             <v-data-table
-                :headers="summaryOrderHeaders"
-                :items="ordered"
-                :items-per-page="5"
-                class="elevation-1"
-            ></v-data-table>
+              :headers="summaryOrderHeaders"
+              :items="ordered"
+              :items-per-page="5"
+              class="elevation-1"
+            /><br>
+            <v-textarea auto-grow label="Komentarz do zamówienia" outlined row-height="20" rows="5" v-model="comment"/>
           </v-col>
         </v-row>
 
@@ -217,7 +199,7 @@
       return {
         selectedCategory: -1,
         loading: false,
-        e1: 0,
+        e1: 3,
         search: "",
         selected: [],
         ordered: [],
@@ -257,6 +239,7 @@
           },
           phone: ""
         },
+        comment: '',
         rules: {
           required: value => !!value || "To pole jest wymagane",
           emailRules: v =>
@@ -374,6 +357,7 @@
             address: this.form.address,
             items: this.orderArray,
             email: this.form.email,
+            comment: this.comment
           })
           .then(
             response => {

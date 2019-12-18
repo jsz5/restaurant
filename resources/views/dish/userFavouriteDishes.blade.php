@@ -1,5 +1,5 @@
 @extends('layouts.app')
 
 @section('content')
-    <worker-statistics></worker-statistics>
+    <user-favourite-dishes></user-favourite-dishes>
 @endsection

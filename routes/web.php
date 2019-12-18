@@ -29,6 +29,7 @@ Route::middleware('auth','jwt.auth')->group(function () {
     Route::get('/table/{id}', 'TableController@show')->name('table.show')->middleware('permission:tableShow');
     Route::get('/table-waiter/{id}', 'TableController@showWaiter')->name('table.showWaiter')->middleware('permission:tableShow');
     Route::get('/dish', 'DishController@index')->name('dish.index')->middleware('permission:dishIndex');
+    Route::get('/myFavouriteDishes', 'FavouriteDishController@index')->name('myFavouriteDishes.index')->middleware('permission:dishIndex');
     Route::get('/menu-admin', 'DishController@adminMenu')->name('menu.admin');
     Route::get('/dish/edit/{id}', 'DishController@edit')->name('dish.edit')->middleware('permission:dishEdit');
     Route::get('/dishCategory', 'DishCategoryController@index')->name('dishCategory.index')->middleware('permission:dishCategoryIndex');
@@ -60,4 +61,8 @@ Route::middleware('auth','jwt.auth')->group(function () {
     Route::get('/vouchers/generate', 'VoucherController@add')->name('voucher.add')->middleware('permission:createVoucher');
     Route::get('/vouchers/customerVouchers', 'VoucherController@listCustomerVouchers')->name('user.myVouchers')->middleware('permission:showVoucher');
     Route::get('/my-statistics/worker', 'StatisticsController@listWorker')->name('myStatistics.asWorker')->middleware('permission:workerStatisticsShow');
+    Route::get('/admin/allStatistics', 'StatisticsController@allStatistics')->name('admin.allStatistics')->middleware('permission:statisticsShow');
+    Route::get('/admin/workersStatistics', 'StatisticsController@listAllWorkers')->name('admin.workersStatistics')->middleware('permission:statisticsShow');
+    Route::get('/admin/statistics', 'StatisticsController@mainStatistics')->name('admin.statistics')->middleware('permission:statisticsShow');
+    Route::get('/admin/workerStatistics/{year}/{id}', 'StatisticsController@workerStatistics')->name('admin.workerStatistics')->middleware('permission:statisticsShow');
 });

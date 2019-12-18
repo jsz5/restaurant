@@ -96,6 +96,7 @@ Vue.component('user-menu', require('./components/menu/user-menu').default);
 Vue.component('admin-menu', require('./components/menu/admin-menu').default);
 Vue.component('edit-dish', require('./components/menu/edit-dish').default);
 Vue.component('create-dish', require('./components/menu/create-dish').default);
+Vue.component('user-favourite-dishes', require('./components/menu/user-favourite-dishes').default);
 
 //TABLES
 Vue.component('admin-tables-index', require('./components/tables/admin-tables-index').default);
@@ -135,6 +136,10 @@ Vue.component('user-vouchers-index', require('./components/vouchers/user-voucher
 
 //STATISTICS
 Vue.component('my-worker-statistics', require('./components/statistics/my-worker-statistics').default);
+Vue.component('admin-workers-statistics', require('./components/statistics/admin-workers-statistics').default);
+Vue.component('all-statistics', require('./components/statistics/all-statistics').default);
+Vue.component('admin-statistics-index', require('./components/statistics/admin-statistics-index').default);
+Vue.component('worker-statistics', require('./components/statistics/worker-statistics').default);
 
 Vue.component('homepage', require('./components/homepage').default);
 
