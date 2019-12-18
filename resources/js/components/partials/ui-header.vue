@@ -2,7 +2,7 @@
 	<v-row no-gutters class="header">
 		<v-col cols="12">
 			<v-row no-gutters class="justify-space-between mb-3 mt-3">
-				<v-col class="hidden-sm-and-down">
+				<v-col class="hidden-sm-and-down" v-if="showMenu">
 					<v-toolbar class="menu_links">
 						<v-toolbar-items class="menu_links_full">
 							<v-btn
@@ -20,7 +20,7 @@
 					<v-row class="mx-3">
 						<v-col v-if="notLogged" class="text-end">
 							<v-btn text @click="register">Zarejestruj</v-btn>
-							<v-btn @click="login" color="#CBA789">Zaloguj się</v-btn>
+							<v-btn v-if="showMenu" @click="login" color="#CBA789">Zaloguj się</v-btn>
 						</v-col>
 						<v-col v-else class="text-end">
 							<v-menu offset-y>
@@ -39,7 +39,7 @@
 							</v-menu>
 						</v-col>
 					</v-row>
-					<v-row class="menu">
+					<v-row class="menu" v-if="showMenu">
 						<v-col class="hidden-md-and-up">
 							<v-menu class="responsive_menu" offset-y style="left:0 ;">
 								<template v-slot:activator="{ on }">
@@ -111,7 +111,8 @@
         loggedUserMenu: [],
         menu: [],
         notLogged: true,
-        loggedUser: ""
+        loggedUser: "",
+				showMenu: true
       };
     },
     beforeMount() {
@@ -137,6 +138,11 @@
         this.notLogged = false;
         this.loggedUser = this.user;
       }
+      if(route().current()==='home'){
+        this.showMenu = false
+			}else{
+        this.showMenu = true
+			}
     },
 
     methods: {
