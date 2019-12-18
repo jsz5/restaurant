@@ -199,7 +199,7 @@
       return {
         selectedCategory: -1,
         loading: false,
-        e1: 3,
+        e1: 0,
         search: "",
         selected: [],
         ordered: [],

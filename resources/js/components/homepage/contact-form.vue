@@ -1,6 +1,6 @@
 <template>
     <v-card>
-        <v-card-title class="headline"><h2 class="major">Kontakt</h2></v-card-title>
+        <v-card-title class="headline"><h2 class="major">Formularz kontaktowy</h2></v-card-title>
         <v-card-text>
         <article id="kontakt">
             <v-form ref="contact" v-model="valid">
