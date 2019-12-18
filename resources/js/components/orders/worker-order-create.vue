@@ -8,7 +8,7 @@
 				<v-text-field
 					v-model="search"
 					append-icon="search"
-					label="Wyszukaj"
+					label="Wyszukaj danie"
 					single-line
 					hide-details
 				/>
@@ -171,7 +171,7 @@
         }).then(
           response => {
             notificationSuccess(response.data);
-            window.location.href = route('table.showWaiter', _this.tableid);
+             window.location.href = route('table.showWaiter', _this.tableid);
           },
           error => {
             if (error.response.status === 422) {
