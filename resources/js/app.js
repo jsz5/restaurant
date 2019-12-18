@@ -143,6 +143,9 @@ Vue.component('worker-statistics', require('./components/statistics/worker-stati
 
 Vue.component('homepage', require('./components/homepage').default);
 
+//CONTACT
+Vue.component('contact-page', require('./components/contact/contact').default);
+
 
 const app = new Vue({
   el: '#app',
