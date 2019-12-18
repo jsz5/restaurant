@@ -117,7 +117,9 @@ class ApiOrderController extends Controller
         try {
             $orders = Order::where('customer_id', Auth::id())
                 ->with("check")
-                ->get();
+                ->get()
+                ->sortBy('updated_at');
+
             return response()->json(
                 $this->transStatus($orders), 200);
         } catch (Exception $e) {
