@@ -3,7 +3,7 @@
 		<v-col cols="12">
 			<v-row no-gutters class="justify-space-between mb-3 mt-3">
 				<v-col class="hidden-sm-and-down" v-if="showMenu">
-					<v-toolbar class="menu_links">
+					<!-- <v-toolbar class="menu_links">
 						<v-toolbar-items class="menu_links_full">
 							<v-btn
 								class="menu_item"
@@ -14,13 +14,37 @@
 							>{{item.text}}
 							</v-btn>
 						</v-toolbar-items>
-					</v-toolbar>
+					</v-toolbar> -->
+					<v-col cols="12" lg="10" md="12" sm="12" xl="9">
+						<v-tabs
+							background-color="transparent"
+							color="basil"
+							grow
+							v-model="tab"
+						>
+						<v-tab
+							:key="item.id"
+							@click="goTo(item.link)"
+							v-for="item in menu"
+						>
+							{{ item.text }}
+						</v-tab>
+						</v-tabs>
+					</v-col>
+
 				</v-col>
 				<v-col>
 					<v-row class="mx-3">
 						<v-col v-if="notLogged" class="text-end">
-							<v-btn text @click="register">Zarejestruj</v-btn>
-							<v-btn v-if="showMenu" @click="login" color="#CBA789">Zaloguj się</v-btn>
+							<v-tabs
+								background-color="transparent"
+								color="basil"
+								grow
+								v-model="tab"
+							>
+							<v-tab text v-if="showMenu" @click="register">Zarejestruj</v-tab>
+							<v-tab v-if="showMenu" @click="login" color="#CBA789">Zaloguj się</v-tab>
+							</v-tabs>
 						</v-col>
 						<v-col v-else class="text-end">
 							<v-menu offset-y>
@@ -183,7 +207,7 @@
 
 	.menu {
 		margin-bottom: 0;
-		margin-top: -10px;
+		// margin-top: -10px;
 	}
 
 	.menu_links.v-sheet.v-sheet--tile.theme--light.v-toolbar {
@@ -193,7 +217,7 @@
 	}
 
 	.menu_links {
-		height: 50px !important;
+		// height: 50px !important;
 		background-color: transparent;
 		box-shadow: none;
 	}
