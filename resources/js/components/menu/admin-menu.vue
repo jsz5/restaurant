@@ -1,14 +1,15 @@
 <template>
   <v-row class="justify-center align-center">
-    <v-col cols="12" lg="5" ma-2 md="8" sm="10" xl="4">
+    <v-col cols="14" lg="7" ma-2 md="10" sm="12" xl="5">
       <v-card class="transparent_form">
-        <v-col class="justify-center align-center">
-          <v-card-title>
-            Dania
-            <v-spacer></v-spacer>
-            <v-btn @click="addDish" class="yellow_form_button" color="secondary">Dodaj danie</v-btn>
-          </v-card-title>
-          <v-card-text>
+          <v-card-title class="boksik">
+            <v-toolbar color="primary" dark flat>
+					    <v-toolbar-title>Dania</v-toolbar-title>
+                <v-spacer></v-spacer>
+                <v-btn @click="addDish" class="yellow_form_button" color="secondary">Dodaj danie</v-btn>
+              </v-toolbar>
+            </v-card-title>
+          <v-card-text class="boksik">
             <v-data-table
               :headers="headers"
               :items="menuItems"
@@ -31,7 +32,6 @@
               </template>
             </v-data-table>
           </v-card-text>
-        </v-col>
       </v-card>
     </v-col>
   </v-row>

@@ -115,6 +115,18 @@ td {
 }
 
 th.text-start.sortable {
+	vertical-align: middle !important;
+}
+
+th.text-start {
+	vertical-align: middle;
+}
+
+th {
+	vertical-align: middle;
+}
+
+th.text-center {
 	vertical-align: middle;
 }
 
@@ -140,7 +152,46 @@ th.text-start.sortable {
 	color: #ffffff !important;
 }
 
+.v-picker__title{
+	background: #000000 !important;
+}
 
+.v-date-picker-title{
+	background: #000000 !important;
+}
+
+.v-date-picker-table{
+	background: #000000 !important;
+}
+
+.v-date-picker-header{
+	background: #000000 !important;
+}
+
+.v-picker__actions{
+	background: #000000 !important;
+}
+
+.v-card__actions{
+	background: #000000 !important;
+}
+
+.v-time-picker-clock__container{
+	background: #000000 !important;
+}
+
+.v-time-picker-clock__container{
+	background: #000000 !important;
+}
+
+.v-time-picker-clock__inner{
+	background: #252525 !important;
+}
+
+
+.col-lg-10 {
+	width: 100% !important;
+}
 
 /* Type */
 
@@ -671,8 +722,8 @@ button, .button {
 		background-color: #0000008c !important;
 	}
 	
-	.boksiczek {
-		background-color: #00000055 !important;
+	.boksisko {
+		background-color: #000000bc !important;
 	}
 
 /* Header */

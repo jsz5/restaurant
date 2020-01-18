@@ -2,7 +2,7 @@
 	<v-row no-gutters class="header">
 		<v-col cols="12">
 			<v-row no-gutters class="justify-space-between mb-3 mt-3">
-				<v-col class="hidden-sm-and-down" v-if="showMenu">
+				<v-col class="hidden-sm-and-down justify-space-between" v-if="showMenu">
 					<!-- <v-toolbar class="menu_links">
 						<v-toolbar-items class="menu_links_full">
 							<v-btn
@@ -15,7 +15,7 @@
 							</v-btn>
 						</v-toolbar-items>
 					</v-toolbar> -->
-					<v-col cols="12" lg="10" md="12" sm="12" xl="9">
+					<v-col cols="12" lg="10" md="12" sm="12" xl="9" style="max-width: 100% !important">
 						<v-tabs
 							background-color="transparent"
 							color="basil"
@@ -31,9 +31,8 @@
 						</v-tab>
 						</v-tabs>
 					</v-col>
-
 				</v-col>
-				<v-col>
+				<!-- <v-col>
 					<v-row class="mx-3">
 						<v-col v-if="notLogged" class="text-end">
 							<v-tabs
@@ -79,7 +78,7 @@
 							</v-menu>
 						</v-col>
 					</v-row>
-				</v-col>
+				</v-col> -->
 			</v-row>
 			<v-row></v-row>
 		</v-col>
@@ -96,7 +95,8 @@
           {id: 1, text: "Strona główna", link: route("home")},
           {id: 2, text: "Menu", link: route("menu")},
           {id: 3, text: "Zamów online", link: route("order.create.online")},
-          {id: 5, text: "Kontakt", link: route("contact")}
+		  {id: 4, text: "Kontakt", link: route("contact")},
+		  {id: 5, text: "Zaloguj się", link: route("login")}
         ],
         adminMenu: [
           {id: 1, text: "Strona główna", link: route("home")},

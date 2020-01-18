@@ -2,7 +2,9 @@
   <v-row class="justify-center align-center">
     <v-col cols="12" lg="5" ma-2 md="8" sm="10" xl="4">
       <v-card class="transparent_form">
-        <v-card-title>Dodawanie dania</v-card-title>
+        				<v-toolbar color="primary" dark flat>
+					<v-toolbar-title>Nowe Danie</v-toolbar-title>
+				</v-toolbar>
         <v-card-text>
           <v-form
             ref="form">
@@ -36,20 +38,11 @@
               style="display:none"
               type="file"
             />
-            <v-btn
-              :loading="loadingPhoto"
-              class="lightblue_action_button button-padding"
-              id="fileInputButton"
-              onclick="document.getElementById('fileInput').click()"
-            >Dodaj zdjęcie
-            </v-btn>
+
             <v-card v-if="photoUrl" flat tile color="transparent" height="100%">
               <v-img :src="photoUrl" aspect-ratio="1.7" contain/>
               <v-card-actions>
-                <v-btn
-                  @click="deletePhoto()"
-                >Usuń zdjęcie
-                </v-btn>
+
               </v-card-actions>
             </v-card>
           </v-form>
@@ -57,6 +50,14 @@
         <v-card-actions>
           <v-row class="justify-space-between mx-3" >
             <v-btn @click="cancel" text>Anuluj</v-btn>
+            <v-btn
+              :loading="loadingPhoto"
+              class="lightblue_action_button button-padding"
+              id="fileInputButton"
+              onclick="document.getElementById('fileInput').click()"
+            >Dodaj zdjęcie
+            </v-btn>
+              <v-btn @click="deletePhoto()" >Usuń zdjęcie</v-btn>
             <v-btn @click="save" class="yellow_form_button" color="secondary" v-bind:loading="loading">Zapisz</v-btn>
           </v-row>
         </v-card-actions>

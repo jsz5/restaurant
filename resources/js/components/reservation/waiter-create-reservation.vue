@@ -3,7 +3,7 @@
 		<v-row class="justify-center">
 			<v-col cols="12" sm="10" md="8" lg="5" xl="4">
 				<v-card class="transparent_form">
-					<v-card-text>
+					<v-card-text class="boksik">
 						<h4>W celu znalezienia wolnych stolików do rezerwacji wybierz datę:</h4>
 						<v-menu
 							ref="menu"
@@ -41,14 +41,14 @@
 			</v-col>
 		</v-row>
 		<v-row class="justify-space-around">
-			<v-col cols="12" sm="10" md="8" lg="5" xl="4">
+			<v-col cols="12" sm="10" md="8" lg="5" xl="6">
 				<v-row>
 					<v-col>
 						<v-card class="transparent_form">
-							<v-card-title>
+							<v-card-title class="boksik">
 								Dostępne stoliki
 							</v-card-title>
-							<v-card-text>
+							<v-card-text class="boksik">
 								<v-data-table
 									:headers="headers"
 									:items="availableTables"
@@ -73,14 +73,14 @@
 				</v-row>
 
 			</v-col>
-			<v-col cols="12" sm="12" md="12" lg="10" xl="7">
+			<v-col cols="12" sm="12" md="12" lg="10" xl="8">
 				<v-row>
-					<v-col cols="12" sm="12" md="12" lg="7" xl="6">
+					<v-col cols="12" sm="12" md="12" lg="7" xl="8">
 						<v-card class="transparent_form">
-							<v-card-title>
+							<v-card-title class="boksik">
 								Wybrane stoliki
 							</v-card-title>
-							<v-card-text>
+							<v-card-text class="boksik">
 								<v-data-table
 									:headers="headers"
 									:items="choosenTables"
@@ -103,10 +103,10 @@
 					</v-col>
 					<v-col cols="12" sm="12" md="12" lg="5" xl="4">
 						<v-card class="transparent_form">
-							<v-card-title>
+							<v-card-title class="boksik">
 								Dane do rezerwacji
 							</v-card-title>
-							<v-card-text>
+							<v-card-text class="boksik">
 								<v-form>
 									<v-text-field
 										:rules="[rules.required, rules.emailRules]"

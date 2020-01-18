@@ -1,17 +1,17 @@
 <template>
 	<v-row class="justify-center align-center">
-		<v-col cols="12" lg="8" ma-2 md="10" sm="12" xl="6">
+		<v-col cols="18" lg="12" ma-2 md="13" sm="15" xl="8">
 			<v-card class="transparent_form">
-				<v-card-title>
+				<v-card-title class="boksik">
 					Pracownicy
-					<v-spacer></v-spacer>
-					<v-select
+				</v-card-title>
+        <v-spacer></v-spacer>
+					<v-select class="boksik"
 						:items="yearItems"
 						label="Wybierz rok"
 						outlined
 						v-model="year"
 					/>
-				</v-card-title>
 				<v-data-table
 					:headers="headers"
 					:items="workers"

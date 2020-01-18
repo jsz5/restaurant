@@ -1,32 +1,30 @@
 <template>
   <v-row class="justify-center align-center">
-    <v-col cols="12" lg="5" ma-2 md="8" sm="10" xl="4">
+    <v-col cols="14" lg="7" ma-2 md="10" sm="12" xl="6">
       <v-card class="transparent_form">
-        <v-card-title>
+        <v-card-title class="boksik">
           Kategorie dań
           <v-spacer></v-spacer>
           <v-dialog v-model="dialog" max-width="500px">
             <template v-slot:activator="{ on }">
               <v-btn class="yellow_form_button" color="secondary" v-on="on">Dodaj kategorię</v-btn>
             </template>
-            <v-card>
-              <v-card-title>
-                <span class="headline">{{ formTitle }}</span>
-              </v-card-title>
+            <v-card class="boksik">
+                <v-toolbar color="primary" dark flat>
+                  <v-toolbar-title>Nowa Kategoria</v-toolbar-title>
+                </v-toolbar>
 
-              <v-card-text>
-                <v-container>
+              <v-card-text class="boksik">
+                <v-container class="boksik">
                   <v-row>
-                    <v-form
-                      ref="form">
-                      <v-text-field v-model="editedItem.name" v-bind:rules="[required]" outlined
-                                    label="Nazwa kategorii" v-bind:error-messages="errors.name"></v-text-field>
+                    <v-form ref="form">
+                      <v-text-field style="width: 450px" v-model="editedItem.name" v-bind:rules="[required]" outlined label="Nazwa kategorii" v-bind:error-messages="errors.name"></v-text-field>
                     </v-form>
                   </v-row>
                 </v-container>
               </v-card-text>
 
-              <v-card-actions>
+              <v-card-actions class="boksik">
                 <v-btn @click="close"  text>Anuluj</v-btn>
                 <v-spacer></v-spacer>
                 <v-btn @click="save" class="yellow_form_button" color="secondary" v-bind:loading="loading">Zapisz</v-btn>

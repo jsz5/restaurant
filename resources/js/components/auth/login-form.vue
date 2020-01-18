@@ -19,7 +19,6 @@
 							label="Hasło"
 							name="password"
 							prepend-icon="lock"
-							type="password"
 							:append-icon="showPassword ? 'visibility' : 'visibility_off'"
 							:type="showPassword ? 'text' : 'password'"
 							:rules="[rules.required]"

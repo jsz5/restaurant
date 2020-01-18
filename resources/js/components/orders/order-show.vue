@@ -1,8 +1,8 @@
 <template>
     <v-row class="justify-center">
-        <v-col cols="12" sm="12" md="8" lg="6" xl="4">
+        <v-col cols="12" sm="12" md="8" lg="6" xl="7" class="boksik">
             <v-card class="transparent_form">
-                <v-card-title>
+                <v-card-title >
                     <h2>Podgląd zamówienia</h2>
                 </v-card-title>
                 <v-card-text>
