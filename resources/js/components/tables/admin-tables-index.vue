@@ -2,29 +2,29 @@
   <v-row class="justify-center align-center">
     <v-col cols="12" lg="7" ma-2 md="10" sm="12" xl="5">
       <v-card class="transparent_form">
-        <v-card-title>
+        <v-card-title class="boksik">
           Stoliki
           <v-spacer></v-spacer>
           <v-dialog max-width="500px" v-model="dialog">
             <template v-slot:activator="{ on }">
               <v-btn class="yellow_form_button" color="secondary" v-on="on">Dodaj stolik</v-btn>
             </template>
-            <v-card>
-              <v-card-title>
+            <v-card class="boksisko">
+              <v-card-title class="boksisko">
                 <span class="headline">{{ formTitle }}</span>
               </v-card-title>
-              <v-card-text>
+              <v-card-text class="boksisko">
                 <v-container>
                   <v-row>
                     <v-form
                       ref="form">
-                      <v-text-field label="Wielkość stolika" v-bind:rules="rules" outlined
+                      <v-text-field style="width: 450px" label="Wielkość stolika" v-bind:rules="rules" outlined
                                     v-bind:error-messages="errors.size" v-model="editedItem.size"></v-text-field>
                     </v-form>
                   </v-row>
                 </v-container>
               </v-card-text>
-              <v-card-actions>
+              <v-card-actions class="boksisko">
                 <v-btn @click="close" text>Anuluj</v-btn>
                 <v-spacer></v-spacer>
                 <v-btn v-bind:loading="loading" @click="save" class="yellow_form_button" color="secondary">Zapisz

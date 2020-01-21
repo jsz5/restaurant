@@ -1,9 +1,17 @@
 <template>
-	<v-row class="justify-center align-center">
-		<v-col cols="12" lg="5" md="6" sm="8" xl="4" >
-			<v-card class="transparent_form" max-width="375">
+	<v-row class="justify-center align-center boksik">
+
+			<v-card-title>
+				<h1 style="width: 700px">Dotrzyj do nas:</h1>
+			</v-card-title>
+
+			<v-col cols="12" lg="6" md="10" sm="12" xl="6">
+				<contact-form></contact-form>
+			</v-col>
+
+			<v-card class="transparent_form" max-width="400" >
 				<v-card-title>
-					<h2>Gdzie można nas znaleźć?</h2>
+					<h2>Znajdz nas tu:</h2>
 				</v-card-title>
 				<v-list style="background-color: transparent !important" two-line>
 					<v-list-item>
@@ -53,10 +61,6 @@
 					</v-list-item>
 				</v-list>
 			</v-card>
-		</v-col>
-		<v-col cols="12" lg="6" md="10" sm="12" xl="6">
-			<contact-form></contact-form>
-		</v-col>
 	</v-row>
 </template>
 

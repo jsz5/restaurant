@@ -9,7 +9,7 @@
 
 			<div class="content">
 				<div class="inner">
-					<h1>SmartRestraunt</h1>
+					<h1>Smart Restaurant</h1>
 					<p>No generalnie u nas smacznie, pysznie jest i tanio itd., wiadomo</p>
 				</div>
 			</div>
@@ -177,7 +177,6 @@
 		}
 	}
 
-
 	.homepage_title{
 		height: 100%;
 	}
@@ -191,6 +190,10 @@
 		justify-content: center;
 		align-items: center;
 		display: flex;
+	}
+
+	.row.header.no-gutters {
+		visibility: hidden !important;
 	}
 
 	.row wrapper{

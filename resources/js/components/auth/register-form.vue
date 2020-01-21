@@ -1,11 +1,11 @@
 <template>
-	<v-row class="justify-space-between">
-		<v-col lg="5" md="8" xl="4">
-			<v-card>
-				<v-card-title>
-					Zarejestruj
-				</v-card-title>
-				<v-card-text>
+	<v-row class="justify-center align-center">
+		<v-col cols="12" sm="8" md="4">
+			<v-card class="elevation-12">
+				<v-toolbar color="primary" dark flat>
+					<v-toolbar-title>Zarejestruj</v-toolbar-title>
+				</v-toolbar>
+				<v-card-text class="boksik"> 
 					<v-form>
 						<v-text-field
 							:rules="[rules.required]"
@@ -73,7 +73,6 @@
 					</v-form>
 				</v-card-text>
 			</v-card>
-
 		</v-col>
 	</v-row>
 </template>

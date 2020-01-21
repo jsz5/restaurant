@@ -1,15 +1,16 @@
 <template>
     <v-row class="justify-center align-center" >
-        <v-col cols="12" sm="10" md="8" xl="5" lg="6">
+        <v-col cols="16" sm="14" md="12" xl="9" lg="10">
             <v-card class="transparent_form">
-                <v-card-title>
+                <v-card-title class="boksik">
                     <h1>Zamówienia</h1>
                 </v-card-title>
 
                 <v-select
-                  class="beige_select"
+                  class="beige_select boksik"
                   :items="orderSatuses"
                   item-value="status"
+                  style="padding-left: 15px; padding-right: 15px;"
                   item-text="status_pl"
                   label="Status"
                   v-model="orderStatusPicked"

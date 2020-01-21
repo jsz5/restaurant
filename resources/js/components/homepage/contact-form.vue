@@ -1,10 +1,9 @@
 <template>
     <v-card>
-        <v-card-title class="headline"><h2 class="major">Formularz kontaktowy</h2></v-card-title>
+        <v-card-title class="headline"><h2>Formularz kontaktowy</h2></v-card-title>
         <v-card-text>
         <article id="kontakt">
             <v-form ref="contact" v-model="valid">
-                <v-container>
                 <v-row>
                     <v-col cols="12" md="6">
                     <v-text-field v-model="name" :rules="nameRules" :counter="20" label="Imię" required></v-text-field>
@@ -20,7 +19,6 @@
                 </v-col>
 
                 <v-btn :disabled="!valid" color="success" class="mr-4" @click="validate">Wyślij</v-btn>
-                </v-container>
             </v-form>
 
             <!-- Potrzebny by tu był Font Awesome by użyć ich ikon

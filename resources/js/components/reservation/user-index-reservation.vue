@@ -2,9 +2,9 @@
 	<v-row class="justify-center align-center">
 		<v-col cols="12" lg="6" ma-2 md="8" sm="12" xl="5">
 			<v-card class="transparent_form">
-				<v-card-title>
-					<h1>Moje rezerwacje</h1>
-				</v-card-title>
+				<v-toolbar color="primary" dark flat>
+					<v-toolbar-title>Moje Rezerwacje</v-toolbar-title>
+				</v-toolbar>
 
 				<v-data-table
 					:headers="headers"

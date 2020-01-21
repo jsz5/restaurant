@@ -1,12 +1,12 @@
 <template>
 	<v-row class="justify-space-around">
 		<v-col
-			cols="12" lg="4" ma-2 md="5" sm="8" xl="3">
+			cols="12" lg="4" ma-2 md="5" sm="8" xl="5">
 			<v-card class="transparent_form">
-				<v-card-title>
-					Moje konto
-				</v-card-title>
-				<v-card-text>
+				<v-toolbar color="primary" dark flat>
+					<v-toolbar-title>Moje Konto</v-toolbar-title>
+				</v-toolbar>
+				<v-card-text class="boksik">
 					<v-form
 						ref="accountForm">
 						<v-text-field
@@ -80,12 +80,12 @@
 			</v-card>
 		</v-col>
 		<v-col
-			cols="12" lg="4" ma-2 md="5" sm="8" xl="3">
+			cols="12" lg="4" ma-2 md="5" sm="8" xl="4">
 			<v-card class="transparent_form">
-				<v-card-title>
-					<h1>Zmiana hasła</h1>
-				</v-card-title>
-				<v-card-text>
+				<v-toolbar color="primary" dark flat>
+					<v-toolbar-title>Zmiana Hasła</v-toolbar-title>
+				</v-toolbar>
+				<v-card-text class="boksik">
 					<v-form
 						ref="passwordForm">
 						<v-text-field
