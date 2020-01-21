@@ -20,7 +20,7 @@
 							background-color="transparent"
 							color="basil"
 							grow
-							v-model="tab"
+							v-model="selectedTab"
 						>
 						<v-tab
 							:key="item.id"
@@ -29,7 +29,22 @@
 						>
 							{{ item.text }}
 						</v-tab>
+							<v-menu offset-y v-if="!notLogged">
+								<template v-slot:activator="{ on }">
+									<v-tab
+										color="#CBA789"
+										v-on="on"
+									>{{loggedUser.name + " "}}{{loggedUser.surname}}
+									</v-tab>
+								</template>
+								<v-list>
+									<v-list-item :key="id" @click="goTo(item.link)" v-for="(item, id) in loggedUserMenu">
+										<v-list-item-title>{{ item.text }}</v-list-item-title>
+									</v-list-item>
+								</v-list>
+							</v-menu>
 						</v-tabs>
+
 					</v-col>
 				</v-col>
 				<!-- <v-col>
@@ -61,8 +76,8 @@
 								</v-list>
 							</v-menu>
 						</v-col>
-					</v-row>
-					<v-row class="menu" v-if="showMenu">
+					</v-row> -->
+					<v-row class="menu hidden-md-and-up"  v-if="showMenu">
 						<v-col class="hidden-md-and-up">
 							<v-menu class="responsive_menu" offset-y style="left:0 ;">
 								<template v-slot:activator="{ on }">
@@ -78,9 +93,7 @@
 							</v-menu>
 						</v-col>
 					</v-row>
-				</v-col> -->
 			</v-row>
-			<v-row></v-row>
 		</v-col>
 	</v-row>
 </template>
@@ -136,7 +149,8 @@
         menu: [],
         notLogged: true,
         loggedUser: "",
-				showMenu: true
+				showMenu: true,
+        selectedTab: ''
       };
     },
     beforeMount() {
@@ -144,18 +158,22 @@
         case "guest":
           this.menu = this.questMenu;
           this.loggedUserMenu = this.userMenu;
+          this.setupCurrentRouteInMenu(this.menu)
           break;
         case "admin":
           this.menu = this.adminMenu;
           this.loggedUserMenu = this.employerMenu;
+          this.setupCurrentRouteInMenu(this.menu)
           break;
         case "worker":
           this.menu = this.waiterMenu;
           this.loggedUserMenu = this.employerMenu;
+          this.setupCurrentRouteInMenu(this.menu)
           break;
         case "customer":
           this.menu = this.customerMenu;
           this.loggedUserMenu = this.userMenu;
+          this.setupCurrentRouteInMenu(this.menu)
           break;
       }
       if (this.user !== null) {
@@ -177,6 +195,13 @@
           window.location.href = route;
         }
       },
+			setupCurrentRouteInMenu(menu){
+				for(let menuItem of menu){
+				  if(menuItem.link.name == route().current()){
+						this.selectedTab = menuItem.id-1
+					}
+				}
+			},
       register() {
         window.location.href = route("register");
       },
