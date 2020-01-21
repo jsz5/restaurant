@@ -1,21 +1,11 @@
 <template>
-	<v-row
-		class="justify-center align-center"
-	>
-		<v-col
-			cols="12"
-			sm="8"
-			md="4"
-		>
+	<v-row class="justify-center align-center">
+		<v-col cols="12" sm="8" md="4">
 			<v-card class="elevation-12">
-				<v-toolbar
-					color="primary"
-					dark
-					flat
-				>
+				<v-toolbar color="primary" dark flat>
 					<v-toolbar-title>Logowanie</v-toolbar-title>
 				</v-toolbar>
-				<v-card-text>
+				<v-card-text class="boksik">
 					<v-form>
 						<v-text-field
 							:rules="[rules.required, rules.emailRules]"
@@ -29,7 +19,6 @@
 							label="Hasło"
 							name="password"
 							prepend-icon="lock"
-							type="password"
 							:append-icon="showPassword ? 'visibility' : 'visibility_off'"
 							:type="showPassword ? 'text' : 'password'"
 							:rules="[rules.required]"
@@ -53,11 +42,8 @@
 							Zarejestruj się
 						</v-btn>
 					</v-form>
-				</v-card-text>
-				<v-card-actions>
-					<v-spacer/>
 					<v-btn :loading="isLoading" color="primary" @click="login">Zaloguj</v-btn>
-				</v-card-actions>
+				</v-card-text>
 			</v-card>
 		</v-col>
 	</v-row>

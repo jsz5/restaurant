@@ -2,7 +2,7 @@
 	<v-row class="justify-center align-center">
 		<v-col>
 			<v-card class="transparent_form">
-				<v-card-title>
+				<v-card-title class="boksik">
 					<h1>Stoliki</h1>
 				</v-card-title>
 

@@ -34,13 +34,13 @@ W sensie primary, secondary itd, to czemu ktoś tutaj zrobił customowy x_x
 		text-align: center;
 	}
 
-
 		#v-footer .copyright {
 			letter-spacing: 0.2rem;
 			font-size: 0.6rem;
 			opacity: 0.75;
 			margin-bottom: 0;
 			text-transform: uppercase;
+			padding-bottom: 20px;
 		}
 
 		body.is-article-visible #v-footer {

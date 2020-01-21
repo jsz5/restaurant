@@ -2,21 +2,19 @@
 	<v-row class="justify-center align-center">
 		<v-col cols="12" lg="5" ma-2 md="8" sm="10" xl="4">
 			<v-card class="transparent_form">
-				<v-card-title>Generowanie kuponu</v-card-title>
-				<v-card-text>
+				<v-toolbar color="primary" dark flat>
+					<v-toolbar-title>Generowanie kuponu</v-toolbar-title>
+				</v-toolbar>
+				<v-card-text class="boksik">
 					<v-form ref="form">
 						<v-text-field :rules="[rules.required, rules.numeric]" label="Wysokość zniżki" v-bind:error-messages="errors.name"
 													v-model="form.discount" outlined suffix="%"
 						/>
 					</v-form>
+          <v-btn @click="generateVoucher" class="yellow_form_button" color="secondary" v-bind:loading="loading">
+            Wygeneruj kupon
+          </v-btn>
 					</v-card-text>
-						<v-card-actions>
-							<v-row class="justify-center">
-								<v-btn @click="generateVoucher" class="yellow_form_button" color="secondary" v-bind:loading="loading">
-									Wygeneruj kupon
-								</v-btn>
-							</v-row>
-						</v-card-actions>
 			</v-card>
 		</v-col>
 	</v-row>

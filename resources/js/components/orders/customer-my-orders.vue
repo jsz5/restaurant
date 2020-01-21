@@ -1,17 +1,17 @@
 <template>
   <v-row class="justify-center align-center">
-    <v-col cols="12" lg="6" ma-2 md="8" sm="12" xl="5">
+    <v-col cols="12" lg="6" ma-2 md="8" sm="12" xl="8">
       <v-card class="transparent_form">
-        <v-card-title>
-          <h1>Moje zamówienia</h1>
-        </v-card-title>
+				<v-toolbar color="primary" dark flat>
+					<v-toolbar-title>Moje Zamówienia</v-toolbar-title>
+				</v-toolbar>
 
 
         <v-data-table
           :expanded.sync="expanded"
           :headers="headers"
           :items="myOrders"
-          :items-per-page="-1"
+          :items-per-page="5"
           class="elevation-1"
           show-expand
           single-expand

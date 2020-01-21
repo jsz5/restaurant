@@ -2,7 +2,7 @@
 	<v-row class="justify-center align-center">
 		<v-col cols="12" lg="5" ma-2 md="8" sm="10" xl="4">
 			<v-card class="transparent_form">
-				<v-col class="justify-center align-center">
+				<v-col class="justify-center align-center boksik">
 					<v-card-title>
 						Statystyki restauracji
 						<v-spacer></v-spacer>

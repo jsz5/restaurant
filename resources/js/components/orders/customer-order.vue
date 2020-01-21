@@ -18,7 +18,6 @@
           <v-row class="justify-space-between">
             <v-col>
               <v-card-title>
-                <v-col>
                   <v-select
                     :items="categoryItems"
                     @change="setMenuItems"
@@ -28,6 +27,19 @@
                     outlined
                     v-model="selectedCategory"
                   />
+                  <v-data-table
+                    :headers="headers"
+                    :items="menuItems"
+                    :items-per-page="5"
+                    :search="search"
+                    class="elevation-1"
+                    show-select
+                    v-model="selected"
+                  />
+              </v-card-title>
+            </v-col>
+            <v-col>
+              <v-card-title>
                   <v-text-field
                     append-icon="search"
                     hide-details
@@ -35,33 +47,21 @@
                     single-line
                     v-model="search"
                   />
-                </v-col>
-              </v-card-title>
-              <v-data-table
-                :headers="headers"
-                :items="menuItems"
-                :items-per-page="5"
-                :search="search"
-                class="elevation-1"
-                show-select
-                v-model="selected"
-              />
-            </v-col>
-            <v-col>
-              <v-data-table
+                  <v-data-table
                   :headers="orderedHeaders"
                   :items="ordered"
                   :items-per-page="5"
                   class="elevation-1"
-              >
-                <template v-slot:item.changeAmount="{ item }">
-                  <v-icon @click="minusItem(item)">indeterminate_check_box</v-icon>
-                  <v-icon @click="plusItem(item)">add_box</v-icon>
-                </template>
-                <template v-slot:item.delete="{ item }">
-                  <v-icon @click="deleteItem(item)">delete</v-icon>
-                </template>
-              </v-data-table>
+                  >
+                    <template v-slot:item.changeAmount="{ item }">
+                      <v-icon @click="minusItem(item)">indeterminate_check_box</v-icon>
+                      <v-icon @click="plusItem(item)">add_box</v-icon>
+                    </template>
+                    <template v-slot:item.delete="{ item }">
+                      <v-icon @click="deleteItem(item)">delete</v-icon>
+                    </template>
+                  </v-data-table>
+              </v-card-title>
             </v-col>
           </v-row>
           <v-card-actions>
@@ -121,7 +121,7 @@
       <v-stepper-content step="3">
         <v-row class="justify-space-around">
           <v-col cols="12" lg="4" md="7" sm="10" xl="3">
-            <v-list two-line>
+            <v-list two-line background="#0000008c">
               <v-list-item>
                 <v-list-item-icon>
                   <v-icon color="primary">monetization_on</v-icon>
