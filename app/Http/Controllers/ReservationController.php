@@ -30,7 +30,7 @@ class ReservationController extends Controller
     /**
      * Show form for display information about specific reservation for user
      *
-     * @param $id
+     * @param $id - currently logged user id
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function showUser($id)
@@ -42,7 +42,7 @@ class ReservationController extends Controller
     /**
      * Show form for display information about specific reservation for waiter
      *
-     * @param $id
+     * @param $id - currently logged waiter id
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function showWaiter($id)

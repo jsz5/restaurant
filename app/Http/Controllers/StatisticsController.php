@@ -50,8 +50,8 @@ class StatisticsController extends Controller
     }
 
     /**
-     * @param $workerId
-     * @param $year
+     * @param $workerId - specific worker id
+     * @param $year - specific year for statistics
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function workerStatistics($workerId, $year)

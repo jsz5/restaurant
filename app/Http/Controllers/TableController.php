@@ -21,7 +21,7 @@ class TableController extends Controller
 
     /**
      * Show form for edit specific table
-     * @param $id
+     * @param $id - table id
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function edit($id)
@@ -33,7 +33,7 @@ class TableController extends Controller
 
     /**
      * Show form for display specific table for admin
-     * @param $id
+     * @param $id - table id
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function show($id)
@@ -45,7 +45,7 @@ class TableController extends Controller
 
     /**
      * Show form for display tables for currently logged waiter
-     * @param $id
+     * @param $id - table id
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function showWaiter($id)

@@ -33,7 +33,7 @@ class OrderController extends Controller
 
     /**
      * Show form for create order by waiter
-     * @param $tableId
+     * @param $tableId - table id
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function createWaiterOrder($tableId)
@@ -44,7 +44,7 @@ class OrderController extends Controller
 
     /**
      * Show form for display specific order
-     * @param $token
+     * @param $token - specific order token
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function show($token)
@@ -55,7 +55,7 @@ class OrderController extends Controller
 
     /**
      * Show form for edit specific order
-     * @param $token
+     * @param $token - specific order token
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function editWaiter($token)
