@@ -1,7 +1,7 @@
 <template>
   <v-row class="justify-center align-center">
     <v-col
-      cols="12" lg="4" ma-2 md="5" sm="8" xl="3">
+      cols="14" lg="6" ma-2 md="7" sm="9" xl="5">
       <v-card class="transparent_form">
 				<v-toolbar color="primary" dark flat>
 					<v-toolbar-title>Odzyskaj hasło</v-toolbar-title>
