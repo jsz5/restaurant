@@ -174,6 +174,14 @@
               class="elevation-1"
             /><br>
             <v-textarea auto-grow label="Komentarz do zamówienia" outlined row-height="20" rows="5" v-model="comment"/>
+            <v-select
+              :items="vouchers"
+              item-text="percentageDiscount"
+              item-value="token"
+              label="Dostępne kupony"
+              outlined
+              v-model="selectedDiscount">
+            </v-select>
           </v-col>
         </v-row>
 
@@ -240,6 +248,7 @@
           phone: ""
         },
         comment: '',
+        selectedDiscount: '',
         rules: {
           required: value => !!value || "To pole jest wymagane",
           emailRules: v =>
@@ -254,13 +263,15 @@
           passwordRules: value =>
             (value && !value.localeCompare(this.passwordForm.newPassword)) ||
             "Hasła nie są takie same"
-        }
+        },
+        vouchers: []
       };
     },
     beforeMount() {
       this.menuItems = this.dishes;
       this.allMenuItems = this.dishes;
       this.categoryItems = this.categories;
+      this.getVouchers()
       this.getData();
     },
 
@@ -299,6 +310,17 @@
               }
             }
           })
+      },
+      getVouchers(){
+        axios.get(route('api.user.getMyVoucher'))
+          .then(response => {
+            this.vouchers = response.data
+            this.vouchers.forEach(item=>{
+              item.percentageDiscount = item.discount*100 + '%'
+            })
+          }).catch(error => {
+          console.error(error)
+        })
       },
       calculateSum() {
         this.priceSum = 0;
@@ -347,6 +369,7 @@
         });
       },
       completeOrderOnline() {
+        console.log(this.selectedDiscount)
         this.loading = true;
         this.ordered.forEach(item => {
           this.addItemToNewOrder(item.id, item.amount);
@@ -357,7 +380,8 @@
             address: this.form.address,
             items: this.orderArray,
             email: this.form.email,
-            comment: this.comment
+            comment: this.comment,
+            discount_token: this.selectedDiscount
           })
           .then(
             response => {
