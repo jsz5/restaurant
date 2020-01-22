@@ -2,16 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\DishCategory;
-use Illuminate\Http\Request;
-
 class DishCategoryController extends Controller
 {
 
+
     /**
-     * Show the application dashboard.
+     * Show form for all dish categories
      *
-     * @return \Illuminate\Contracts\Support\Renderable
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function index()
     {
