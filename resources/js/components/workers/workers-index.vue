@@ -1,10 +1,13 @@
 <template>
   <v-row class="justify-center align-center">
-    <v-col cols="12" lg="8" ma-2 md="10" sm="12" xl="6">
+    <v-col cols="17" lg="14" ma-2 md="15" sm="16" xl="10">
       <v-card class="transparent_form">
-        <v-card-title>
+        <v-card-title class="boksik">
           Pracownicy
-          <v-spacer></v-spacer>
+        </v-card-title>
+        <v-card-text class="boksik">
+                  <v-btn @click="addWorker" class="yellow_form_button" color="secondary">Dodaj pracownika</v-btn>
+
           <v-text-field
             v-model="search"
             append-icon="search"
@@ -12,9 +15,7 @@
             single-line
             hide-details
           ></v-text-field>
-          <v-spacer></v-spacer>
-          <v-btn @click="addWorker" class="yellow_form_button" color="secondary">Dodaj pracownika</v-btn>
-        </v-card-title>
+        </v-card-text>
         <v-data-table
           :headers="headers"
           :items="workers"
@@ -37,6 +38,7 @@
           </template>
 
         </v-data-table>
+        
       </v-card>
     </v-col>
   </v-row>

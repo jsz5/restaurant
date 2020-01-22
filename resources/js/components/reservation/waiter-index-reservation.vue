@@ -1,8 +1,8 @@
 <template>
 	<v-row class="justify-space-around">
-		<v-col cols="12" sm="10" md="8" lg="5" xl="4">
+		<v-col cols="12" sm="10" md="8" lg="5" xl="6">
 			<v-card class="transparent_form">
-				<v-card-text>
+				<v-card-text class="boksik">
 					<h4>W celu wyszukania rezerwacji podaj datę:</h4>
 					<v-menu
 						ref="menu"
@@ -60,10 +60,10 @@
 		<v-col cols="12" sm="10" md="8" lg="5" xl="4" class="button_row">
 
 			<v-card class="transparent_form">
-				<v-card-text>
+				<v-card-text class="boksik">
 					<h4>Złoż nową rezerwację:</h4><br>
 					<v-row class="justify-center">
-						<v-btn @click="addReservation" class="yellow_form_button darker_theme">
+						<v-btn @click="addReservation" class="primary">
 							Nowa rezerwacja
 						</v-btn>
 					</v-row>

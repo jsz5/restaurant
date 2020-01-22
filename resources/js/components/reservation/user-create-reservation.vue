@@ -1,12 +1,12 @@
 <template>
 	<v-row class="justify-center align-center">
 		<v-col
-			cols="12" lg="4" ma-2 md="5" sm="8" xl="3">
+			cols="12" lg="4" ma-2 md="5" sm="8" xl="4">
 			<v-card class="transparent_form">
-				<v-card-title>
-					Formularz rezerwacji
-				</v-card-title>
-				<v-card-text>
+				<v-toolbar color="primary" dark flat>
+					<v-toolbar-title>Formularz Rezerwacji</v-toolbar-title>
+				</v-toolbar>
+				<v-card-text class="boksik">
 					<v-select
 						:items="personSelectItems"
 						item-text="text"

@@ -1,12 +1,11 @@
 <template>
 	<v-row class="justify-center align-center">
-		<v-col cols="12" lg="5" ma-2 md="8" sm="10" xl="4">
+		<v-col cols="14" lg="7" ma-2 md="10" sm="12" xl="6">
 			<v-card class="transparent_form">
-				<v-col class="justify-center align-center">
-					<v-card-title>
-						Moje ulubione dania
-					</v-card-title>
-					<v-card-text>
+				<v-toolbar color="primary" dark flat>
+					<v-toolbar-title>Moje Ulubione Dania</v-toolbar-title>
+				</v-toolbar>
+					<v-card-text class="boksik">
 						<v-data-table
 							:headers="headers"
 							:items="favouriteDishes"
@@ -23,7 +22,6 @@
 							</template>
 						</v-data-table>
 					</v-card-text>
-				</v-col>
 			</v-card>
 		</v-col>
 	</v-row>

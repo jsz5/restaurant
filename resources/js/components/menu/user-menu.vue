@@ -1,12 +1,16 @@
 <template>
 	<v-row class="justify-space-around">
-		<v-col cols="12" sm="7" md="6" lg="6" xl="5">
+		<v-col cols="12" sm="7" md="6" lg="6" xl="5" class="boksik">
+        <v-card-title>
+          <h1>Menu</h1>
+        </v-card-title>
 			<v-select
 				class="beige_select"
 				:items="categoryItems"
 				item-value="id"
 				item-text="name"
 				label="Kategoria"
+        style="padding-left: 5px; padding-right: 5px"
 				v-model="categoryPicked"
 				v-on:change="setMenuItems()"
 			/>
