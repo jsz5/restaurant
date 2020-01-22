@@ -46,7 +46,7 @@ class DishController extends Controller
     /**
      * Show the form for editing the dish
      *
-     * @param  int  $id
+     * @param  int  $id - dish id
      * @return View
      */
     public function edit($id)

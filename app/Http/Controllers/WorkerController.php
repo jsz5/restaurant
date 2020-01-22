@@ -16,7 +16,7 @@ class WorkerController extends Controller
 
     /**
      * Show form for edit specific waiter
-     * @param int $id
+     * @param int $id - waiter id
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function edit(int $id)
