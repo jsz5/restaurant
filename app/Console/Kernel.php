@@ -15,6 +15,7 @@ class Kernel extends ConsoleKernel
      */
     protected $commands = [
         VoucherActions::class,
+        DeleteVoucherCommand::class,
         ReservationRemainderCommand::class
     ];
 
@@ -27,7 +28,7 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
        $schedule->command('reservation:remainder')->dailyAt('12:00');
-        // $schedule->command('reservation:remainder')->everyMinute();
+       $schedule->command('delete:voucher')->dailyAt('00:01');
     }
 
     /**

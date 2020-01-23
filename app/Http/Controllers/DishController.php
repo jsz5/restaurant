@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Dish;
 use App\Models\DishCategory;
 use App\Services\DishService;
-use Illuminate\Http\Request;
+use Illuminate\View\View;
 
 class DishController extends Controller
 {
@@ -13,11 +13,10 @@ class DishController extends Controller
     /**
      * Show the application dashboard.
      *
-     * @return \Illuminate\Contracts\Support\Renderable
+     * @return View
      */
     public function index()
     {
-        dd(Dish::all()->load('category'));
         return view('home');
     }
 
@@ -45,10 +44,10 @@ class DishController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Show the form for editing the dish
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param  int  $id - dish id
+     * @return View
      */
     public function edit($id)
     {
@@ -57,7 +56,9 @@ class DishController extends Controller
     }
 
     /**
+     * Show the form for create dish
      *
+     * @return View
      */
     public function create()
     {

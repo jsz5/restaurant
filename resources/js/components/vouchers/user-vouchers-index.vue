@@ -1,12 +1,11 @@
 <template>
 	<v-row class="justify-center align-center">
-		<v-col cols="12" lg="5" ma-2 md="8" sm="10" xl="4">
+		<v-col cols="12" lg="5" ma-2 md="8" sm="10" xl="6">
 			<v-card class="transparent_form">
-				<v-col class="justify-center align-center">
-					<v-card-title>
-						Moje kupony
-					</v-card-title>
-					<v-card-text>
+				<v-toolbar color="primary" dark flat>
+					<v-toolbar-title>Moje Kupony</v-toolbar-title>
+				</v-toolbar>
+					<v-card-text class="boksik">
 						<v-data-table
 							:headers="headers"
 							:items="vouchersItems"
@@ -21,7 +20,6 @@
 							</template>
 						</v-data-table>
 					</v-card-text>
-				</v-col>
 			</v-card>
 		</v-col>
 	</v-row>

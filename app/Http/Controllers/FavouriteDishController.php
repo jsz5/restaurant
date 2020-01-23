@@ -2,16 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use Illuminate\View\View;
 
 class FavouriteDishController extends Controller
 {
 
 
     /**
-     * Show the application dashboard.
+     * Show the form for favourite dishes list.
      *
-     * @return \Illuminate\Contracts\Support\Renderable
+     * @return View
      */
     public function index()
     {

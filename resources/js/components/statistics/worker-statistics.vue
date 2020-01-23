@@ -1,13 +1,12 @@
 <template>
 	<v-row class="justify-center align-center">
-		<v-col cols="12" lg="5" ma-2 md="8" sm="10" xl="4">
+		<v-col cols="12" lg="5" ma-2 md="8" sm="10" xl="5">
 			<v-card class="transparent_form">
-				<v-col class="justify-center align-center">
-					<v-card-title>
+					<v-card-title class="boksik">
 						Statystyki kelnera o identyfikatorze numer {{id}}
 						<v-spacer></v-spacer>
 					</v-card-title>
-					<v-card-text>
+					<v-card-text class="boksik">
 						<v-simple-table>
 							<template v-slot:default>
 								<thead>
@@ -25,7 +24,6 @@
 							</template>
 						</v-simple-table>
 					</v-card-text>
-				</v-col>
 			</v-card>
 		</v-col>
 	</v-row>

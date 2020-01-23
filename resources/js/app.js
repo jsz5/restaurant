@@ -40,9 +40,9 @@ const opts = {
     dark: true,
     themes: {
       dark: {
-        primary: '#F2B25D',
-        accent: '#FF4081',
-        secondary: '#FFB197',
+        primary: '#636262',
+        accent: '#0f0f0f',
+        secondary: '#000000',
         success: '#4CAF50',
         info: '#2196F3',
         warning: '#FB8C00',

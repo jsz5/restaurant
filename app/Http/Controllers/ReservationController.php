@@ -2,15 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use Illuminate\Http\Response;
-
 class ReservationController extends Controller
 {
+
     /**
-     * Display a listing of the resource.
+     *  Show form contains all reservations for currently logged waiter
      *
-     * @return Response
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function index()
     {
@@ -19,9 +17,9 @@ class ReservationController extends Controller
 
 
     /**
-     * Show the form for creating a new resource.
+     * Show form t create reservation by waiter
      *
-     * @return Response
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function create()
     {
@@ -30,32 +28,22 @@ class ReservationController extends Controller
 
 
     /**
-     * Store a newly created resource in storage.
+     * Show form for display information about specific reservation for user
      *
-     * @param Request $request
-     * @return Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return Response
+     * @param $id - currently logged user id
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function showUser($id)
     {
         return view('reservations.showUser', ['id' => $id]);
     }
 
+
     /**
-     * Display the specified resource.
+     * Show form for display information about specific reservation for waiter
      *
-     * @param  int  $id
-     * @return Response
+     * @param $id - currently logged waiter id
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function showWaiter($id)
     {
@@ -64,52 +52,20 @@ class ReservationController extends Controller
 
 
     /**
-     * Show the form for editing the specified resource.
+     * Show form of all currently logged user reservations
      *
-     * @param  int  $id
-     * @return Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param Request $requestreservation
-     * @param  int  $id
-     * @return Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
-
-    /**
-     * Display a listing of the resource.
-     *
-     * @return Response
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function indexUser()
     {
         return view('reservations/indexUser');
     }
+
+
     /**
-     * Show the form for creating a new resource.
+     * Show form for create reservation by user
      *
-     * @return Response
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function createUser()
     {

@@ -3,31 +3,26 @@
 namespace App\Http\Controllers;
 
 use App\Models\Table;
-use App\Models\User;
-use Illuminate\Contracts\Support\Renderable;
-use Illuminate\Http\Request;
-use Illuminate\Http\Response;
-use Illuminate\Support\Facades\Auth;
-use Tymon\JWTAuth\JWT;
 
 class TableController extends Controller
 {
 
+
     /**
-     * Show the application dashboard.
+     * Show form for all tables in restaurant
      *
-     * @return Renderable
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function index()
     {
         return view('tables/index');
     }
 
+
     /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return Response
+     * Show form for edit specific table
+     * @param $id - table id
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function edit($id)
     {
@@ -35,11 +30,11 @@ class TableController extends Controller
         return view('tables/edit', compact(['table', 'id']));
     }
 
+
     /**
-     * Show the form for show th table.
-     *
-     * @param  int  $id
-     * @return Response
+     * Show form for display specific table for admin
+     * @param $id - table id
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function show($id)
     {
@@ -47,11 +42,11 @@ class TableController extends Controller
         return view('tables/show', compact(['table', 'id']));
     }
 
+
     /**
-     * Show the form for show th table.
-     *
-     * @param  int  $id
-     * @return Response
+     * Show form for display tables for currently logged waiter
+     * @param $id - table id
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function showWaiter($id)
     {
@@ -60,9 +55,10 @@ class TableController extends Controller
 
 
     /**
-     * Show the application dashboard.
      *
-     * @return Renderable
+     * Show form of all tables for currently logged waiter
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function waiterIndex()
     {
