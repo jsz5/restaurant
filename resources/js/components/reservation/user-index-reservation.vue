@@ -1,6 +1,6 @@
 <template>
 	<v-row class="justify-center align-center">
-		<v-col cols="12" lg="6" ma-2 md="8" sm="12" xl="5">
+		<v-col cols="14" lg="8" ma-2 md="10" sm="14" xl="7">
 			<v-card class="transparent_form">
 				<v-toolbar color="primary" dark flat>
 					<v-toolbar-title>Moje Rezerwacje</v-toolbar-title>

@@ -1,7 +1,7 @@
 <template>
   <v-row class="justify-center align-center">
     <v-col
-      cols="14" lg="6" ma-2 md="7" sm="9" xl="5">
+      cols="15" lg="7" ma-2 md="8" sm="10" xl="6">
       <v-card class="transparent_form">
         <v-card-title>
           Fromularz zmiany hasła

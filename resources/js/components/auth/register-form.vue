@@ -1,6 +1,6 @@
 <template>
 	<v-row class="justify-center align-center">
-		<v-col cols="14" sm="10" md="6">
+		<v-col cols="15" sm="11" md="7">
 			<v-card class="elevation-12">
 				<v-toolbar color="primary" dark flat>
 					<v-toolbar-title>Zarejestruj</v-toolbar-title>

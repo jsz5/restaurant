@@ -105,32 +105,37 @@
           {id: 4, text: "Kelnerzy", link: route("worker.index")},
           {id: 5, text: "Kupony", link: route("voucher.add")},
           {id: 6, text: "Statystyki", link: route("admin.statistics")},
-          {id: 7, text: "Stoliki", link: route("table.index")}
+          {id: 7, text: "Stoliki", link: route("table.index")},
+		  {id: 8, text: "Moje Konto", link: route("user.myAccount")},
+		  {id: 9, text: "Wyloguj", link: "logout"}
         ],
         waiterMenu: [
           {id: 1, text: "Stoliki", link: route("table.waiterIndex")},
           {id: 2, text: "Zamówienia", link: route("order.index")},
-          {id: 3, text: "Rezerwacje", link: route("reservation.index")}
+          {id: 3, text: "Rezerwacje", link: route("reservation.index")},
+		  {id: 4, text: "Moje Konto", link: route("user.myAccount")},
+		  {id: 5, text: "Wyloguj", link: "logout"}
         ],
         userMenu: [
-          {id: 1, text: "moje zamówienia", link: route("orders.myOrders")},
-          {id: 2, text: "moje rezerwacje", link: route("reservation.indexUser")},
-          {id: 3, text: "moje kupony", link: route("user.myVouchers")},
-          {id: 4, text: "moje ulubione dania", link: route("myFavouriteDishes.index")},
-          {id: 5, text: "moje konto", link: route("user.myAccount")},
-          {id: 6, text: "wyloguj", link: "logout"}
+          {id: 1, text: "Zamówienia", link: route("orders.myOrders")},
+          {id: 2, text: "Rezerwacje", link: route("reservation.indexUser")},
+          {id: 3, text: "Kupony", link: route("user.myVouchers")},
+          {id: 4, text: "Ulubione Dania", link: route("myFavouriteDishes.index")},
+          {id: 5, text: "Moje Konto", link: route("user.myAccount")},
+          {id: 6, text: "Wyloguj", link: "logout"}
         ],
         customerMenu: [
           {id: 1, text: "Strona główna", link: route("home")},
           {id: 2, text: "Menu", link: route("menu")},
           {id: 3, text: "Zamów online", link: route("order.create.online")},
           {id: 4, text: "Zarezerwuj", link: route("reservation.createUser")},
-          {id: 5, text: "Kontakt", link: route("contact")}
+          {id: 5, text: "Kontakt", link: route("contact")},
+		  {id: 6, text: "Wyloguj", link: "logout"}
         ],
         employerMenu: [
-          {id: 1, text: "moje konto", link: route("user.myAccount")},
-          {id: 2, text: "moje statystyki", link: route("myStatistics.asWorker")},
-          {id: 3, text: "wyloguj", link: "logout"}
+          {id: 1, text: "Moje Konto", link: route("user.myAccount")},
+          {id: 2, text: "Moje Statystyki", link: route("myStatistics.asWorker")},
+          {id: 3, text: "Wyloguj", link: "logout"}
         ],
         loggedUserMenu: [],
         menu: [],

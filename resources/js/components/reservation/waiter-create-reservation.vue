@@ -1,7 +1,7 @@
 <template>
 	<div>
 		<v-row class="justify-center">
-			<v-col cols="12" sm="10" md="8" lg="5" xl="4">
+			<v-col cols="15" sm="13" md="11" lg="8" xl="7">
 				<v-card class="transparent_form">
 					<v-card-text class="boksik">
 						<h4>W celu znalezienia wolnych stolików do rezerwacji wybierz datę:</h4>

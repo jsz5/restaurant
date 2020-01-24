@@ -62,4 +62,8 @@
   }
 </script>
 
-<style scoped></style>
+<style scoped>
+  .theme--dark.v-card {
+    background-color: rgba(0, 0, 0, 0.5) !important;
+  }
+</style>

@@ -1,6 +1,6 @@
 <template>
 	<v-row class="justify-center align-center">
-		<v-col cols="14" lg="7" ma-2 md="10" sm="12" xl="6">
+		<v-col cols="17" lg="10" ma-2 md="13" sm="15" xl="9">
 			<v-card class="transparent_form">
 				<v-toolbar color="primary" dark flat>
 					<v-toolbar-title>Moje Ulubione Dania</v-toolbar-title>

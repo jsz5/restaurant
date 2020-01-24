@@ -1,6 +1,6 @@
 <template>
 	<v-row class="justify-space-around">
-		<v-col cols="12" sm="7" md="6" lg="6" xl="5" class="boksik">
+		<v-col cols="15" sm="10" md="9" lg="9" xl="8" class="boksik">
         <v-card-title>
           <h1>Menu</h1>
         </v-card-title>
