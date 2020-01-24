@@ -1,6 +1,6 @@
 <template>
 	<v-row class="justify-space-around">
-		<v-col cols="12" sm="10" md="8" lg="5" xl="6">
+		<v-col cols="13" sm="11" md="9" lg="6" xl="7">
 			<v-card class="transparent_form">
 				<v-card-text class="boksik">
 					<h4>W celu wyszukania rezerwacji podaj datę:</h4>

@@ -97,7 +97,7 @@ body {
 		transition: none !important;
 	}
 
-/* V-Table */
+/* V-Table, Zegary, Daty i inne Pickery */
 
 .v-data-table {
 	border-radius: 20px;
@@ -184,8 +184,25 @@ th.text-center {
 	background: #000000 !important;
 }
 
-.v-time-picker-clock__inner{
-	background: #252525 !important;
+.v-application .accent--text{
+	color: #565656 !important;
+}
+
+.mdi-star-outline{
+	color: #565656 !important
+}
+
+
+// .v-time-picker-clock__inner{
+// 	background: #252525 !important;
+// }
+
+.v-time-picker-clock__inner {
+    background: #00000000 !important;
+}
+
+.theme--dark.v-time-picker-clock{
+	background: #323337 !important;
 }
 
 
