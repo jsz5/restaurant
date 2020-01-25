@@ -14,6 +14,11 @@ use Tymon\JWTAuth\Facades\JWTAuth;
 class ApiAuthenticateController extends Controller
 {
 
+    /**
+     * Auth
+     * @param Request $request
+     * @return JsonResponse
+     */
     public function authenticate(Request $request): JsonResponse
     {
         $credentials = $request->only('email', 'password');
@@ -29,6 +34,7 @@ class ApiAuthenticateController extends Controller
     }
 
     /**
+     * Logout function
      * @return JsonResponse
      */
     public function logout(): JsonResponse

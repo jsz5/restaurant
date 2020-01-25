@@ -10,6 +10,10 @@ use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
 
 
+/**
+ * Class OrderOnlineMail
+ * @package App\Mails
+ */
 class OrderOnlineMail extends Mailable
 {
     use Queueable, SerializesModels;

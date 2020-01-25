@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Log;
 class ApiStatisticsController extends Controller
 {
     /**
+     * Generate years statistics
      * @param string $year
      * @return JsonResponse
      */
@@ -27,6 +28,7 @@ class ApiStatisticsController extends Controller
     }
 
     /**
+     * Generate waiter statistics
      * @param string $year
      * @param int $waiterId
      * @return JsonResponse
@@ -37,6 +39,7 @@ class ApiStatisticsController extends Controller
     }
 
     /**
+     * Generate years waiter statistics
      * @param string $year
      * @return JsonResponse
      */
@@ -46,6 +49,7 @@ class ApiStatisticsController extends Controller
     }
 
     /**
+     * Generate statistics
      * @param string $year
      * @param int $waiterId
      * @return JsonResponse
@@ -79,6 +83,7 @@ class ApiStatisticsController extends Controller
     }
 
     /**
+     * Show favourite dishes statisitcs
      * @return JsonResponse
      */
     public function favouriteDishesStatisticsIndex()
@@ -95,6 +100,7 @@ class ApiStatisticsController extends Controller
 
 
     /**
+     * All customer statistic in given period
      * @param string $from
      * @param string $to
      * @return JsonResponse
@@ -111,6 +117,7 @@ class ApiStatisticsController extends Controller
         }
     }
     /**
+     * Return service
      * @return StatisticsService
      */
     private function getStatisticsService():StatisticsService

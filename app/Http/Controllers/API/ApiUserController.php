@@ -45,6 +45,7 @@ class ApiUserController extends Controller
     }
 
     /**
+     * Create nwe user with role
      * @param UserCreateRequest $request
      * @param string $role
      * @return \Illuminate\Http\JsonResponse
@@ -69,6 +70,7 @@ class ApiUserController extends Controller
     }
 
     /**
+     * Update user
      * @param UserRequest $request
      * @param User $user
      * @return \Illuminate\Http\JsonResponse
@@ -107,6 +109,7 @@ class ApiUserController extends Controller
     }
 
     /**
+     * Show customers
      * @return \Illuminate\Http\JsonResponse
      */
     public function fetchCustomers()
@@ -115,6 +118,7 @@ class ApiUserController extends Controller
     }
 
     /**
+     * Show workers
      * @return \Illuminate\Http\JsonResponse
      */
     public function fetchWorkers()
@@ -153,6 +157,7 @@ class ApiUserController extends Controller
     }
 
     /**
+     * Show info of user
      * @return JsonResponse
      */
     public function myAccount(){

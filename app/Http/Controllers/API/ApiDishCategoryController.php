@@ -24,6 +24,7 @@ class ApiDishCategoryController extends Controller
     }
 
     /**
+     * Delete category
      * @param DishCategory $dishCategory
      * @return JsonResponse
      */
@@ -44,6 +45,7 @@ class ApiDishCategoryController extends Controller
     }
 
     /**
+     * Create new category
      * @param DishCategoryRequest $request [name]
      * @return JsonResponse
      */
@@ -63,6 +65,7 @@ class ApiDishCategoryController extends Controller
     }
 
     /**
+     * Update new category
      * @param DishCategoryRequest $request [id,name]
      * @return JsonResponse
      */

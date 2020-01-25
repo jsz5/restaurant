@@ -16,6 +16,10 @@ use Illuminate\Queue\SerializesModels;
 use Illuminate\Support\Facades\Log;
 use Swift_TransportException;
 
+/**
+ * Class DeleteVouchers
+ * @package App\Jobs
+ */
 class DeleteVouchers implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;

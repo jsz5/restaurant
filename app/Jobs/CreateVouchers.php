@@ -16,6 +16,10 @@ use Illuminate\Queue\SerializesModels;
 use Illuminate\Support\Facades\Log;
 use Swift_TransportException;
 
+/**
+ * Class CreateVouchers
+ * @package App\Jobs
+ */
 class CreateVouchers implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;

@@ -29,6 +29,7 @@ class ApiTableController extends Controller
     }
 
     /**
+     * Delete table
      * @param Table $table
      * @return JsonResponse
      */
@@ -70,6 +71,7 @@ class ApiTableController extends Controller
         }
     }
     /**
+     * Load table data
      * @param Table $table
      * @return JsonResponse
      */
@@ -86,7 +88,8 @@ class ApiTableController extends Controller
     }
 
     /**
-     * @param TableRequest $request [name]
+     * Create new table
+     * @param TableRequest $request [size]
      * @return JsonResponse
      */
     public function store(TableRequest $request)
@@ -107,7 +110,8 @@ class ApiTableController extends Controller
     }
 
     /**
-     * @param TableRequest $request [id,name]
+     * Update table parm
+     * @param TableRequest $request [id,size]
      * @return JsonResponse
      */
     public function update (TableRequest $request)
@@ -137,6 +141,7 @@ class ApiTableController extends Controller
     }
 
     /**
+     * Open table
      * @param Table $table
      * @return JsonResponse
      */
@@ -159,6 +164,7 @@ class ApiTableController extends Controller
     }
 
     /**
+     * Close table
      * @param Table $table
      * @return JsonResponse
      */

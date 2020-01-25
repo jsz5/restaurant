@@ -4,7 +4,7 @@
     <p>
         Szczegóły złożonego zamówienia oraz możliwość anulowania znajdują się na stronie:
         <a href="{{$link}}">{{$link}}.</a><br><br>
-        System restauracji "W-17 wydział smaków"<br><br>
+        {{config('app.name')}}<br><br>
 
     </p>
     <br>

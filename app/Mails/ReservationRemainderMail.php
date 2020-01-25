@@ -10,14 +10,33 @@ use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
 
 
+/**
+ * Class ReservationRemainderMail
+ * @package App\Mails
+ */
 class ReservationRemainderMail extends Mailable
 {
     use Queueable, SerializesModels;
 
+    /**
+     * @var mixed
+     */
     public $sendToMail;
+    /**
+     * @var mixed
+     */
     public $date;
+    /**
+     * @var mixed
+     */
     public $time;
+    /**
+     * @var string
+     */
     public $link;
+    /**
+     * @var
+     */
     public $size;
 
     /**

@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Auth;
 class StatisticsService
 {
     /**
+     * Generate year statistics
      * @param string $year
      * @return array
      */
@@ -36,6 +37,7 @@ class StatisticsService
     }
 
     /**
+     * Generate waiter statistics
      * @param string $year
      * @param int $waiterId
      * @return array

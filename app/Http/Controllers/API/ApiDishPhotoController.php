@@ -11,6 +11,7 @@ use Intervention\Image\Facades\Image;
 class ApiDishPhotoController extends Controller
 {
     /**
+     * Store new photo
      * @param PhotoRequest $request
      * @return \Illuminate\Http\JsonResponse
      */
@@ -34,6 +35,7 @@ class ApiDishPhotoController extends Controller
     }
 
     /**
+     * Delete photo
      * @param int $id
      * @return \Illuminate\Http\JsonResponse
      */

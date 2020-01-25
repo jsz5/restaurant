@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Auth;
 class OrderService
 {
     /**
+     * Load tables by given date and tables with info about reservation
      * @param string $date
      * @param $tables
      * @return array
@@ -39,6 +40,7 @@ class OrderService
     }
 
     /**
+     * Load table by given date and table with info about reservation
      * @param string $date
      * @param $table
      * @return array
@@ -79,6 +81,7 @@ class OrderService
     }
 
     /**
+     * Return tables operate by currently logged user
      * @return array of tables with order served by auth user
      * and empty tables without any orders
      * @codeCoverageIgnore

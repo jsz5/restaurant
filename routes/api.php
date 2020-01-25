@@ -25,6 +25,7 @@ Route::post('/order/online', 'API\ApiOrderController@storeNewOrderOnline')->name
 Route::get('/order/show/{orderToken}', 'API\ApiOrderController@loadOrder')->name('api.order.loadOrder');
 Route::get('/user/auth-user', 'API\ApiUserController@myAccount')->name('api.user.authenticatedUser');
 Route::delete('/order/delete/{orderToken}', 'API\ApiOrderController@deleteOrder')->name('api.order.delete');
+Route::post('/contact', 'API\ApiContactController@addFeedback')->name('api.contact.addFeedback');
 
 Route::name('api.')->namespace('API')->middleware(['jwt.auth'])->group(function () {
     //todo refactor na group
