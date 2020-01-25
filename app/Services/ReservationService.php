@@ -52,6 +52,7 @@ class ReservationService
     }
 
     /**
+     * Return if giver time is valid
      * @param string $time
      * @return bool
      * @codeCoverageIgnore
@@ -65,6 +66,7 @@ class ReservationService
     }
 
     /**
+     * Check if table is available
      * @param $id
      * @param $date
      * @param $time
@@ -92,6 +94,7 @@ class ReservationService
     }
 
     /**
+     * Load reservation with status
      * @param $reservations
      * @return array
      */
@@ -114,6 +117,7 @@ class ReservationService
     }
 
     /**
+     * Load resevation for worker
      * @param string $date
      * @return array
      */
@@ -123,6 +127,7 @@ class ReservationService
     }
 
     /**
+     * Load reservation currently logged user
      * @return array
      * @codeCoverageIgnore
      */
@@ -134,6 +139,7 @@ class ReservationService
 
 
     /**
+     * Load free tables
      * @param string $date
      * @return mixed
      */
@@ -160,6 +166,7 @@ class ReservationService
     }
 
     /**
+     * Create new reservation as worker
      * @codeCoverageIgnore
      * @param WorkerReservationRequest $request
      */
@@ -178,6 +185,7 @@ class ReservationService
     }
 
     /**
+     * Create new reservation as customer
      * @param CustomerReservationRequest $request
      * @codeCoverageIgnore
      * @return bool
@@ -197,6 +205,11 @@ class ReservationService
         return false;
     }
 
+    /**
+     * Load reservation info
+     * @param int $id
+     * @return array
+     */
     public function fetchReservation(int $id):array
     {
         $reservation= Reservation::with('table')->findOrFail($id);

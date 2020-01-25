@@ -10,6 +10,10 @@ use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
 
 
+/**
+ * Class RegistrationMail
+ * @package App\Mails
+ */
 class RegistrationMail extends Mailable
 {
     use Queueable, SerializesModels;

@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Log;
 class ApiReservationController extends Controller
 {
     /**
+     * store reservation as customer
      * @param CustomerReservationRequest $request
      * @return \Illuminate\Http\JsonResponse
      */
@@ -33,6 +34,7 @@ class ApiReservationController extends Controller
     }
 
     /**
+     * store reservation as worker
      * @param WorkerReservationRequest $request
      * @return \Illuminate\Http\JsonResponse
      */
@@ -52,6 +54,7 @@ class ApiReservationController extends Controller
 
 
     /**
+     * show reservation for customer
      * @return \Illuminate\Http\JsonResponse
      */
     public function customerIndex()
@@ -67,6 +70,7 @@ class ApiReservationController extends Controller
     }
 
     /**
+     * show reservation for worker
      * @param string $date
      * @return \Illuminate\Http\JsonResponse
      */
@@ -84,6 +88,7 @@ class ApiReservationController extends Controller
 
 
     /**
+     * Find free table for given date
      * @param string $date
      * @return \Illuminate\Http\JsonResponse
      */
@@ -100,6 +105,7 @@ class ApiReservationController extends Controller
     }
 
     /**
+     * Load reservation date
      * @param int $id
      * @return \Illuminate\Http\JsonResponse
      */
@@ -109,6 +115,7 @@ class ApiReservationController extends Controller
     }
 
     /**
+     * Delete reservation
      * @param int $id
      * @return \Illuminate\Http\JsonResponse
      */
@@ -127,6 +134,7 @@ class ApiReservationController extends Controller
     }
 
     /**
+     * Return service
      * @return ReservationService
      */
     private function getReservationService():ReservationService

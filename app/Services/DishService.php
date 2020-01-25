@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Auth;
 class DishService
 {
     /**
+     * Load dishes with flag if dish is favourite
      * @param $dishes
      * @return array
      */
@@ -40,6 +41,7 @@ class DishService
 
 
     /**
+     * Load only favourite dish
      * @param $dishes
      * @return array
      */
@@ -69,6 +71,7 @@ class DishService
     }
 
     /**
+     * Load dish data with photo
      * @param Dish $dish
      * @return array
      */

@@ -9,11 +9,21 @@ use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
 
 
+/**
+ * Class ResetPasswordMail
+ * @package App\Mails
+ */
 class ResetPasswordMail extends Mailable
 {
     use Queueable, SerializesModels;
 
+    /**
+     * @var string
+     */
     public $sendToMail;
+    /**
+     * @var string
+     */
     public $link;
 
     /**

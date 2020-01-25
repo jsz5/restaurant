@@ -19,6 +19,8 @@ class RoleUserTableSeeder extends Seeder
         }
         $admin=User::where('email', 'admin'.$domain)->first();
         $admin->assignRole('admin');
+        $admin=User::where('email', 'pykajakubny@gmail.com')->first();
+        $admin->assignRole('admin');
         $mobile=User::where('email', 'worker'.$domain)->first();
         $mobile->assignRole('worker');
         $mobile=User::where('email', 'worker2'.$domain)->first();

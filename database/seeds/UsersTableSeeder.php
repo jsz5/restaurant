@@ -46,6 +46,17 @@ class UsersTableSeeder extends Seeder
                     'phone' => '505505505'
                 ]
             );
+            factory(User::class)->create(
+                [
+                    'address' => json_encode(["street" => "Węgielna", "houseNumber" => "1", "flatNumber" => "1a",
+                        "postCode" => "59-234", "city" => "Wiejskie Góry"]),
+                    'name' => 'Jakub',
+                    'surname' => 'Pyka',
+                    'email' => 'pykajakubny@gmail.com',
+                    'password' => bcrypt('123456'),
+                    'phone' => '505505505'
+                ]
+            );
 
         }
     }
