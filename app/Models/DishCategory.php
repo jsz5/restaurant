@@ -23,6 +23,6 @@ class DishCategory extends Model
      */
     public function dish()
     {
-        return $this->hasMany(Dish::class);
+        return $this->hasMany(Dish::class)->withTrashed();
     }
 }

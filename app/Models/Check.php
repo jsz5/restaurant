@@ -21,7 +21,7 @@ class Check extends Model
      */
     public function dish()
     {
-        return $this->belongsTo(Dish::class,  'dish_id', 'id');
+        return $this->belongsTo(Dish::class,  'dish_id', 'id')->withTrashed();
     }
 
     /**
@@ -30,6 +30,6 @@ class Check extends Model
      */
     public function order()
     {
-        return $this->belongsTo(Order::class,  'order_id', 'id');
+        return $this->belongsTo(Order::class,  'order_id', 'id')->withTrashed();
     }
 }
