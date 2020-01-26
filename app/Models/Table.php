@@ -23,7 +23,7 @@ class Table extends Model
      */
     public function reservation()
     {
-        return $this->hasMany(Reservation::class);
+        return $this->hasMany(Reservation::class)->withTrashed();
     }
 
     /**
@@ -32,6 +32,6 @@ class Table extends Model
      */
     public function order()
     {
-        return $this->hasMany(Order::class);
+        return $this->hasMany(Order::class)->withTrashed();
     }
 }
