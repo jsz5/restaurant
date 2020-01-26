@@ -61,7 +61,7 @@
                 menuItems: [],
                 headers: [
                     {text: 'Numer stolika', value: 'table_id',},
-                    {text: 'Zamówiono', value: 'created-at',},
+                    {text: 'Zamówiono', value: 'created_at',},
                     {text: 'Status', value: 'status_pl'},
                     {text: 'Kelner', value: 'worker_id'},
                     {text: 'Zamówienie na wynos', value: 'takeaway'},

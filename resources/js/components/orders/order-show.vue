@@ -79,14 +79,14 @@
                 this.loading = true;
                 let token = this.token;
                 axios.delete(route('api.order.delete', {
-                    token: token
+                  orderToken: token
                 }))
                   .then(response => {
                       notification("Zamóweinie anulowane", 'success');
                       window.location.href = route('home')
                   }).catch(error => {
                     notification("Brak możliwości anulowania zamówienia", 'error');
-                    console.error(error.response);
+                    console.error(error);
                 }).finally(() => {
                     this.loading = false;
                 });
