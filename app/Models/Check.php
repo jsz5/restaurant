@@ -30,6 +30,6 @@ class Check extends Model
      */
     public function order()
     {
-        return $this->belongsTo(Order::class,  'order_id', 'id')->withTrashed();
+        return $this->belongsTo(Order::class,  'order_id', 'id');
     }
 }

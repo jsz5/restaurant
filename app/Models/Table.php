@@ -32,6 +32,6 @@ class Table extends Model
      */
     public function order()
     {
-        return $this->hasMany(Order::class)->withTrashed();
+        return $this->hasMany(Order::class);
     }
 }

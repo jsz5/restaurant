@@ -27,7 +27,7 @@ class Dish extends Model
      */
     public function check()
     {
-        return $this->hasMany(Check::class)->withTrashed();
+        return $this->hasMany(Check::class);
     }
 
     /**
@@ -45,7 +45,7 @@ class Dish extends Model
      */
     public function photo()
     {
-        return $this->belongsTo(Photo::class)->withTrashed();
+        return $this->belongsTo(Photo::class);
     }
 
     /**
@@ -54,6 +54,6 @@ class Dish extends Model
      */
     public function favouriteUsers()
     {
-        return $this->hasMany(User::class, 'user_id')->withTrashed();
+        return $this->hasMany(User::class, 'user_id');
     }
 }
