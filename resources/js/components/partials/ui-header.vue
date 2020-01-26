@@ -47,6 +47,24 @@
 
 					</v-col>
 				</v-col>
+				<v-col v-if="!showMenu" class="justify-end">
+					<v-row>
+						<v-menu offset-y v-if="!notLogged">
+							<template v-slot:activator="{ on }">
+								<v-tab
+									color="#CBA789"
+									v-on="on"
+								>{{loggedUser.name + " "}}{{loggedUser.surname}}
+								</v-tab>
+							</template>
+							<v-list>
+								<v-list-item :key="id" @click="goTo(item.link)" v-for="(item, id) in loggedUserMenu">
+									<v-list-item-title>{{ item.text }}</v-list-item-title>
+								</v-list-item>
+							</v-list>
+						</v-menu>
+					</v-row>
+				</v-col>
 				<!-- <v-col>
 					<v-row class="mx-3">
 						<v-col v-if="notLogged" class="text-end">
@@ -77,7 +95,7 @@
 							</v-menu>
 						</v-col>
 					</v-row> -->
-					<v-row class="menu hidden-md-and-up"  v-if="showMenu">
+					<v-col class="menu hidden-md-and-up"  v-if="showMenu">
 						<v-col class="hidden-md-and-up">
 							<v-menu class="responsive_menu" offset-y style="left:0 ;">
 								<template v-slot:activator="{ on }">
@@ -92,7 +110,7 @@
 								</v-list>
 							</v-menu>
 						</v-col>
-					</v-row>
+					</v-col>
 			</v-row>
 		</v-col>
 	</v-row>
@@ -119,23 +137,17 @@
           {id: 5, text: "Kupony", link: route("voucher.add")},
           {id: 6, text: "Statystyki", link: route("admin.statistics")},
           {id: 7, text: "Stoliki", link: route("table.index")},
-		  {id: 8, text: "Moje Konto", link: route("user.myAccount")},
-		  {id: 9, text: "Wyloguj", link: "logout"}
         ],
         waiterMenu: [
           {id: 1, text: "Stoliki", link: route("table.waiterIndex")},
           {id: 2, text: "Zamówienia", link: route("order.index")},
           {id: 3, text: "Rezerwacje", link: route("reservation.index")},
-		  {id: 4, text: "Moje Konto", link: route("user.myAccount")},
-		  {id: 5, text: "Wyloguj", link: "logout"}
         ],
         userMenu: [
           {id: 1, text: "Zamówienia", link: route("orders.myOrders")},
           {id: 2, text: "Rezerwacje", link: route("reservation.indexUser")},
           {id: 3, text: "Kupony", link: route("user.myVouchers")},
           {id: 4, text: "Ulubione Dania", link: route("myFavouriteDishes.index")},
-          {id: 5, text: "Moje Konto", link: route("user.myAccount")},
-          {id: 6, text: "Wyloguj", link: "logout"}
         ],
         customerMenu: [
           {id: 1, text: "Strona główna", link: route("home")},
@@ -143,7 +155,6 @@
           {id: 3, text: "Zamów online", link: route("order.create.online")},
           {id: 4, text: "Zarezerwuj", link: route("reservation.createUser")},
           {id: 5, text: "Kontakt", link: route("contact")},
-		  {id: 6, text: "Wyloguj", link: "logout"}
         ],
         employerMenu: [
           {id: 1, text: "Moje Konto", link: route("user.myAccount")},
