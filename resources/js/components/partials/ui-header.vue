@@ -161,6 +161,10 @@
           {id: 2, text: "Moje Statystyki", link: route("myStatistics.asWorker")},
           {id: 3, text: "Wyloguj", link: "logout"}
         ],
+        administratorMenu: [
+          {id: 1, text: "Moje Konto", link: route("user.myAccount")},
+          {id: 2, text: "Wyloguj", link: "logout"}
+        ],
         loggedUserMenu: [],
         menu: [],
         notLogged: true,
@@ -178,7 +182,7 @@
           break;
         case "admin":
           this.menu = this.adminMenu;
-          this.loggedUserMenu = this.employerMenu;
+          this.loggedUserMenu = this.administratorMenu;
           this.setupCurrentRouteInMenu(this.menu)
           break;
         case "worker":
