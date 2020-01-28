@@ -24,7 +24,8 @@ Welcome to the generated API reference.
 
 
 <!-- START_4a6a89e9e0eaea9c72ceea57315f2c42 -->
-## api/authenticate
+## Auth
+
 > Example request:
 
 ```bash
@@ -61,7 +62,8 @@ fetch(url, {
 <!-- END_4a6a89e9e0eaea9c72ceea57315f2c42 -->
 
 <!-- START_61739f3220a224b34228600649230ad1 -->
-## api/logout
+## Logout function
+
 > Example request:
 
 ```bash
@@ -138,7 +140,8 @@ fetch(url, {
 <!-- END_79a5d6a9904c108108249ddbb379adb1 -->
 
 <!-- START_02770c83122025e480cd544caecc36f5 -->
-## api/order/online/update
+## Update online order
+
 > Example request:
 
 ```bash
@@ -175,7 +178,8 @@ fetch(url, {
 <!-- END_02770c83122025e480cd544caecc36f5 -->
 
 <!-- START_4f66d638ceaa1d5b4790b3e59c589d58 -->
-## api/order/online
+## Create new online order
+
 > Example request:
 
 ```bash
@@ -255,7 +259,8 @@ fetch(url, {
 <!-- END_4fcb6a5c3ed694eed2425f3c2a74457f -->
 
 <!-- START_c8059b2e53c3b54b3be70262b8686d13 -->
-## api/user/auth-user
+## Show info of user
+
 > Example request:
 
 ```bash
@@ -297,7 +302,8 @@ fetch(url, {
 <!-- END_c8059b2e53c3b54b3be70262b8686d13 -->
 
 <!-- START_82c4837c7d426c03b9e68a033ff0762c -->
-## api/order/delete/{orderToken}
+## Delete Ordere
+
 > Example request:
 
 ```bash
@@ -332,6 +338,44 @@ fetch(url, {
 
 
 <!-- END_82c4837c7d426c03b9e68a033ff0762c -->
+
+<!-- START_30a7ad44c4383c85c240df8f76cd8c54 -->
+## Add feedback
+
+> Example request:
+
+```bash
+curl -X POST \
+    "http://localhost/api/contact" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json"
+```
+
+```javascript
+const url = new URL(
+    "http://localhost/api/contact"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "POST",
+    headers: headers,
+})
+    .then(response => response.json())
+    .then(json => console.log(json));
+```
+
+
+
+### HTTP Request
+`POST api/contact`
+
+
+<!-- END_30a7ad44c4383c85c240df8f76cd8c54 -->
 
 <!-- START_9992fa5153dfbad664a75753c2fdca13 -->
 ## Show the application dashboard.
@@ -379,7 +423,8 @@ fetch(url, {
 <!-- END_9992fa5153dfbad664a75753c2fdca13 -->
 
 <!-- START_c05b853d28f776b4d095b5e1422aa529 -->
-## api/table/{table}
+## Load table data
+
 > Example request:
 
 ```bash
@@ -468,7 +513,8 @@ fetch(url, {
 <!-- END_ef2866b3208943b2d450c559406e80ae -->
 
 <!-- START_a5daa620ef75cf21c7eae3cf4ad23e3e -->
-## api/table
+## Create new table
+
 > Example request:
 
 ```bash
@@ -505,7 +551,8 @@ fetch(url, {
 <!-- END_a5daa620ef75cf21c7eae3cf4ad23e3e -->
 
 <!-- START_da6324d440d8af5d3519aeb53592b978 -->
-## api/table/update
+## Update table parm
+
 > Example request:
 
 ```bash
@@ -542,7 +589,8 @@ fetch(url, {
 <!-- END_da6324d440d8af5d3519aeb53592b978 -->
 
 <!-- START_1d9ea605dda76a733e2324f4047bc019 -->
-## api/table/{table}
+## Delete table
+
 > Example request:
 
 ```bash
@@ -624,7 +672,8 @@ fetch(url, {
 <!-- END_a728576b5403387c9cbbf50ff2e019db -->
 
 <!-- START_597dc2a2bca52a5de4905e87a45d8c96 -->
-## api/table/{table}/open
+## Open table
+
 > Example request:
 
 ```bash
@@ -661,7 +710,8 @@ fetch(url, {
 <!-- END_597dc2a2bca52a5de4905e87a45d8c96 -->
 
 <!-- START_99f4465d17e1890d54c96c75b214189a -->
-## api/table/{table}/close
+## Close table
+
 > Example request:
 
 ```bash
@@ -743,7 +793,8 @@ fetch(url, {
 <!-- END_9dde900f2d46605e51b276f998b9d808 -->
 
 <!-- START_67719552416de0b06174bbb6aec55960 -->
-## api/dish/{dish}
+## Load dish data
+
 > Example request:
 
 ```bash
@@ -787,7 +838,8 @@ fetch(url, {
 <!-- END_67719552416de0b06174bbb6aec55960 -->
 
 <!-- START_dff84e0b08e883a54928103c395017b8 -->
-## api/dish
+## Create new dish
+
 > Example request:
 
 ```bash
@@ -824,7 +876,8 @@ fetch(url, {
 <!-- END_dff84e0b08e883a54928103c395017b8 -->
 
 <!-- START_05e34d501b1032e37e8786998580bc02 -->
-## api/dish/photo
+## Store new photo
+
 > Example request:
 
 ```bash
@@ -861,7 +914,8 @@ fetch(url, {
 <!-- END_05e34d501b1032e37e8786998580bc02 -->
 
 <!-- START_34bee50ce8a786d619ad40487b5cd1d6 -->
-## api/dish/photo/{id}
+## Delete photo
+
 > Example request:
 
 ```bash
@@ -898,7 +952,8 @@ fetch(url, {
 <!-- END_34bee50ce8a786d619ad40487b5cd1d6 -->
 
 <!-- START_daec12a6c9c9778ea5ef24d1e48ac876 -->
-## api/dish/update
+## Update new dish
+
 > Example request:
 
 ```bash
@@ -935,7 +990,8 @@ fetch(url, {
 <!-- END_daec12a6c9c9778ea5ef24d1e48ac876 -->
 
 <!-- START_99cfed514e3f483efe521df978564856 -->
-## api/dish/{dish}
+## Delete dish
+
 > Example request:
 
 ```bash
@@ -972,7 +1028,8 @@ fetch(url, {
 <!-- END_99cfed514e3f483efe521df978564856 -->
 
 <!-- START_591dd0a3e1c1d2850d19623aac9aa872 -->
-## api/dish/remove-photo
+## Remove photo from dish
+
 > Example request:
 
 ```bash
@@ -1054,7 +1111,8 @@ fetch(url, {
 <!-- END_5a74dfa1699913c0c69d304d2e1dcf5b -->
 
 <!-- START_073a09beab83012f6b2e71af2aa36ecb -->
-## api/dishCategory
+## Create new category
+
 > Example request:
 
 ```bash
@@ -1091,7 +1149,8 @@ fetch(url, {
 <!-- END_073a09beab83012f6b2e71af2aa36ecb -->
 
 <!-- START_31ca59078c02b0d80f379f7248476fe8 -->
-## api/dishCategory/update
+## Update new category
+
 > Example request:
 
 ```bash
@@ -1128,7 +1187,8 @@ fetch(url, {
 <!-- END_31ca59078c02b0d80f379f7248476fe8 -->
 
 <!-- START_f4056559a49072afbca3f7b10f4543db -->
-## api/dishCategory/{dishCategory}
+## Delete category
+
 > Example request:
 
 ```bash
@@ -1549,7 +1609,8 @@ fetch(url, {
 <!-- END_8bbb845bb896dfa49743b2c297887888 -->
 
 <!-- START_f3142a0ea629812963a7f59882967d1e -->
-## api/order/worker
+## Create new order as worker
+
 > Example request:
 
 ```bash
@@ -1586,7 +1647,8 @@ fetch(url, {
 <!-- END_f3142a0ea629812963a7f59882967d1e -->
 
 <!-- START_0607b2fadd5c24832de046e05586a134 -->
-## api/order/worker/update
+## Update order from worker
+
 > Example request:
 
 ```bash
@@ -1699,7 +1761,8 @@ fetch(url, {
 <!-- END_b233fe2a4896daaefbe225a0fb78506c -->
 
 <!-- START_3dd6013d0e0316d0beb67e652b650889 -->
-## api/reservation/store-as-customer
+## store reservation as customer
+
 > Example request:
 
 ```bash
@@ -1736,7 +1799,8 @@ fetch(url, {
 <!-- END_3dd6013d0e0316d0beb67e652b650889 -->
 
 <!-- START_76b2a4d5b433a66343c886acf9dc30eb -->
-## api/reservation/store-as-worker
+## store reservation as worker
+
 > Example request:
 
 ```bash
@@ -1773,7 +1837,8 @@ fetch(url, {
 <!-- END_76b2a4d5b433a66343c886acf9dc30eb -->
 
 <!-- START_0de6fea42cb6a8b8d2833c109925b102 -->
-## api/reservation/show/{id}
+## Load reservation date
+
 > Example request:
 
 ```bash
@@ -1817,7 +1882,8 @@ fetch(url, {
 <!-- END_0de6fea42cb6a8b8d2833c109925b102 -->
 
 <!-- START_274ee5070eb05be4a6733d6d7288727c -->
-## api/reservation/show-user/{id}
+## Load reservation date
+
 > Example request:
 
 ```bash
@@ -1861,7 +1927,8 @@ fetch(url, {
 <!-- END_274ee5070eb05be4a6733d6d7288727c -->
 
 <!-- START_44cafa4ec23ce90e7d2e37a35512a1c1 -->
-## api/reservation/customer-index
+## show reservation for customer
+
 > Example request:
 
 ```bash
@@ -1905,7 +1972,8 @@ fetch(url, {
 <!-- END_44cafa4ec23ce90e7d2e37a35512a1c1 -->
 
 <!-- START_30cfb7dbd718a66abcad04fac4fdf37c -->
-## api/reservation/worker-index/{date}
+## show reservation for worker
+
 > Example request:
 
 ```bash
@@ -1949,7 +2017,8 @@ fetch(url, {
 <!-- END_30cfb7dbd718a66abcad04fac4fdf37c -->
 
 <!-- START_5d0e45b862b6568ed365cebbe15103d3 -->
-## api/reservation/tables/{date}
+## Find free table for given date
+
 > Example request:
 
 ```bash
@@ -1993,7 +2062,8 @@ fetch(url, {
 <!-- END_5d0e45b862b6568ed365cebbe15103d3 -->
 
 <!-- START_d0069c5bdd0f97c5fe1419944b13f7b5 -->
-## api/reservation/{id}
+## Delete reservation
+
 > Example request:
 
 ```bash
@@ -2030,7 +2100,8 @@ fetch(url, {
 <!-- END_d0069c5bdd0f97c5fe1419944b13f7b5 -->
 
 <!-- START_2152d7b68da2b53a355e8954537192ba -->
-## api/order/tables/{date}
+## Return free tables
+
 > Example request:
 
 ```bash
@@ -2119,7 +2190,8 @@ fetch(url, {
 <!-- END_b116cd84abafafcb0e320dee1f93e3fd -->
 
 <!-- START_624efd6e6831ee7fba8cddb3fb44eb3a -->
-## api/user/fetch-customers
+## Show customers
+
 > Example request:
 
 ```bash
@@ -2163,7 +2235,8 @@ fetch(url, {
 <!-- END_624efd6e6831ee7fba8cddb3fb44eb3a -->
 
 <!-- START_68f12a24b38ba6abe41b3bf61ac42e41 -->
-## api/user/fetch-workers
+## Show workers
+
 > Example request:
 
 ```bash
@@ -2330,7 +2403,8 @@ fetch(url, {
 <!-- END_947ef659515777a0da61df05a55c853f -->
 
 <!-- START_0e06baad90a9cb6196e3d8622f5dda9c -->
-## api/user/update-my-account/{user}
+## Update user
+
 > Example request:
 
 ```bash
@@ -2367,7 +2441,8 @@ fetch(url, {
 <!-- END_0e06baad90a9cb6196e3d8622f5dda9c -->
 
 <!-- START_346e5de77bdc0a0ece1b5778b38a9609 -->
-## api/user/update-worker/{user}
+## Update user
+
 > Example request:
 
 ```bash
@@ -2404,7 +2479,8 @@ fetch(url, {
 <!-- END_346e5de77bdc0a0ece1b5778b38a9609 -->
 
 <!-- START_0b02a96fe3ecb64ff2e9f684e6097249 -->
-## api/user/update-customer/{user}
+## Update user
+
 > Example request:
 
 ```bash
@@ -2564,7 +2640,8 @@ fetch(url, {
 <!-- END_89f18f1a4cfb391dc98217fe7aab14cd -->
 
 <!-- START_7826b97784194db30890a636959ff686 -->
-## api/statistics/year/{year}
+## Generate years statistics
+
 > Example request:
 
 ```bash
@@ -2608,7 +2685,8 @@ fetch(url, {
 <!-- END_7826b97784194db30890a636959ff686 -->
 
 <!-- START_99d581de7443b5662e1f3f7549f421d4 -->
-## api/statistics/waiter/{year}/{id}
+## Generate waiter statistics
+
 > Example request:
 
 ```bash
@@ -2652,7 +2730,8 @@ fetch(url, {
 <!-- END_99d581de7443b5662e1f3f7549f421d4 -->
 
 <!-- START_32daf744b6bca059029e5852b22bc26f -->
-## api/statistics/waiter/{year}
+## Generate years waiter statistics
+
 > Example request:
 
 ```bash
@@ -2740,7 +2819,8 @@ fetch(url, {
 <!-- END_00b84afebf1ee178b13041b073f1d374 -->
 
 <!-- START_ef908a6ceb7a6afce00cf9b8d39c2387 -->
-## api/statistics/customer-interval/{from}/{to}
+## All customer statistic in given period
+
 > Example request:
 
 ```bash
@@ -2784,7 +2864,8 @@ fetch(url, {
 <!-- END_ef908a6ceb7a6afce00cf9b8d39c2387 -->
 
 <!-- START_b801cd298efe360bfdb88efecc778a92 -->
-## api/statistics/favourite-dishes
+## Show favourite dishes statisitcs
+
 > Example request:
 
 ```bash
