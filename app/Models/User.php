@@ -72,7 +72,7 @@ class User extends Authenticatable implements JWTSubject
      */
     public function voucher()
     {
-        return $this->hasMany(Voucher::class, 'user_id');
+        return $this->hasMany(Voucher::class, 'user_id')->withTrashed();
     }
 
     /**
@@ -81,7 +81,7 @@ class User extends Authenticatable implements JWTSubject
      */
     public function favouriteDish()
     {
-        return $this->hasMany(Dish::class, 'user_id');
+        return $this->hasMany(Dish::class, 'user_id')->withTrashed();
     }
 
     /**
