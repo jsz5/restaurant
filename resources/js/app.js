@@ -12,8 +12,10 @@ import vuetifyEn from 'vuetify/lib/locale/en';
 import 'vuetify/dist/vuetify.min.css'
 import Toasted from 'vue-toasted';
 import 'material-design-icons-iconfont/dist/material-design-icons.css'
+import 'vue-loading-overlay/dist/vue-loading.css';
 import '@mdi/font/css/materialdesignicons.css'
 import Cookies from "./mixins/Cookies";
+import Loading from 'vue-loading-overlay';
 
 require('./bootstrap');
 
@@ -59,7 +61,7 @@ const Options = {
   position: 'top-center',
 };
 Vue.use(Toasted, Options);
-
+Vue.use(Loading);
 Vue.mixin(Cookies);
 
 /**
