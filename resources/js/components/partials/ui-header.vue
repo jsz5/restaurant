@@ -48,7 +48,7 @@
 					</v-col>
 				</v-col>
 				<v-col v-if="!showMenu" class="justify-end">
-					<v-row>
+					<v-row class="justify-end">
 						<v-menu offset-y v-if="!notLogged">
 							<template v-slot:activator="{ on }">
 								<v-tab
