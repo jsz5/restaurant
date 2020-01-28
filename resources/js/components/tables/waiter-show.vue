@@ -1,6 +1,6 @@
 <template>
   <v-row class="justify-space-around align-center">
-    <v-col cols="14" lg="8" md="12" sm="14" xl="7">
+    <v-col cols="15" lg="9" md="13" sm="15" xl="8">
       <v-card class="component-header">
         <v-card-title>
           <h1>Zamówienia dla stolika nr {{table}}</h1>
@@ -30,7 +30,7 @@
         </template>
       </v-data-table>
     </v-col>
-    <v-col cols="12" lg="5" md="8" sm="10" xl="4">
+    <v-col cols="14" lg="7" md="10" sm="12" xl="6">
       <v-card class="transparent_form">
         <v-card-title>Stolik {{table}}</v-card-title>
         <v-card-text>
