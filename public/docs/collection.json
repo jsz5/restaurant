@@ -2,7 +2,7 @@
     "variables": [],
     "info": {
         "name": "Restaurant API",
-        "_postman_id": "afe77af3-e19b-463d-924c-b50151695a5b",
+        "_postman_id": "0b3ba0e1-8650-46fb-a307-ec1b44a877d9",
         "description": "",
         "schema": "https:\/\/schema.getpostman.com\/json\/collection\/v2.0.0\/collection.json"
     },
@@ -12,7 +12,7 @@
             "description": "",
             "item": [
                 {
-                    "name": "api\/authenticate",
+                    "name": "Auth",
                     "request": {
                         "url": {
                             "protocol": "http",
@@ -40,7 +40,7 @@
                     }
                 },
                 {
-                    "name": "api\/logout",
+                    "name": "Logout function",
                     "request": {
                         "url": {
                             "protocol": "http",
@@ -96,7 +96,7 @@
                     }
                 },
                 {
-                    "name": "api\/order\/online\/update",
+                    "name": "Update online order",
                     "request": {
                         "url": {
                             "protocol": "http",
@@ -124,7 +124,7 @@
                     }
                 },
                 {
-                    "name": "api\/order\/online",
+                    "name": "Create new online order",
                     "request": {
                         "url": {
                             "protocol": "http",
@@ -180,7 +180,7 @@
                     }
                 },
                 {
-                    "name": "api\/user\/auth-user",
+                    "name": "Show info of user",
                     "request": {
                         "url": {
                             "protocol": "http",
@@ -208,7 +208,7 @@
                     }
                 },
                 {
-                    "name": "api\/order\/delete\/{orderToken}",
+                    "name": "Delete Ordere",
                     "request": {
                         "url": {
                             "protocol": "http",
@@ -217,6 +217,34 @@
                             "query": []
                         },
                         "method": "DELETE",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "[]"
+                        },
+                        "description": "",
+                        "response": []
+                    }
+                },
+                {
+                    "name": "Add feedback",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "localhost",
+                            "path": "api\/contact",
+                            "query": []
+                        },
+                        "method": "POST",
                         "header": [
                             {
                                 "key": "Content-Type",
@@ -264,7 +292,7 @@
                     }
                 },
                 {
-                    "name": "api\/table\/{table}",
+                    "name": "Load table data",
                     "request": {
                         "url": {
                             "protocol": "http",
@@ -320,7 +348,7 @@
                     }
                 },
                 {
-                    "name": "api\/table",
+                    "name": "Create new table",
                     "request": {
                         "url": {
                             "protocol": "http",
@@ -348,7 +376,7 @@
                     }
                 },
                 {
-                    "name": "api\/table\/update",
+                    "name": "Update table parm",
                     "request": {
                         "url": {
                             "protocol": "http",
@@ -376,7 +404,7 @@
                     }
                 },
                 {
-                    "name": "api\/table\/{table}",
+                    "name": "Delete table",
                     "request": {
                         "url": {
                             "protocol": "http",
@@ -432,7 +460,7 @@
                     }
                 },
                 {
-                    "name": "api\/table\/{table}\/open",
+                    "name": "Open table",
                     "request": {
                         "url": {
                             "protocol": "http",
@@ -460,7 +488,7 @@
                     }
                 },
                 {
-                    "name": "api\/table\/{table}\/close",
+                    "name": "Close table",
                     "request": {
                         "url": {
                             "protocol": "http",
@@ -516,7 +544,7 @@
                     }
                 },
                 {
-                    "name": "api\/dish\/{dish}",
+                    "name": "Load dish data",
                     "request": {
                         "url": {
                             "protocol": "http",
@@ -544,7 +572,7 @@
                     }
                 },
                 {
-                    "name": "api\/dish",
+                    "name": "Create new dish",
                     "request": {
                         "url": {
                             "protocol": "http",
@@ -572,7 +600,7 @@
                     }
                 },
                 {
-                    "name": "api\/dish\/photo",
+                    "name": "Store new photo",
                     "request": {
                         "url": {
                             "protocol": "http",
@@ -600,7 +628,7 @@
                     }
                 },
                 {
-                    "name": "api\/dish\/photo\/{id}",
+                    "name": "Delete photo",
                     "request": {
                         "url": {
                             "protocol": "http",
@@ -628,7 +656,7 @@
                     }
                 },
                 {
-                    "name": "api\/dish\/update",
+                    "name": "Update new dish",
                     "request": {
                         "url": {
                             "protocol": "http",
@@ -656,7 +684,7 @@
                     }
                 },
                 {
-                    "name": "api\/dish\/{dish}",
+                    "name": "Delete dish",
                     "request": {
                         "url": {
                             "protocol": "http",
@@ -684,7 +712,7 @@
                     }
                 },
                 {
-                    "name": "api\/dish\/remove-photo",
+                    "name": "Remove photo from dish",
                     "request": {
                         "url": {
                             "protocol": "http",
@@ -740,7 +768,7 @@
                     }
                 },
                 {
-                    "name": "api\/dishCategory",
+                    "name": "Create new category",
                     "request": {
                         "url": {
                             "protocol": "http",
@@ -768,7 +796,7 @@
                     }
                 },
                 {
-                    "name": "api\/dishCategory\/update",
+                    "name": "Update new category",
                     "request": {
                         "url": {
                             "protocol": "http",
@@ -796,7 +824,7 @@
                     }
                 },
                 {
-                    "name": "api\/dishCategory\/{dishCategory}",
+                    "name": "Delete category",
                     "request": {
                         "url": {
                             "protocol": "http",
@@ -1076,7 +1104,7 @@
                     }
                 },
                 {
-                    "name": "api\/order\/worker",
+                    "name": "Create new order as worker",
                     "request": {
                         "url": {
                             "protocol": "http",
@@ -1104,7 +1132,7 @@
                     }
                 },
                 {
-                    "name": "api\/order\/worker\/update",
+                    "name": "Update order from worker",
                     "request": {
                         "url": {
                             "protocol": "http",
@@ -1188,7 +1216,7 @@
                     }
                 },
                 {
-                    "name": "api\/reservation\/store-as-customer",
+                    "name": "store reservation as customer",
                     "request": {
                         "url": {
                             "protocol": "http",
@@ -1216,7 +1244,7 @@
                     }
                 },
                 {
-                    "name": "api\/reservation\/store-as-worker",
+                    "name": "store reservation as worker",
                     "request": {
                         "url": {
                             "protocol": "http",
@@ -1244,7 +1272,7 @@
                     }
                 },
                 {
-                    "name": "api\/reservation\/show\/{id}",
+                    "name": "Load reservation date",
                     "request": {
                         "url": {
                             "protocol": "http",
@@ -1272,7 +1300,7 @@
                     }
                 },
                 {
-                    "name": "api\/reservation\/show-user\/{id}",
+                    "name": "Load reservation date",
                     "request": {
                         "url": {
                             "protocol": "http",
@@ -1300,7 +1328,7 @@
                     }
                 },
                 {
-                    "name": "api\/reservation\/customer-index",
+                    "name": "show reservation for customer",
                     "request": {
                         "url": {
                             "protocol": "http",
@@ -1328,7 +1356,7 @@
                     }
                 },
                 {
-                    "name": "api\/reservation\/worker-index\/{date}",
+                    "name": "show reservation for worker",
                     "request": {
                         "url": {
                             "protocol": "http",
@@ -1356,7 +1384,7 @@
                     }
                 },
                 {
-                    "name": "api\/reservation\/tables\/{date}",
+                    "name": "Find free table for given date",
                     "request": {
                         "url": {
                             "protocol": "http",
@@ -1384,7 +1412,7 @@
                     }
                 },
                 {
-                    "name": "api\/reservation\/{id}",
+                    "name": "Delete reservation",
                     "request": {
                         "url": {
                             "protocol": "http",
@@ -1412,7 +1440,7 @@
                     }
                 },
                 {
-                    "name": "api\/order\/tables\/{date}",
+                    "name": "Return free tables",
                     "request": {
                         "url": {
                             "protocol": "http",
@@ -1468,7 +1496,7 @@
                     }
                 },
                 {
-                    "name": "api\/user\/fetch-customers",
+                    "name": "Show customers",
                     "request": {
                         "url": {
                             "protocol": "http",
@@ -1496,7 +1524,7 @@
                     }
                 },
                 {
-                    "name": "api\/user\/fetch-workers",
+                    "name": "Show workers",
                     "request": {
                         "url": {
                             "protocol": "http",
@@ -1608,7 +1636,7 @@
                     }
                 },
                 {
-                    "name": "api\/user\/update-my-account\/{user}",
+                    "name": "Update user",
                     "request": {
                         "url": {
                             "protocol": "http",
@@ -1636,7 +1664,7 @@
                     }
                 },
                 {
-                    "name": "api\/user\/update-worker\/{user}",
+                    "name": "Update user",
                     "request": {
                         "url": {
                             "protocol": "http",
@@ -1664,7 +1692,7 @@
                     }
                 },
                 {
-                    "name": "api\/user\/update-customer\/{user}",
+                    "name": "Update user",
                     "request": {
                         "url": {
                             "protocol": "http",
@@ -1776,7 +1804,7 @@
                     }
                 },
                 {
-                    "name": "api\/statistics\/year\/{year}",
+                    "name": "Generate years statistics",
                     "request": {
                         "url": {
                             "protocol": "http",
@@ -1804,7 +1832,7 @@
                     }
                 },
                 {
-                    "name": "api\/statistics\/waiter\/{year}\/{id}",
+                    "name": "Generate waiter statistics",
                     "request": {
                         "url": {
                             "protocol": "http",
@@ -1832,7 +1860,7 @@
                     }
                 },
                 {
-                    "name": "api\/statistics\/waiter\/{year}",
+                    "name": "Generate years waiter statistics",
                     "request": {
                         "url": {
                             "protocol": "http",
@@ -1888,7 +1916,7 @@
                     }
                 },
                 {
-                    "name": "api\/statistics\/customer-interval\/{from}\/{to}",
+                    "name": "All customer statistic in given period",
                     "request": {
                         "url": {
                             "protocol": "http",
@@ -1916,7 +1944,7 @@
                     }
                 },
                 {
-                    "name": "api\/statistics\/favourite-dishes",
+                    "name": "Show favourite dishes statisitcs",
                     "request": {
                         "url": {
                             "protocol": "http",
