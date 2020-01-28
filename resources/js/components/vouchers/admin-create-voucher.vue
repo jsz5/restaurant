@@ -1,6 +1,6 @@
 <template xmlns:v-slot="http://www.w3.org/1999/XSL/Transform">
 	<v-row class="justify-center align-center">
-		<v-col cols="12" lg="5" ma-2 md="8" sm="10" xl="4">
+		<v-col cols="14" lg="7" ma-2 md="10" sm="12" xl="6">
 			<v-card class="transparent_form">
 				<v-toolbar color="primary" dark flat>
 					<v-toolbar-title>Generowanie kuponu</v-toolbar-title>

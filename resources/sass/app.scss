@@ -97,7 +97,7 @@ body {
 		transition: none !important;
 	}
 
-/* V-Table */
+/* V-Table, Zegary, Daty i inne Pickery */
 
 .v-data-table {
 	border-radius: 20px;
@@ -136,6 +136,12 @@ th.text-center {
 
 .v-input.v-input--hide-details.theme--dark.v-text-field.v-text-field--single-line.v-text-field--is-booted {
     margin-bottom: 35px;
+	margin-left: 35px;
+    margin-right: 35px;
+}
+
+button.yellow_form_button.v-btn.v-btn--contained.theme--dark.v-size--default.secoDndary {
+    margin-left: 15px;
 }
 
 .v-application .primary--text {
@@ -184,8 +190,25 @@ th.text-center {
 	background: #000000 !important;
 }
 
-.v-time-picker-clock__inner{
-	background: #252525 !important;
+.v-application .accent--text{
+	color: #565656 !important;
+}
+
+.mdi-star-outline{
+	color: #565656 !important
+}
+
+
+// .v-time-picker-clock__inner{
+// 	background: #252525 !important;
+// }
+
+.v-time-picker-clock__inner {
+    background: #00000000 !important;
+}
+
+.theme--dark.v-time-picker-clock{
+	background: #323337 !important;
 }
 
 

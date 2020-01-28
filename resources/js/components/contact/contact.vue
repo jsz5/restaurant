@@ -1,17 +1,17 @@
 <template>
-	<v-row class="justify-center align-center boksik">
+	<v-row class="justify-center align-center">
 
 			<v-card-title>
 				<h1 style="width: 700px">Dotrzyj do nas:</h1>
 			</v-card-title>
 
-			<v-col cols="12" lg="6" md="10" sm="12" xl="6">
-				<contact-form></contact-form>
+			<v-col cols="13" lg="7" md="11" sm="13" xl="7">
+				<contact-form class="boksisko"></contact-form>
 			</v-col>
 
-			<v-card class="transparent_form" max-width="400" >
-				<v-card-title>
-					<h2>Znajdz nas tu:</h2>
+			<v-card class="transparent_form boksisko" max-width="400" height="474">
+				<v-card-title >
+					<h2>Znajdź nas tu:</h2>
 				</v-card-title>
 				<v-list style="background-color: transparent !important" two-line>
 					<v-list-item>
@@ -82,5 +82,8 @@
 <style>
 	.v-list.v-sheet.v-sheet--tile.theme--light.v-list--two-line{
 		background: none;
+	}
+	.theme--dark.v-card {
+		background-color: rgba(0, 0, 0, 0.5) !important;
 	}
 </style>

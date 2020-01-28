@@ -18,7 +18,7 @@ class Photo extends Model
     */
     public function dish()
     {
-        return $this->hasOne(Dish::class);
+        return $this->hasOne(Dish::class)->withTrashed();
     }
 
     public function deletePhoto()

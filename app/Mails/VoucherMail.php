@@ -13,15 +13,30 @@ use Illuminate\Support\Facades\Mail;
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
 
+/**
+ * Class VoucherMail
+ * @package App\Mails
+ */
 class VoucherMail extends Mailable
 {
     use Queueable, SerializesModels;
 
+    /**
+     * @var string
+     */
     public $sendToMail;
+    /**
+     * @var string
+     */
     public $discount;
+    /**
+     * @var mixed
+     */
     public $token;
+    /**
+     * @var string
+     */
     public $date;
-    private const SUBJECT="Zamówienie online w systemie restauracji \"W-17 wydział smaków\"";
 
     /**
      * OrderOnlineMail constructor.
@@ -44,7 +59,7 @@ class VoucherMail extends Mailable
      */
     public function build()
     {
-        return $this->view('mails.voucherQrCode') ->subject("Promocja w " . config('app.name'));;
+        return $this->view('mails.voucherQrCode') ->subject("Promocja w " . config('app.name'));
     }
 
     /**

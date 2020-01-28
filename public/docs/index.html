@@ -50,7 +50,7 @@
 <!-- END_INFO -->
 <h1>general</h1>
 <!-- START_4a6a89e9e0eaea9c72ceea57315f2c42 -->
-<h2>api/authenticate</h2>
+<h2>Auth</h2>
 <blockquote>
 <p>Example request:</p>
 </blockquote>
@@ -77,7 +77,7 @@ fetch(url, {
 <p><code>POST api/authenticate</code></p>
 <!-- END_4a6a89e9e0eaea9c72ceea57315f2c42 -->
 <!-- START_61739f3220a224b34228600649230ad1 -->
-<h2>api/logout</h2>
+<h2>Logout function</h2>
 <blockquote>
 <p>Example request:</p>
 </blockquote>
@@ -132,7 +132,7 @@ fetch(url, {
 <p><code>POST api/user/store-customer</code></p>
 <!-- END_79a5d6a9904c108108249ddbb379adb1 -->
 <!-- START_02770c83122025e480cd544caecc36f5 -->
-<h2>api/order/online/update</h2>
+<h2>Update online order</h2>
 <blockquote>
 <p>Example request:</p>
 </blockquote>
@@ -159,7 +159,7 @@ fetch(url, {
 <p><code>POST api/order/online/update</code></p>
 <!-- END_02770c83122025e480cd544caecc36f5 -->
 <!-- START_4f66d638ceaa1d5b4790b3e59c589d58 -->
-<h2>api/order/online</h2>
+<h2>Create new online order</h2>
 <blockquote>
 <p>Example request:</p>
 </blockquote>
@@ -217,7 +217,7 @@ fetch(url, {
 <p><code>GET api/order/show/{orderToken}</code></p>
 <!-- END_4fcb6a5c3ed694eed2425f3c2a74457f -->
 <!-- START_c8059b2e53c3b54b3be70262b8686d13 -->
-<h2>api/user/auth-user</h2>
+<h2>Show info of user</h2>
 <blockquote>
 <p>Example request:</p>
 </blockquote>
@@ -248,7 +248,7 @@ fetch(url, {
 <p><code>GET api/user/auth-user</code></p>
 <!-- END_c8059b2e53c3b54b3be70262b8686d13 -->
 <!-- START_82c4837c7d426c03b9e68a033ff0762c -->
-<h2>api/order/delete/{orderToken}</h2>
+<h2>Delete Ordere</h2>
 <blockquote>
 <p>Example request:</p>
 </blockquote>
@@ -274,6 +274,33 @@ fetch(url, {
 <h3>HTTP Request</h3>
 <p><code>DELETE api/order/delete/{orderToken}</code></p>
 <!-- END_82c4837c7d426c03b9e68a033ff0762c -->
+<!-- START_30a7ad44c4383c85c240df8f76cd8c54 -->
+<h2>Add feedback</h2>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X POST \
+    "http://localhost/api/contact" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json"</code></pre>
+<pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/contact"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "POST",
+    headers: headers,
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<h3>HTTP Request</h3>
+<p><code>POST api/contact</code></p>
+<!-- END_30a7ad44c4383c85c240df8f76cd8c54 -->
 <!-- START_9992fa5153dfbad664a75753c2fdca13 -->
 <h2>Show the application dashboard.</h2>
 <blockquote>
@@ -308,7 +335,7 @@ fetch(url, {
 <p><code>GET api/table</code></p>
 <!-- END_9992fa5153dfbad664a75753c2fdca13 -->
 <!-- START_c05b853d28f776b4d095b5e1422aa529 -->
-<h2>api/table/{table}</h2>
+<h2>Load table data</h2>
 <blockquote>
 <p>Example request:</p>
 </blockquote>
@@ -374,7 +401,7 @@ fetch(url, {
 <p><code>GET api/table/waiter/{table}</code></p>
 <!-- END_ef2866b3208943b2d450c559406e80ae -->
 <!-- START_a5daa620ef75cf21c7eae3cf4ad23e3e -->
-<h2>api/table</h2>
+<h2>Create new table</h2>
 <blockquote>
 <p>Example request:</p>
 </blockquote>
@@ -401,7 +428,7 @@ fetch(url, {
 <p><code>POST api/table</code></p>
 <!-- END_a5daa620ef75cf21c7eae3cf4ad23e3e -->
 <!-- START_da6324d440d8af5d3519aeb53592b978 -->
-<h2>api/table/update</h2>
+<h2>Update table parm</h2>
 <blockquote>
 <p>Example request:</p>
 </blockquote>
@@ -428,7 +455,7 @@ fetch(url, {
 <p><code>POST api/table/update</code></p>
 <!-- END_da6324d440d8af5d3519aeb53592b978 -->
 <!-- START_1d9ea605dda76a733e2324f4047bc019 -->
-<h2>api/table/{table}</h2>
+<h2>Delete table</h2>
 <blockquote>
 <p>Example request:</p>
 </blockquote>
@@ -488,7 +515,7 @@ fetch(url, {
 <p><code>GET api/my-tables</code></p>
 <!-- END_a728576b5403387c9cbbf50ff2e019db -->
 <!-- START_597dc2a2bca52a5de4905e87a45d8c96 -->
-<h2>api/table/{table}/open</h2>
+<h2>Open table</h2>
 <blockquote>
 <p>Example request:</p>
 </blockquote>
@@ -515,7 +542,7 @@ fetch(url, {
 <p><code>POST api/table/{table}/open</code></p>
 <!-- END_597dc2a2bca52a5de4905e87a45d8c96 -->
 <!-- START_99f4465d17e1890d54c96c75b214189a -->
-<h2>api/table/{table}/close</h2>
+<h2>Close table</h2>
 <blockquote>
 <p>Example request:</p>
 </blockquote>
@@ -575,7 +602,7 @@ fetch(url, {
 <p><code>GET api/dish</code></p>
 <!-- END_9dde900f2d46605e51b276f998b9d808 -->
 <!-- START_67719552416de0b06174bbb6aec55960 -->
-<h2>api/dish/{dish}</h2>
+<h2>Load dish data</h2>
 <blockquote>
 <p>Example request:</p>
 </blockquote>
@@ -608,7 +635,7 @@ fetch(url, {
 <p><code>GET api/dish/{dish}</code></p>
 <!-- END_67719552416de0b06174bbb6aec55960 -->
 <!-- START_dff84e0b08e883a54928103c395017b8 -->
-<h2>api/dish</h2>
+<h2>Create new dish</h2>
 <blockquote>
 <p>Example request:</p>
 </blockquote>
@@ -635,7 +662,7 @@ fetch(url, {
 <p><code>POST api/dish</code></p>
 <!-- END_dff84e0b08e883a54928103c395017b8 -->
 <!-- START_05e34d501b1032e37e8786998580bc02 -->
-<h2>api/dish/photo</h2>
+<h2>Store new photo</h2>
 <blockquote>
 <p>Example request:</p>
 </blockquote>
@@ -662,7 +689,7 @@ fetch(url, {
 <p><code>POST api/dish/photo</code></p>
 <!-- END_05e34d501b1032e37e8786998580bc02 -->
 <!-- START_34bee50ce8a786d619ad40487b5cd1d6 -->
-<h2>api/dish/photo/{id}</h2>
+<h2>Delete photo</h2>
 <blockquote>
 <p>Example request:</p>
 </blockquote>
@@ -689,7 +716,7 @@ fetch(url, {
 <p><code>DELETE api/dish/photo/{id}</code></p>
 <!-- END_34bee50ce8a786d619ad40487b5cd1d6 -->
 <!-- START_daec12a6c9c9778ea5ef24d1e48ac876 -->
-<h2>api/dish/update</h2>
+<h2>Update new dish</h2>
 <blockquote>
 <p>Example request:</p>
 </blockquote>
@@ -716,7 +743,7 @@ fetch(url, {
 <p><code>POST api/dish/update</code></p>
 <!-- END_daec12a6c9c9778ea5ef24d1e48ac876 -->
 <!-- START_99cfed514e3f483efe521df978564856 -->
-<h2>api/dish/{dish}</h2>
+<h2>Delete dish</h2>
 <blockquote>
 <p>Example request:</p>
 </blockquote>
@@ -743,7 +770,7 @@ fetch(url, {
 <p><code>DELETE api/dish/{dish}</code></p>
 <!-- END_99cfed514e3f483efe521df978564856 -->
 <!-- START_591dd0a3e1c1d2850d19623aac9aa872 -->
-<h2>api/dish/remove-photo</h2>
+<h2>Remove photo from dish</h2>
 <blockquote>
 <p>Example request:</p>
 </blockquote>
@@ -803,7 +830,7 @@ fetch(url, {
 <p><code>GET api/dishCategory</code></p>
 <!-- END_5a74dfa1699913c0c69d304d2e1dcf5b -->
 <!-- START_073a09beab83012f6b2e71af2aa36ecb -->
-<h2>api/dishCategory</h2>
+<h2>Create new category</h2>
 <blockquote>
 <p>Example request:</p>
 </blockquote>
@@ -830,7 +857,7 @@ fetch(url, {
 <p><code>POST api/dishCategory</code></p>
 <!-- END_073a09beab83012f6b2e71af2aa36ecb -->
 <!-- START_31ca59078c02b0d80f379f7248476fe8 -->
-<h2>api/dishCategory/update</h2>
+<h2>Update new category</h2>
 <blockquote>
 <p>Example request:</p>
 </blockquote>
@@ -857,7 +884,7 @@ fetch(url, {
 <p><code>POST api/dishCategory/update</code></p>
 <!-- END_31ca59078c02b0d80f379f7248476fe8 -->
 <!-- START_f4056559a49072afbca3f7b10f4543db -->
-<h2>api/dishCategory/{dishCategory}</h2>
+<h2>Delete category</h2>
 <blockquote>
 <p>Example request:</p>
 </blockquote>
@@ -1163,7 +1190,7 @@ fetch(url, {
 <p><code>GET api/order/{type}</code></p>
 <!-- END_8bbb845bb896dfa49743b2c297887888 -->
 <!-- START_f3142a0ea629812963a7f59882967d1e -->
-<h2>api/order/worker</h2>
+<h2>Create new order as worker</h2>
 <blockquote>
 <p>Example request:</p>
 </blockquote>
@@ -1190,7 +1217,7 @@ fetch(url, {
 <p><code>POST api/order/worker</code></p>
 <!-- END_f3142a0ea629812963a7f59882967d1e -->
 <!-- START_0607b2fadd5c24832de046e05586a134 -->
-<h2>api/order/worker/update</h2>
+<h2>Update order from worker</h2>
 <blockquote>
 <p>Example request:</p>
 </blockquote>
@@ -1271,7 +1298,7 @@ fetch(url, {
 <p><code>POST api/voucher/use</code></p>
 <!-- END_b233fe2a4896daaefbe225a0fb78506c -->
 <!-- START_3dd6013d0e0316d0beb67e652b650889 -->
-<h2>api/reservation/store-as-customer</h2>
+<h2>store reservation as customer</h2>
 <blockquote>
 <p>Example request:</p>
 </blockquote>
@@ -1298,7 +1325,7 @@ fetch(url, {
 <p><code>POST api/reservation/store-as-customer</code></p>
 <!-- END_3dd6013d0e0316d0beb67e652b650889 -->
 <!-- START_76b2a4d5b433a66343c886acf9dc30eb -->
-<h2>api/reservation/store-as-worker</h2>
+<h2>store reservation as worker</h2>
 <blockquote>
 <p>Example request:</p>
 </blockquote>
@@ -1325,7 +1352,7 @@ fetch(url, {
 <p><code>POST api/reservation/store-as-worker</code></p>
 <!-- END_76b2a4d5b433a66343c886acf9dc30eb -->
 <!-- START_0de6fea42cb6a8b8d2833c109925b102 -->
-<h2>api/reservation/show/{id}</h2>
+<h2>Load reservation date</h2>
 <blockquote>
 <p>Example request:</p>
 </blockquote>
@@ -1358,7 +1385,7 @@ fetch(url, {
 <p><code>GET api/reservation/show/{id}</code></p>
 <!-- END_0de6fea42cb6a8b8d2833c109925b102 -->
 <!-- START_274ee5070eb05be4a6733d6d7288727c -->
-<h2>api/reservation/show-user/{id}</h2>
+<h2>Load reservation date</h2>
 <blockquote>
 <p>Example request:</p>
 </blockquote>
@@ -1391,7 +1418,7 @@ fetch(url, {
 <p><code>GET api/reservation/show-user/{id}</code></p>
 <!-- END_274ee5070eb05be4a6733d6d7288727c -->
 <!-- START_44cafa4ec23ce90e7d2e37a35512a1c1 -->
-<h2>api/reservation/customer-index</h2>
+<h2>show reservation for customer</h2>
 <blockquote>
 <p>Example request:</p>
 </blockquote>
@@ -1424,7 +1451,7 @@ fetch(url, {
 <p><code>GET api/reservation/customer-index</code></p>
 <!-- END_44cafa4ec23ce90e7d2e37a35512a1c1 -->
 <!-- START_30cfb7dbd718a66abcad04fac4fdf37c -->
-<h2>api/reservation/worker-index/{date}</h2>
+<h2>show reservation for worker</h2>
 <blockquote>
 <p>Example request:</p>
 </blockquote>
@@ -1457,7 +1484,7 @@ fetch(url, {
 <p><code>GET api/reservation/worker-index/{date}</code></p>
 <!-- END_30cfb7dbd718a66abcad04fac4fdf37c -->
 <!-- START_5d0e45b862b6568ed365cebbe15103d3 -->
-<h2>api/reservation/tables/{date}</h2>
+<h2>Find free table for given date</h2>
 <blockquote>
 <p>Example request:</p>
 </blockquote>
@@ -1490,7 +1517,7 @@ fetch(url, {
 <p><code>GET api/reservation/tables/{date}</code></p>
 <!-- END_5d0e45b862b6568ed365cebbe15103d3 -->
 <!-- START_d0069c5bdd0f97c5fe1419944b13f7b5 -->
-<h2>api/reservation/{id}</h2>
+<h2>Delete reservation</h2>
 <blockquote>
 <p>Example request:</p>
 </blockquote>
@@ -1517,7 +1544,7 @@ fetch(url, {
 <p><code>DELETE api/reservation/{id}</code></p>
 <!-- END_d0069c5bdd0f97c5fe1419944b13f7b5 -->
 <!-- START_2152d7b68da2b53a355e8954537192ba -->
-<h2>api/order/tables/{date}</h2>
+<h2>Return free tables</h2>
 <blockquote>
 <p>Example request:</p>
 </blockquote>
@@ -1583,7 +1610,7 @@ fetch(url, {
 <p><code>GET api/user/fetch-user/{user}</code></p>
 <!-- END_b116cd84abafafcb0e320dee1f93e3fd -->
 <!-- START_624efd6e6831ee7fba8cddb3fb44eb3a -->
-<h2>api/user/fetch-customers</h2>
+<h2>Show customers</h2>
 <blockquote>
 <p>Example request:</p>
 </blockquote>
@@ -1616,7 +1643,7 @@ fetch(url, {
 <p><code>GET api/user/fetch-customers</code></p>
 <!-- END_624efd6e6831ee7fba8cddb3fb44eb3a -->
 <!-- START_68f12a24b38ba6abe41b3bf61ac42e41 -->
-<h2>api/user/fetch-workers</h2>
+<h2>Show workers</h2>
 <blockquote>
 <p>Example request:</p>
 </blockquote>
@@ -1738,7 +1765,7 @@ fetch(url, {
 <p><code>PUT api/user/change-password-my-account/{user}</code></p>
 <!-- END_947ef659515777a0da61df05a55c853f -->
 <!-- START_0e06baad90a9cb6196e3d8622f5dda9c -->
-<h2>api/user/update-my-account/{user}</h2>
+<h2>Update user</h2>
 <blockquote>
 <p>Example request:</p>
 </blockquote>
@@ -1765,7 +1792,7 @@ fetch(url, {
 <p><code>PUT api/user/update-my-account/{user}</code></p>
 <!-- END_0e06baad90a9cb6196e3d8622f5dda9c -->
 <!-- START_346e5de77bdc0a0ece1b5778b38a9609 -->
-<h2>api/user/update-worker/{user}</h2>
+<h2>Update user</h2>
 <blockquote>
 <p>Example request:</p>
 </blockquote>
@@ -1792,7 +1819,7 @@ fetch(url, {
 <p><code>PUT api/user/update-worker/{user}</code></p>
 <!-- END_346e5de77bdc0a0ece1b5778b38a9609 -->
 <!-- START_0b02a96fe3ecb64ff2e9f684e6097249 -->
-<h2>api/user/update-customer/{user}</h2>
+<h2>Update user</h2>
 <blockquote>
 <p>Example request:</p>
 </blockquote>
@@ -1907,7 +1934,7 @@ fetch(url, {
 <p><code>GET api/user/vouchers</code></p>
 <!-- END_89f18f1a4cfb391dc98217fe7aab14cd -->
 <!-- START_7826b97784194db30890a636959ff686 -->
-<h2>api/statistics/year/{year}</h2>
+<h2>Generate years statistics</h2>
 <blockquote>
 <p>Example request:</p>
 </blockquote>
@@ -1940,7 +1967,7 @@ fetch(url, {
 <p><code>GET api/statistics/year/{year}</code></p>
 <!-- END_7826b97784194db30890a636959ff686 -->
 <!-- START_99d581de7443b5662e1f3f7549f421d4 -->
-<h2>api/statistics/waiter/{year}/{id}</h2>
+<h2>Generate waiter statistics</h2>
 <blockquote>
 <p>Example request:</p>
 </blockquote>
@@ -1973,7 +2000,7 @@ fetch(url, {
 <p><code>GET api/statistics/waiter/{year}/{id}</code></p>
 <!-- END_99d581de7443b5662e1f3f7549f421d4 -->
 <!-- START_32daf744b6bca059029e5852b22bc26f -->
-<h2>api/statistics/waiter/{year}</h2>
+<h2>Generate years waiter statistics</h2>
 <blockquote>
 <p>Example request:</p>
 </blockquote>
@@ -2039,7 +2066,7 @@ fetch(url, {
 <p><code>GET api/statistics/customer/{year}</code></p>
 <!-- END_00b84afebf1ee178b13041b073f1d374 -->
 <!-- START_ef908a6ceb7a6afce00cf9b8d39c2387 -->
-<h2>api/statistics/customer-interval/{from}/{to}</h2>
+<h2>All customer statistic in given period</h2>
 <blockquote>
 <p>Example request:</p>
 </blockquote>
@@ -2072,7 +2099,7 @@ fetch(url, {
 <p><code>GET api/statistics/customer-interval/{from}/{to}</code></p>
 <!-- END_ef908a6ceb7a6afce00cf9b8d39c2387 -->
 <!-- START_b801cd298efe360bfdb88efecc778a92 -->
-<h2>api/statistics/favourite-dishes</h2>
+<h2>Show favourite dishes statisitcs</h2>
 <blockquote>
 <p>Example request:</p>
 </blockquote>

@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Auth;
 class UserService
 {
     /**
+     * Load all users with given role
      * @param string $role
      * @return mixed
      */
@@ -23,6 +24,10 @@ class UserService
        })->get();
    }
 
+    /**
+     * Get role of currently logged user
+     * @return string
+     */
    public static function getAuthRoles()
    {
        try {
@@ -33,6 +38,11 @@ class UserService
        return "guest";
    }
 
+    /**
+     * Load user data
+     * @param $user
+     * @return array
+     */
     public function getUserData($user)
     {
         return [

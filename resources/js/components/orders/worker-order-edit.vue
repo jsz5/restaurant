@@ -1,6 +1,6 @@
 <template>
   <v-row class="justify-content-around">
-    <v-col cols="12" sm="10" md="8" lg="6" xl="5" v-if="this.statusOrder === 'ordered'">
+    <v-col cols="14" sm="12" md="10" lg="8" xl="7" v-if="this.statusOrder === 'ordered'">
       <v-card class="transparent_form">
         <v-card-title>
           <h1>Dania</h1>

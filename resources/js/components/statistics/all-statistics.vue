@@ -1,6 +1,8 @@
 <template>
 	<v-row class="justify-center align-center">
-		<v-col cols="12" lg="5" ma-2 md="8" sm="10" xl="4">
+		<loading :active.sync="isLoading"
+						 :is-full-page="fullPage"/>
+		<v-col cols="15" lg="8" ma-2 md="11" sm="13" xl="7">
 			<v-card class="transparent_form">
 				<v-col class="justify-center align-center boksik">
 					<v-card-title>
@@ -20,13 +22,13 @@
 								<thead>
 								<tr>
 									<th class="text-center">Miesiąc</th>
-									<th class="text-center">Ilość wszystkich zamówień</th>
+									<th class="text-center">Zysk restauracji (zł)</th>
 								</tr>
 								</thead>
 								<tbody>
 								<tr :key="item.id" v-for="(item, index) in statisticsItems">
 									<td>{{ getMonth(index) }}</td>
-									<td>{{ item }}</td>
+									<td>{{ item }} zł</td>
 								</tr>
 								</tbody>
 							</template>
@@ -40,6 +42,7 @@
 </template>
 
 <script>
+  import Loading from 'vue-loading-overlay';
 
   export default {
     name: "all-statistics",
@@ -52,24 +55,32 @@
         ],
         yearItems: ['2018', '2019', '2020'],
         year: '',
-        months :[
+        months: [
           'Styczeń', 'Luty', 'Marzec', 'Kwiecień', 'Maj',
           'Czerwiec', 'Lipiec', 'Sierpień', 'Wrzesień',
           'Październik', 'Listopad', 'Grudzień'
-        ]
+        ],
+        isLoading: false,
+        fullPage: true
       }
+    },
+    components: {
+      Loading
     },
     methods: {
       getData() {
+        this.isLoading = true
         axios.get(route('api.statistics.yearIndex', this.year))
           .then(response => {
             this.statisticsItems = response.data.statistics
           }).catch(error => {
           console.error(error)
+        }).finally(() => {
+          this.isLoading = false
         })
       },
       getMonth(index) {
-        return this.months[index-1]
+        return this.months[index - 1]
       }
     }
   }

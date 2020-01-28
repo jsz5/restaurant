@@ -1,11 +1,13 @@
 <template>
 	<v-row class="justify-center align-center">
-		<v-col cols="12" lg="5" ma-2 md="8" sm="10" xl="4">
+		<loading :active.sync="isLoading"
+						 :is-full-page="fullPage"/>
+		<v-col cols="16" lg="9" ma-2 md="12" sm="14" xl="8">
 			<v-card class="transparent_form">
 				<v-col class="justify-center align-center">
 					<v-card-title>
 						Statystyki kelnera
-						<v-spacer></v-spacer>
+						<v-spacer/>
 						<v-select
 							:items="yearItems"
 							label="Wybierz rok"
@@ -16,31 +18,31 @@
 					</v-card-title>
 					<v-card-text>
 						<v-simple-table>
-											<template v-slot:default>
-												<thead>
-												<tr>
-													<th class="text-center">Miesiąc</th>
-													<th class="text-center">Ilość zrealizowanych zamówień</th>
-												</tr>
-												</thead>
-												<tbody>
-												<tr v-for="(item, index) in statisticsItems" :key="item.id">
-													<td>{{ getMonth(index) }}</td>
-													<td>{{ item }}</td>
-												</tr>
-												</tbody>
-											</template>
-										</v-simple-table>
+							<template v-slot:default>
+								<thead>
+								<tr>
+									<th class="text-center">Miesiąc</th>
+									<th class="text-center">Zysk pracownika z obsługiwanych zamówień (zł)</th>
+								</tr>
+								</thead>
+								<tbody>
+								<tr :key="item.id" v-for="(item, index) in statisticsItems">
+									<td>{{ getMonth(index) }}</td>
+									<td>{{ item }} zł</td>
+								</tr>
+								</tbody>
+							</template>
+						</v-simple-table>
 					</v-card-text>
 				</v-col>
 			</v-card>
 		</v-col>
 	</v-row>
-	
+
 </template>
 
 <script>
-
+  import Loading from 'vue-loading-overlay';
   export default {
     name: "my-worker-statistics",
     data() {
@@ -50,26 +52,34 @@
           {text: 'Miesiąc', value: 'name',},
           {text: 'Ilość zamówień', value: 'price'},
         ],
-				yearItems: ['2018', '2019', '2020'],
-				year: '',
-        months :[
+        yearItems: ['2018', '2019', '2020'],
+        year: '',
+        months: [
           'Styczeń', 'Luty', 'Marzec', 'Kwiecień', 'Maj',
           'Czerwiec', 'Lipiec', 'Sierpień', 'Wrzesień',
           'Październik', 'Listopad', 'Grudzień'
-        ]
+        ],
+        isLoading: false,
+        fullPage: true
       }
+    },
+    components: {
+      Loading
     },
     methods: {
       getData() {
+        this.isLoading = true
         axios.get(route('api.statistics.myWaiterIndex', this.year))
           .then(response => {
             this.statisticsItems = response.data.statistics
           }).catch(error => {
           console.error(error)
+        }).finally(() => {
+          this.isLoading = false
         })
       },
       getMonth(index) {
-        return this.months[index-1]
+        return this.months[index - 1]
       }
     }
   }

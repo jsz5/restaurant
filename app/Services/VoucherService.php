@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Auth;
 class VoucherService
 {
     /**
+     * Check voucher and if it is valid delete and return discount
      * @param string $voucher
      * @return float
      */

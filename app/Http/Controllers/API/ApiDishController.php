@@ -26,6 +26,7 @@ class ApiDishController extends Controller
     }
 
     /**
+     * Load dish data
      * @param Dish $dish
      * @return JsonResponse
      */
@@ -42,6 +43,7 @@ class ApiDishController extends Controller
     }
 
     /**
+     * Delete dish
      * @param Dish $dish
      * @return JsonResponse
      */
@@ -59,6 +61,7 @@ class ApiDishController extends Controller
     }
 
     /**
+     * Create new dish
      * @param DishRequest $request [name,price,category_id]
      * @return JsonResponse
      */
@@ -85,6 +88,7 @@ class ApiDishController extends Controller
     }
 
     /**
+     * Update new dish
      * @param DishRequest $request [id,name,price,category_id]
      * @return JsonResponse
      */
@@ -111,6 +115,7 @@ class ApiDishController extends Controller
     }
 
     /**
+     * Remove photo from dish
      * @param Request $request
      * @return JsonResponse
      */

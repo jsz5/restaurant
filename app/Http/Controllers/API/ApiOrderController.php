@@ -25,6 +25,7 @@ class ApiOrderController extends Controller
 {
 
     /**
+     * Return free tables
      * @param string $date
      * @return JsonResponse
      */
@@ -180,6 +181,7 @@ class ApiOrderController extends Controller
     }
 
     /**
+     * Create new order as worker
      * @param NewOrderFromWorkerRequest $request ['table_id', items]
      * @return JsonResponse
      */
@@ -215,6 +217,7 @@ class ApiOrderController extends Controller
     }
 
     /**
+     * Create new online order
      * @param NewOrderOnlineRequest $request
      * @return JsonResponse
      */
@@ -305,6 +308,7 @@ class ApiOrderController extends Controller
     }
 
     /**
+     * Delete Ordere
      * @param $token
      * @return JsonResponse
      */
@@ -331,6 +335,7 @@ class ApiOrderController extends Controller
     }
 
     /**
+     * Update order from worker
      * @param EditOrderFromWorkerRequest $request
      * @return JsonResponse
      */
@@ -374,6 +379,7 @@ class ApiOrderController extends Controller
     }
 
     /**
+     * Update online order
      * @param NewOrderOnlineRequest $request
      * @return JsonResponse
      */
@@ -417,6 +423,11 @@ class ApiOrderController extends Controller
         }
     }
 
+    /**
+     * Translate orders statuses
+     * @param $orders
+     * @return mixed
+     */
     public function transStatus($orders)
     {
         foreach ($orders as $order) {
