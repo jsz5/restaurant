@@ -161,7 +161,7 @@
           {id: 5, text: "Moje Konto", link: route("user.myAccount")},
           {id: 6, text: "Wyloguj", link: "logout"}
   
-    ],
+    ]
 
 ,
         customerMenu: [
