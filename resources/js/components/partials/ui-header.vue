@@ -139,19 +139,19 @@
           {id: 7, text: "Stoliki", link: route("table.index")},
       	  {id: 8, text: "Moje Konto", link: route("user.myAccount")},
 		  {id: 9, text: "Wyloguj", link: "logout"}
-        
+
 
        ],
         waiterMenu: [
           {id: 1, text: "Stoliki", link: route("table.waiterIndex")},
           {id: 2, text: "Zamówienia", link: route("order.index")},
           {id: 3, text: "Rezerwacje", link: route("reservation.index")},
-       
+
           {id: 4, text: "Moje Konto", link: route("user.myAccount")},
 		  {id: 5, text: "Wyloguj", link: "logout"}
-        
 
-     
+
+
      ],
         userMenu: [
           {id: 1, text: "Zamówienia", link: route("orders.myOrders")},
@@ -160,7 +160,7 @@
           {id: 4, text: "Ulubione Dania", link: route("myFavouriteDishes.index")},
           {id: 5, text: "Moje Konto", link: route("user.myAccount")},
           {id: 6, text: "Wyloguj", link: "logout"}
-  
+
     ]
 
 ,
@@ -171,7 +171,7 @@
           {id: 4, text: "Zarezerwuj", link: route("reservation.createUser")},
           {id: 5, text: "Kontakt", link: route("contact")},
           {id: 6, text: "Wyloguj", link: "logout"}
-    
+
     ],
         employerMenu: [
           {id: 1, text: "Moje Konto", link: route("user.myAccount")},
